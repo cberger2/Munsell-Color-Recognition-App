@@ -27,6 +27,7 @@ import static android.R.attr.y;
 /**
  * Created by Victorine on 10/12/16.
  */
+//comment
 
 public class ImageActivity extends AppCompatActivity implements View.OnClickListener {
     private Button calibrate;
