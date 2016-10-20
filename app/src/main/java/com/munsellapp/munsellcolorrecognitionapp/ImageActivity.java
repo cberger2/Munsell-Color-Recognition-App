@@ -39,6 +39,8 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
     int green;
     int blue;
     int i;
+    //this is a comment
+    //this is another comment
 
 
     @Override
