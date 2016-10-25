@@ -52,4 +52,13 @@
         android:textSize="36sp"
         android:gravity="center_horizontal"
         android:textStyle="bold"/>
+
+    <Button
+        android:text="Submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/button2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:id="@+id/button" />
 </RelativeLayout>
