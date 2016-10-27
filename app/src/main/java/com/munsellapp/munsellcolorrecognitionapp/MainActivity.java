@@ -1,6 +1,7 @@
 package com.munsellapp.munsellcolorrecognitionapp;
 
 import android.app.Activity;
+import android.app.Notification;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -21,7 +22,7 @@ import java.io.InputStreamReader;
 
 //import androidinterview.com.androidcamera.R;
 
-public class MainActivity extends Activity{
+public class MainActivity extends Activity implements View.OnClickListener{
 
 
     static int TAKE_PIC = 1;
@@ -46,6 +47,7 @@ public class MainActivity extends Activity{
         setContentView(R.layout.activity_main);
         // this.imageView = (ImageView) this.findViewById(R.id.imageView1);
         calibrateButton=(Button)  findViewById(R.id.button3) ;
+        calibrateButton.setOnClickListener(this);
         //munsellButton = (Button) findViewById(R.id.button);
         // color=(TextView)findViewById(R.id.textView2);
         /// Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -88,7 +90,12 @@ public class MainActivity extends Activity{
     }
 
 
+    @Override
+    public void onClick(View view) {
 
+        startActivity(new Intent(MainActivity.this, ImageActivity.class));
+
+    }
 
 }
 
