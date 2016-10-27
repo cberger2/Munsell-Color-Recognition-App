@@ -190,6 +190,7 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
         green = Color.green(pixel);
 
     }
+    //Test Comment
 }
 
 
