@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:textSize="70sp"
         android:layout_marginTop="16dp"
-        android:id="@+id/textView2"
+        android:id="@+id/amMunsellText"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:textStyle="normal|bold"
@@ -34,14 +34,14 @@
         android:padding="5dp"
         android:textColor="@android:color/black"
         android:background="@drawable/buttonshape"
-        android:id="@+id/button3"
+        android:id="@+id/amCalibrateButton"
         android:layout_marginBottom="179dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/button1"
-        android:layout_alignStart="@+id/button1" />
+        android:layout_alignLeft="@+id/amPictureButton"
+        android:layout_alignStart="@+id/amPictureButton" />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/amPictureButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -52,6 +52,6 @@
         android:padding="5dp"
         android:textColor="@android:color/black"
         android:layout_marginBottom="48dp"
-        android:layout_above="@+id/button3"
+        android:layout_above="@+id/amCalibrateButton"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>

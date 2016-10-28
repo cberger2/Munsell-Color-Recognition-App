@@ -1,11 +1,8 @@
 package com.munsellapp.munsellcolorrecognitionapp;
 
 import android.app.Activity;
-import android.app.Notification;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
@@ -13,22 +10,17 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.ImageView;
 
-import com.opencsv.CSVReader;
-
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 
 //import androidinterview.com.androidcamera.R;
 
-public class MainActivity extends Activity implements View.OnClickListener{
+public class MainActivity extends Activity implements View.OnClickListener {
 
 
     static int TAKE_PIC = 1;
     private ImageView imageView;
     private Button munsellButton;
-    private Button calibrateButton;
+    private Button calibrateButton, submit, home;
     private TextView color;
     private ImageView img;
     protected final static String TAG = "ColorUtils";
@@ -46,13 +38,17 @@ public class MainActivity extends Activity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         // this.imageView = (ImageView) this.findViewById(R.id.imageView1);
-        calibrateButton=(Button)  findViewById(R.id.button3) ;
+        calibrateButton = (Button) findViewById(R.id.amCalibrateButton);
         calibrateButton.setOnClickListener(this);
+        submit = (Button) findViewById(R.id.ilSubmitButton);
+        submit.setOnClickListener(this);
+        home = (Button) findViewById(R.id.ilHomeButton);
+        home.setOnClickListener(this);
         //munsellButton = (Button) findViewById(R.id.button);
         // color=(TextView)findViewById(R.id.textView2);
         /// Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         /// startActivityForResult(intent, TAKE_PIC);
-        getMunsellButton=(Button)findViewById(R.id.munsellButton);
+        getMunsellButton = (Button) findViewById(R.id.ilMunsellButton);
 
     }
 
@@ -75,7 +71,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
             photo.compress(Bitmap.CompressFormat.PNG, 100, stream);
             // byte[] byteArray = stream.toByteArray();
-            intent.putExtra("byteArray",stream.toByteArray());
+            intent.putExtra("byteArray", stream.toByteArray());
             startActivity(intent);
             //imageView.setImageBitmap(photo);
             // munsellButton.setVisibility(View.VISIBLE);
@@ -93,10 +89,20 @@ public class MainActivity extends Activity implements View.OnClickListener{
     @Override
     public void onClick(View view) {
 
-        startActivity(new Intent(MainActivity.this, ImageActivity.class));
+        switch (view.getId()) {
+            case R.id.ilHomeButton:
+                Intent i = new Intent(this, MainActivity.class);
+                startActivity(i);
+                break;
+            case R.id.ilSubmitButton:
+                Intent submitMunsell = new Intent(this, SubmitForm.class);
+                startActivity(submitMunsell);
+                break;
+            case R.id.amCalibrateButton:
+
+        }
+
 
     }
-
-
 }
 

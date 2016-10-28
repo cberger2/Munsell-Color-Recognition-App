@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:textColor="@android:color/black"
         android:padding="5dp"
-        android:id="@+id/munsellButton"
+        android:id="@+id/ilMunsellButton"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -23,7 +23,7 @@
         android:background="@drawable/homebuttonshape"
         android:layout_height="wrap_content"
         android:textColor="@android:color/black"
-        android:id="@+id/button2"
+        android:id="@+id/ilHomeButton"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
@@ -33,7 +33,7 @@
 
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:layout_above="@+id/munsellButton"
+        android:layout_above="@+id/ilMunsellButton"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="55dp">
@@ -50,4 +50,13 @@
         android:layout_above="@+id/imageView1"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="Submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:id="@+id/ilSubmitButton" />
 </RelativeLayout>
