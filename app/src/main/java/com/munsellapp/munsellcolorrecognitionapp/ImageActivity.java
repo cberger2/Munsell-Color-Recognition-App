@@ -18,6 +18,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+import static android.R.attr.bitmap;
+import static android.R.attr.x;
+import static android.R.attr.y;
+
 //import androidinterview.com.androidcamera.R;
 
 /**
@@ -46,7 +50,7 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.image_layout);
         Home = (Button) findViewById(R.id.button2);
         Home.setOnClickListener(this);
-        calibrate=(Button) findViewById(R.id.amCalibrateButton);
+        calibrate=(Button) findViewById(R.id.button3);
         ResultPic = (ImageView) findViewById(R.id.imageView1);
 
 
