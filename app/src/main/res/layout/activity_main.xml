@@ -24,7 +24,7 @@
         android:layout_centerHorizontal="true"
         android:textStyle="normal|bold"
         android:textColor="@android:color/black"
-        android:fontFamily="casual" />
+        android:fontFamily="serif" />
 
 
     <Button
@@ -40,7 +40,8 @@
         android:layout_alignParentBottom="true"
         android:layout_alignLeft="@+id/button1"
         android:layout_alignStart="@+id/button1"
-        android:fontFamily="casual" />
+        android:fontFamily="serif"
+        android:textSize="24sp" />
 
     <Button
         android:id="@+id/button1"
@@ -57,5 +58,6 @@
         android:layout_marginBottom="48dp"
         android:layout_above="@+id/button3"
         android:layout_centerHorizontal="true"
-        android:fontFamily="casual" />
+        android:fontFamily="serif"
+        android:textSize="24sp" />
 </RelativeLayout>
