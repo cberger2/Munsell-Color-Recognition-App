@@ -32,19 +32,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="5dp"
+        android:textStyle="bold"
         android:textColor="@android:color/black"
         android:background="@drawable/buttonshape"
         android:id="@+id/button3"
         android:layout_marginBottom="179dp"
         android:layout_alignParentBottom="true"
         android:layout_alignLeft="@+id/button1"
-        android:layout_alignStart="@+id/button1" />
+        android:layout_alignStart="@+id/button1"
+        android:fontFamily="casual" />
 
     <Button
         android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:textStyle="bold"
         android:layout_gravity="center"
         android:text="Take Picture"
         android:onClick="CameraClick"
@@ -53,5 +56,6 @@
         android:textColor="@android:color/black"
         android:layout_marginBottom="48dp"
         android:layout_above="@+id/button3"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:fontFamily="casual" />
 </RelativeLayout>
