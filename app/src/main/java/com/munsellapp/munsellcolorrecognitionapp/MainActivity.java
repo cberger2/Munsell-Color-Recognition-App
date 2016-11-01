@@ -8,6 +8,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -29,7 +30,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
     private ImageView imageView;
     private Button munsellButton;
     private Button calibrateButton;
-    private TextView color;
+    private TextView Munsell;
     private ImageView img;
     protected final static String TAG = "ColorUtils";
     //Bitmap bitmapphoto;
@@ -53,6 +54,15 @@ public class MainActivity extends Activity implements View.OnClickListener{
         /// Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         /// startActivityForResult(intent, TAKE_PIC);
         getMunsellButton=(Button)findViewById(R.id.munsellButton);
+        Munsell=(TextView) findViewById(R.id.textView2);
+        String text = "<font color=#960202>M</font> " +
+                "<font color=#E6790C>U</font> " +
+                "<font color=#E6A627>N</font> " +
+                "<font color=#E6DC4A>S</font> " +
+                "<font color=#B3AE12>E</font> " +
+                "<font color=#284F00>L</font> " +
+                "<font color=#03447D>L</font>";
+        Munsell.setText(Html.fromHtml(text));
 
     }
 
