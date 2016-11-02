@@ -61,7 +61,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="62c084b1aedf842c6f2230ad705db36e5fd87578">
+        sha1="aae82543bd7d186619dc361321154339b3ada583">
         <dex dex="/Users/Victorine/Desktop/Munsell-Color-Recognition-App/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_af4e5a4532ce6a0545099db66a9257cdbd2c708f/classes.dex" />
     </item>
     <item
@@ -115,7 +115,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="62cc52100ddba1aadc07330c1404ba8395df4de3">
+        sha1="63a7b7265b79901e6dd45a50cde3c1cd0fafaee6">
         <dex dex="/Users/Victorine/Desktop/Munsell-Color-Recognition-App/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_ce3a5a43d9c0d913a1e6cf8e7ad539f9a7822738/classes.dex" />
     </item>
     <item
