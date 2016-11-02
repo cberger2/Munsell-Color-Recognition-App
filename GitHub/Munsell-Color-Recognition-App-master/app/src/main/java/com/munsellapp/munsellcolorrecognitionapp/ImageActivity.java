@@ -31,9 +31,10 @@ import static android.R.attr.y;
 
 public class ImageActivity extends AppCompatActivity implements View.OnClickListener {
     private Button calibrate;
-    private Button Home;
+    private Button Home, submit;
     private ImageView ResultPic;
     Bitmap b;
+    String munsellValue;
 
     int red;
     int green;
@@ -50,6 +51,8 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.image_layout);
         Home = (Button) findViewById(R.id.button2);
         Home.setOnClickListener(this);
+        submit= (Button) findViewById(R.id.ilSubmitButton);
+        submit.setOnClickListener(this);
         calibrate=(Button) findViewById(R.id.button3);
         ResultPic = (ImageView) findViewById(R.id.imageView1);
 
@@ -87,22 +90,35 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
                 if ((red >= (Integer.parseInt(line[3]) - i) && red <= (Integer.parseInt(line[3]) + i))) {
                     if ((green >= (Integer.parseInt(line[4]) - i) && green <= (Integer.parseInt(line[4]) + i)))
                         if ((blue >= (Integer.parseInt(line[5]) - i) && blue <= (Integer.parseInt(line[5]) + i))) {
-                            text.setText(line[0] + " " + line[1] + "/" + line[2]);
+                            munsellValue=line[0]+" "+line[1]+"/"+line[2];
+                            text.setText(munsellValue);
+                            setBackground(red, green, blue);
                         }
 
                 }
 
             }
         }
-        setBackground(red, green, blue);
+//        setBackground(red, green, blue);
 
     }
 
 
     @Override
     public void onClick(View v) {
-        Intent i = new Intent(this, MainActivity.class);
-        startActivity(i);
+        switch (v.getId()){
+            case R.id.button2:
+                Intent i = new Intent(this, MainActivity.class);
+                startActivity(i);
+                break;
+            case R.id.ilSubmitButton:
+                Intent submitForm= new Intent(this, SubmitForm.class);
+                submitForm.putExtra(munsellValue, "MunsellValue");
+                startActivity(submitForm);
+                break;
+        }
+//        Intent i = new Intent(this, MainActivity.class);
+//        startActivity(i);
 
     }
 
@@ -190,6 +206,7 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
         green = Color.green(pixel);
 
     }
+    //Test Comment
 }
 
 
