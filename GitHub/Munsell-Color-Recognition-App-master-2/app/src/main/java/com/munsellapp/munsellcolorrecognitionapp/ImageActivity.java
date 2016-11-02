@@ -18,6 +18,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+import static android.R.attr.bitmap;
+import static android.R.attr.x;
+import static android.R.attr.y;
+
 //import androidinterview.com.androidcamera.R;
 
 /**
@@ -27,7 +31,7 @@ import java.io.InputStreamReader;
 
 public class ImageActivity extends AppCompatActivity implements View.OnClickListener {
     private Button calibrate;
-    private Button Home, submit;
+    private Button Home;
     private ImageView ResultPic;
     Bitmap b;
 
@@ -35,17 +39,17 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
     int green;
     int blue;
     int i;
-
+    //this is a comment
+    //this is another comment
+    //Can you see my comment
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.image_layout);
-        Home = (Button) findViewById(R.id.homeButton);
+        Home = (Button) findViewById(R.id.button2);
         Home.setOnClickListener(this);
-        submit= (Button) findViewById(R.id.submitButton);
-        submit.setOnClickListener(this);
         calibrate=(Button) findViewById(R.id.button3);
         ResultPic = (ImageView) findViewById(R.id.imageView1);
 
@@ -64,7 +68,7 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
 
     public void munsell(View v) throws IOException {
 
-        TextView text = (TextView) findViewById(R.id.munsellValue);
+        TextView text = (TextView) findViewById(R.id.musellValue);
 
         InputStream csv;
 
@@ -97,20 +101,10 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.homeButton:
-                Intent i = new Intent(this, MainActivity.class);
-                startActivity(i);
-                break;
-            case R.id.submitButton:
-                Intent submitMunsell = new Intent(this, Submit.class);
-                startActivity(submitMunsell);
-                break;
-
-        }
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
 
     }
-
 
     public void setBackground(int red, int green, int blue) {
         View view = this.getWindow().getDecorView();
@@ -196,7 +190,6 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
         green = Color.green(pixel);
 
     }
-
 }
 
 

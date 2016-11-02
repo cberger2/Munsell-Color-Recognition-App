@@ -4,18 +4,6 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/imageView1"
-
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_below="@+id/textView2"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="13dp">
-
-    </ImageView>
-
     <Button
         android:text="Munsell"
         android:layout_width="wrap_content"
@@ -35,30 +23,31 @@
         android:background="@drawable/homebuttonshape"
         android:layout_height="wrap_content"
         android:textColor="@android:color/black"
-        android:id="@+id/homeButton"
+        android:id="@+id/button2"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
+    <ImageView
+        android:id="@+id/imageView1"
+
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_above="@+id/munsellButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="55dp">
+
+    </ImageView>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/munsellValue"
-        android:layout_below="@+id/imageView1"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
+        android:id="@+id/musellValue"
         android:textSize="36sp"
         android:gravity="center_horizontal"
-        android:textStyle="bold"/>
-
-    <Button
-        android:text="Submit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/homeButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        android:id="@+id/submitButton" />
+        android:textStyle="bold"
+        android:layout_above="@+id/imageView1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>
