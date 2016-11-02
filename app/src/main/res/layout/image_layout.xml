@@ -4,18 +4,16 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:text="Munsell"
-        android:layout_width="wrap_content"
-        android:background="@drawable/munsellbuttonshape"
+    <TextView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/black"
-        android:padding="5dp"
-        android:id="@+id/munsellButton"
-        android:layout_alignParentBottom="true"
+        android:id="@+id/musellValue"
+        android:textSize="36sp"
+        android:gravity="center_horizontal"
+        android:textStyle="bold"
+        android:layout_above="@+id/imageView1"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:onClick="munsell" />
+        android:layout_alignParentStart="true" />
 
     <Button
         android:text="Home"
@@ -24,7 +22,49 @@
         android:layout_height="wrap_content"
         android:textColor="@android:color/black"
         android:id="@+id/button2"
+        android:textStyle="normal|bold"
+        android:fontFamily="serif"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:text="Munsell"
+        android:layout_width="wrap_content"
+        android:background="@drawable/munsellbuttonshape"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:padding="5dp"
+        android:id="@+id/munsellButton"
+        android:onClick="munsell"
+        android:textStyle="normal|bold"
+        android:fontFamily="serif"
+        android:layout_marginBottom="37dp"
+        android:layout_above="@+id/ilSubmitButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="Submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ilSubmitButton"
+        android:textStyle="normal|bold"
+        android:fontFamily="serif"
+        android:background="@drawable/submitbuttonshape"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="Save Result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="normal|bold"
+        android:fontFamily="serif"
+        android:background="@drawable/saveresultbuttonshape"
+        android:id="@+id/button"
+        android:layout_alignTop="@+id/munsellButton"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
@@ -36,18 +76,7 @@
         android:layout_above="@+id/munsellButton"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="55dp">
+        android:layout_marginBottom="12dp">
 
     </ImageView>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/musellValue"
-        android:textSize="36sp"
-        android:gravity="center_horizontal"
-        android:textStyle="bold"
-        android:layout_above="@+id/imageView1"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
 </RelativeLayout>

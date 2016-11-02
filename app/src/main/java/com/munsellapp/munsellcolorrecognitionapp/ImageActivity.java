@@ -31,7 +31,7 @@ import static android.R.attr.y;
 
 public class ImageActivity extends AppCompatActivity implements View.OnClickListener {
     private Button calibrate;
-    private Button Home;
+    private Button Home, submit;
     private ImageView ResultPic;
     Bitmap b;
 
@@ -50,6 +50,8 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.image_layout);
         Home = (Button) findViewById(R.id.button2);
         Home.setOnClickListener(this);
+        submit= (Button) findViewById(R.id.ilSubmitButton);
+        submit.setOnClickListener(this);
         calibrate=(Button) findViewById(R.id.button3);
         ResultPic = (ImageView) findViewById(R.id.imageView1);
 
@@ -101,8 +103,18 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-        Intent i = new Intent(this, MainActivity.class);
-        startActivity(i);
+        switch (v.getId()){
+            case R.id.button2:
+                Intent i = new Intent(this, MainActivity.class);
+                startActivity(i);
+                break;
+            case R.id.ilSubmitButton:
+                Intent submitForm= new Intent(this, SubmitForm.class);
+                startActivity(submitForm);
+                break;
+        }
+//        Intent i = new Intent(this, MainActivity.class);
+//        startActivity(i);
 
     }
 
@@ -190,6 +202,7 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
         green = Color.green(pixel);
 
     }
+    //Test Comment
 }
 
 
