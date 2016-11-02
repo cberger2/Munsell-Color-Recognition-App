@@ -3,165 +3,165 @@
 
     <item
         is-multidex="true"
-        jar="/Users/Camille/Munsell-Color-Recognition-App-Master/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.2.1/jars/classes.jar"
+        jar="/Users/Victorine/Desktop/Munsell-Color-Recognition-App/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.2.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
         sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="/Users/Camille/Munsell-Color-Recognition-App-Master/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-24.2.1_6cd7112a9d324c70659d20a54a853ef50056bcc4/classes.dex" />
+        <dex dex="/Users/Victorine/Desktop/Munsell-Color-Recognition-App/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-24.2.1_2a0a8819d3c03f7a491a8c8d73968bac62a2a24f/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/Users/Camille/Munsell-Color-Recognition-App-Master/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/libs/internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
-        <dex dex="/Users/Camille/Munsell-Color-Recognition-App-Master/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_19a446c2b1ccd7bae87b34d57288e1661518e6d5/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Camille/Munsell-Color-Recognition-App-Master/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
-        <dex dex="/Users/Camille/Munsell-Color-Recognition-App-Master/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-utils-24.2.1_809040d8baeb4cc67ffde03a70dd715d06a8775c/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Camille/Munsell-Color-Recognition-App-Master/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
-        <dex dex="/Users/Camille/Munsell-Color-Recognition-App-Master/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-fragment-24.2.1_519229b8ada9f9d238c3c9a46ac8117aab115912/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Camille/Munsell-Color-Recognition-App-Master/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
-        <dex dex="/Users/Camille/Munsell-Color-Recognition-App-Master/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_e68270b53f8c00de8bda20fc2ae3c96b06b1e124/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Camille/Munsell-Color-Recognition-App-Master/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
-        <dex dex="/Users/Camille/Munsell-Color-Recognition-App-Master/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-24.2.1_2fb6932e45296c82b41973e85d5bf2e623fc83dc/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Camille/Munsell-Color-Recognition-App-Master/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="48dc5ba109de7505d432bfd59ee297ecc88aebaf">
-        <dex dex="/Users/Camille/Munsell-Color-Recognition-App-Master/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_b9448912fb622e15a33f740701a992b1b4cb0bc6/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Camille/Munsell-Color-Recognition-App-Master/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jar="/Users/Victorine/Desktop/Munsell-Color-Recognition-App/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
         sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
-        <dex dex="/Users/Camille/Munsell-Color-Recognition-App-Master/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_548b1aa57d09065e7c8a894df6060d894950dbc9/classes.dex" />
+        <dex dex="/Users/Victorine/Desktop/Munsell-Color-Recognition-App/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_b698cf08d27931d1d5f133756e5c131a8c26655a/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/Users/Camille/Munsell-Color-Recognition-App-Master/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="5bd39a8d99d35face941034c01ca17db49b37ef3">
-        <dex dex="/Users/Camille/Munsell-Color-Recognition-App-Master/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_bc3b87f44b9f1cb2624cc668b1a3b6d2edeb776c/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Camille/Munsell-Color-Recognition-App-Master/app/libs/opencsv-3.8.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="248d4d05fe253a02a05601978f7de1305b8a961e">
-        <dex dex="/Users/Camille/Munsell-Color-Recognition-App-Master/app/build/intermediates/transforms/dex/debug/folders/1000/2/opencsv-3.8_1a87c9fcd48b6ba06c539399c7d039059f570d5f/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Camille/Munsell-Color-Recognition-App-Master/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
-        <dex dex="/Users/Camille/Munsell-Color-Recognition-App-Master/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-ui-24.2.1_6bbdfb1849c743bd4ffd00d8d74176365602776e/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Camille/Munsell-Color-Recognition-App-Master/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.2.1/jars/classes.jar"
+        jar="/Users/Victorine/Desktop/Munsell-Color-Recognition-App/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.2.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
         sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
-        <dex dex="/Users/Camille/Munsell-Color-Recognition-App-Master/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-24.2.1_ac07ed1d8befaa8e8a0cf41c0e96dada07ac22de/classes.dex" />
+        <dex dex="/Users/Victorine/Desktop/Munsell-Color-Recognition-App/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-24.2.1_d2fe7af6d6050557f4fdfa27a3cb85549c6abccc/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/Users/Camille/Munsell-Color-Recognition-App-Master/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/libs/internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="867dad63c33388ff8c7644b236579355036d075f">
-        <dex dex="/Users/Camille/Munsell-Color-Recognition-App-Master/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_54c557c59dcafea8d8043779ad21f8623261fe59/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Camille/Munsell-Color-Recognition-App-Master/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
-        <dex dex="/Users/Camille/Munsell-Color-Recognition-App-Master/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-24.2.1_fbec8e3e3e10e2446a9ea45814c0a8030d161c9e/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Camille/Munsell-Color-Recognition-App-Master/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
-        <dex dex="/Users/Camille/Munsell-Color-Recognition-App-Master/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-media-compat-24.2.1_3f23ca8a720b436124ab8e4f1b8721df3ab96e3d/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Camille/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/24.2.1/support-annotations-24.2.1.jar"
+        jar="/Users/Victorine/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/24.2.1/support-annotations-24.2.1.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
         sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
-        <dex dex="/Users/Camille/Munsell-Color-Recognition-App-Master/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-24.2.1_85ab0d36941b68f9dea068cce7c1c6d31ebb2432/classes.dex" />
+        <dex dex="/Users/Victorine/Desktop/Munsell-Color-Recognition-App/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-24.2.1_4e4e93d1d926db025130a59df14adaca3cb11373/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/Users/Camille/Munsell-Color-Recognition-App-Master/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jar="/Users/Victorine/Desktop/Munsell-Color-Recognition-App/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
+        <dex dex="/Users/Victorine/Desktop/Munsell-Color-Recognition-App/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-media-compat-24.2.1_c9f0f5a253f76000d092698cf5b27ddc8d8231cb/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Desktop/Munsell-Color-Recognition-App/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
+        <dex dex="/Users/Victorine/Desktop/Munsell-Color-Recognition-App/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-utils-24.2.1_1f587959cedc65239c2e1871a08e6c93a1647aec/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Desktop/Munsell-Color-Recognition-App/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="62c084b1aedf842c6f2230ad705db36e5fd87578">
+        <dex dex="/Users/Victorine/Desktop/Munsell-Color-Recognition-App/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_af4e5a4532ce6a0545099db66a9257cdbd2c708f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Desktop/Munsell-Color-Recognition-App/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
+        <dex dex="/Users/Victorine/Desktop/Munsell-Color-Recognition-App/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-ui-24.2.1_083c5037d477fd688301a6f99e70f7d9aa3279dc/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Desktop/Munsell-Color-Recognition-App/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
+        <dex dex="/Users/Victorine/Desktop/Munsell-Color-Recognition-App/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_c6c43d6d658996bb6ed07877c2b0156cf282d107/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Desktop/Munsell-Color-Recognition-App/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
+        <dex dex="/Users/Victorine/Desktop/Munsell-Color-Recognition-App/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-24.2.1_ddb8341d555aa6c59f14c491008690e463af8581/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Desktop/Munsell-Color-Recognition-App/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/libs/internal_impl-24.2.1.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
         sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
-        <dex dex="/Users/Camille/Munsell-Color-Recognition-App-Master/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_4dafcc0b51a65d3a534e5cbe23a0e23e9f859b66/classes.dex" />
+        <dex dex="/Users/Victorine/Desktop/Munsell-Color-Recognition-App/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_512e906fd83545b02a730f80358141c3ec676932/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/Users/Camille/Munsell-Color-Recognition-App-Master/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/classes.jar"
+        jar="/Users/Victorine/Desktop/Munsell-Color-Recognition-App/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="867dad63c33388ff8c7644b236579355036d075f">
+        <dex dex="/Users/Victorine/Desktop/Munsell-Color-Recognition-App/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_22f89504f706f5d8ba82d0a5565f10db39a6b51c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Desktop/Munsell-Color-Recognition-App/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="62cc52100ddba1aadc07330c1404ba8395df4de3">
+        <dex dex="/Users/Victorine/Desktop/Munsell-Color-Recognition-App/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_ce3a5a43d9c0d913a1e6cf8e7ad539f9a7822738/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Desktop/Munsell-Color-Recognition-App/app/libs/opencsv-3.8.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="248d4d05fe253a02a05601978f7de1305b8a961e">
+        <dex dex="/Users/Victorine/Desktop/Munsell-Color-Recognition-App/app/build/intermediates/transforms/dex/debug/folders/1000/2/opencsv-3.8_b02094b307140c110b01a41248474141df2411bd/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Desktop/Munsell-Color-Recognition-App/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
+        <dex dex="/Users/Victorine/Desktop/Munsell-Color-Recognition-App/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_825299b205b1021ca7f710430d4469f8f1c9dac6/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Desktop/Munsell-Color-Recognition-App/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
+        <dex dex="/Users/Victorine/Desktop/Munsell-Color-Recognition-App/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-24.2.1_e3bd5d5e6b8fcb24e24bd8655cfe4d6db34db2f3/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Desktop/Munsell-Color-Recognition-App/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
         sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
-        <dex dex="/Users/Camille/Munsell-Color-Recognition-App-Master/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-compat-24.2.1_6158db26f6936bfd664fbbb23637815808109a5a/classes.dex" />
+        <dex dex="/Users/Victorine/Desktop/Munsell-Color-Recognition-App/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-compat-24.2.1_667a6ea28945be31486e20da47c423642ff5e858/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Desktop/Munsell-Color-Recognition-App/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
+        <dex dex="/Users/Victorine/Desktop/Munsell-Color-Recognition-App/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-fragment-24.2.1_944869bc80b4794c8adfcb4aa76324c1930de0fc/classes.dex" />
     </item>
 
 </items>
