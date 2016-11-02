@@ -18,10 +18,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-import static android.R.attr.bitmap;
-import static android.R.attr.x;
-import static android.R.attr.y;
-
 //import androidinterview.com.androidcamera.R;
 
 /**
@@ -49,11 +45,11 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.image_layout);
-        Home = (Button) findViewById(R.id.button2);
+        Home = (Button) findViewById(R.id.ilHomeButton);
         Home.setOnClickListener(this);
         submit= (Button) findViewById(R.id.ilSubmitButton);
         submit.setOnClickListener(this);
-        calibrate=(Button) findViewById(R.id.button3);
+        calibrate=(Button) findViewById(R.id.ilCalibrateButton);
         ResultPic = (ImageView) findViewById(R.id.imageView1);
 
 
@@ -107,7 +103,7 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.button2:
+            case R.id.ilHomeButton:
                 Intent i = new Intent(this, MainActivity.class);
                 startActivity(i);
                 break;

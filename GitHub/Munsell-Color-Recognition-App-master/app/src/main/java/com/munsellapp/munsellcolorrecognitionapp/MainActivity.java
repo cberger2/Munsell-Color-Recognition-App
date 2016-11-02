@@ -1,11 +1,8 @@
 package com.munsellapp.munsellcolorrecognitionapp;
 
 import android.app.Activity;
-import android.app.Notification;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.Html;
@@ -14,12 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.ImageView;
 
-import com.opencsv.CSVReader;
-
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 
 //import androidinterview.com.androidcamera.R;
 
@@ -47,7 +39,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         // this.imageView = (ImageView) this.findViewById(R.id.imageView1);
-        calibrateButton=(Button)  findViewById(R.id.button3) ;
+        calibrateButton=(Button)  findViewById(R.id.ilCalibrateButton) ;
         calibrateButton.setOnClickListener(this);
         //munsellButton = (Button) findViewById(R.id.button);
         // color=(TextView)findViewById(R.id.textView2);
