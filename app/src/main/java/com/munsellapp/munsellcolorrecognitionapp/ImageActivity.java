@@ -55,8 +55,8 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
         calibrate=(Button) findViewById(R.id.button3);
         ResultPic = (ImageView) findViewById(R.id.imageView1);
 
-/* Extracts image taken from camera or image selected from gallery in the main activity
-and places it into the imageview in this activity. -JB
+/* Extracts image taken from camera or image selected from gallery and
+passes it to imageview
  */
         if (getIntent().hasExtra("byteArray")) {
             b = BitmapFactory.decodeByteArray(
