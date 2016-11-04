@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -15,18 +16,37 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-    <Button
-        android:text="Home"
+    <ImageButton
         android:layout_width="wrap_content"
-        android:background="@drawable/homebuttonshape"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/black"
-        android:id="@+id/button2"
-        android:textStyle="normal|bold"
-        android:fontFamily="serif"
-        android:layout_alignParentBottom="true"
+        app:srcCompat="@drawable/savebutt"
+        android:layout_alignTop="@+id/imageButton8"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="22dp"
+        android:layout_marginStart="22dp"
+        android:id="@+id/imageButton10" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/submigbutt"
+        android:id="@+id/imageButton9"
+        android:layout_marginRight="22dp"
+        android:layout_marginEnd="22dp"
+        android:layout_below="@+id/imageButton10"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/homebutt"
+        android:layout_marginBottom="70dp"
+        android:id="@+id/imageButton8"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/imageButton9"
+        android:layout_alignEnd="@+id/imageButton9" />
 
     <Button
         android:text="Munsell"
@@ -39,44 +59,20 @@
         android:onClick="munsell"
         android:textStyle="normal|bold"
         android:fontFamily="serif"
-        android:layout_marginBottom="37dp"
-        android:layout_above="@+id/ilSubmitButton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:text="Submit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/ilSubmitButton"
-        android:textStyle="normal|bold"
-        android:fontFamily="serif"
-        android:background="@drawable/submitbuttonshape"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:text="Save Result"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="normal|bold"
-        android:fontFamily="serif"
-        android:background="@drawable/saveresultbuttonshape"
-        android:id="@+id/button"
-        android:layout_alignTop="@+id/munsellButton"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignLeft="@+id/imageButton10"
+        android:layout_alignStart="@+id/imageButton10" />
 
     <ImageView
         android:id="@+id/imageView1"
 
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:layout_above="@+id/munsellButton"
+        android:layout_above="@+id/imageButton10"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="12dp">
+        android:layout_marginBottom="47dp">
 
     </ImageView>
+
 </RelativeLayout>

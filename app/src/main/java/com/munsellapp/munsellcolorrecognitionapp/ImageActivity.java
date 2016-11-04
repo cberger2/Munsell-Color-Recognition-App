@@ -6,9 +6,11 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -31,8 +33,8 @@ import static android.R.attr.y;
 
 public class ImageActivity extends AppCompatActivity implements View.OnClickListener {
     private Button calibrate;
-    private Button Home, submit;
     private ImageView ResultPic;
+    private ImageButton saveresult, exportresult, home;
     Bitmap b;
 
     int red;
@@ -48,12 +50,14 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.image_layout);
-        Home = (Button) findViewById(R.id.button2);
-        Home.setOnClickListener(this);
-        submit= (Button) findViewById(R.id.ilSubmitButton);
-        submit.setOnClickListener(this);
+        home = (ImageButton) findViewById(R.id.imageButton8);
+        home.setOnClickListener(this);
         calibrate=(Button) findViewById(R.id.button3);
         ResultPic = (ImageView) findViewById(R.id.imageView1);
+        saveresult=(ImageButton)findViewById(R.id.imageButton10);
+        saveresult.setOnClickListener(this);
+        exportresult=(ImageButton)findViewById(R.id.imageButton9);
+        exportresult.setOnClickListener(this);
 
 /* Extracts image taken from camera or image selected from gallery and
 passes it to imageview
@@ -110,14 +114,20 @@ passes it to imageview
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.button2:
+            case R.id.imageButton8:
                 Intent i = new Intent(this, MainActivity.class);
                 startActivity(i);
                 break;
-            case R.id.ilSubmitButton:
+            case R.id.imageButton9:
                 Intent submitForm= new Intent(this, SubmitForm.class);
                 startActivity(submitForm);
                 break;
+            case R.id.imageButton10:
+                Intent save= new Intent(this, SubmitForm.class);
+                startActivity(save);
+                break;
+
+
         }
 //        Intent i = new Intent(this, MainActivity.class);
 //        startActivity(i);
