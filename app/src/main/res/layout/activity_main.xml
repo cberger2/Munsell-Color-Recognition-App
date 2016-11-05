@@ -1,64 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<TableLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:layout_gravity="center"
     android:background="@drawable/leavess"
+    android:orientation="vertical"
+    android:paddingBottom="32dp"
     tools:context="com.munsellapp.munsellcolorrecognitionapp.MainActivity">
 
 
-    <TextView
-        android:text="Munsell"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="47sp"
-        android:layout_marginTop="22dp"
-        android:id="@+id/textView2"
-        android:textStyle="normal|bold"
-        android:textColor="@android:color/black"
-        android:fontFamily="serif"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:textAlignment="center"
-        />
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center_horizontal">
 
-    <Button
-        android:text="Select Image From Gallery"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/ChooseImage"
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:fontFamily="serif"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center_vertical"
+                android:text="Munsell"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textSize="40sp"
+                android:textStyle="normal|bold"
+                />
+        </TableRow>
 
-        android:layout_below="@+id/textView2"
-        android:layout_alignLeft="@+id/button1"
-        android:layout_alignStart="@+id/button1"
-        android:layout_marginTop="74dp" />
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2">
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:text="Take Picture"
-        android:onClick="CameraClick"
-        android:layout_below="@+id/ChooseImage"
-        android:layout_alignLeft="@+id/button3"
-        android:layout_alignStart="@+id/button3"
-        android:layout_marginTop="49dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView10" />
+    </TableRow>
 
-    <Button
-        android:text="Calibrate Camera"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/button3"
-        android:layout_below="@+id/button1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="54dp" />
-</RelativeLayout>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+
+            <Button
+                android:id="@+id/ChooseImage"
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:textSize="16sp"
+                android:text="Select From Gallery"/>
+        </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView11" />
+    </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center_horizontal">
+
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:onClick="CameraClick"
+                android:text="Take Picture"
+                android:textSize="16sp"/>
+        </TableRow>
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView12" />
+    </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center_horizontal">
+
+            <Button
+            android:id="@+id/button3"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:text="Calibrate Camera"
+                android:textSize="16sp"/>
+        </TableRow>
+
+
+</TableLayout>
