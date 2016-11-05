@@ -21,54 +21,60 @@
 
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:layout_above="@+id/imageButton10"
+        android:layout_above="@+id/linearLayout"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="47dp">
 
     </ImageView>
 
-    <ImageButton
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/munsellicon"
-        android:id="@+id/imageButton"
-        android:onClick="munsell"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/imageButton10"
-        android:layout_toEndOf="@+id/imageButton10"
-        android:layout_marginLeft="20dp"
-        android:layout_marginStart="20dp" />
+        android:layout_alignParentBottom="true">
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/savebutt"
-        android:layout_marginLeft="14dp"
-        android:layout_marginStart="14dp"
-        android:id="@+id/imageButton10"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/submigbutt"
+            android:id="@+id/submitButton"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/munsellButton"
+            android:layout_toEndOf="@+id/munsellButton"
+            android:layout_weight="1" />
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/homebutt"
-        android:id="@+id/imageButton8"
-        android:layout_below="@+id/imageView1"
-        android:layout_toRightOf="@+id/imageButton9"
-        android:layout_toEndOf="@+id/imageButton9" />
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/homebutt"
+            android:id="@+id/homeButton"
+            android:layout_below="@+id/imageView1"
+            android:layout_toRightOf="@+id/submitButton"
+            android:layout_toEndOf="@+id/submitButton"
+            android:layout_weight="1" />
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/submigbutt"
-        android:id="@+id/imageButton9"
-        android:layout_marginLeft="49dp"
-        android:layout_marginStart="49dp"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/imageButton"
-        android:layout_toEndOf="@+id/imageButton" />
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/savebutt"
+            android:id="@+id/saveButton"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/munsellicon"
+            android:id="@+id/munsellButton"
+            android:onClick="munsell"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/saveButton"
+            android:layout_toEndOf="@+id/saveButton"
+            android:layout_weight="1" />
+    </LinearLayout>
 
 </RelativeLayout>
