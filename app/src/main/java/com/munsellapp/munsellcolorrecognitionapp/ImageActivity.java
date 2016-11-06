@@ -6,7 +6,6 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -20,10 +19,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-import static android.R.attr.bitmap;
-import static android.R.attr.x;
-import static android.R.attr.y;
-
 //import androidinterview.com.androidcamera.R;
 
 /**
@@ -36,6 +31,12 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
     private ImageView ResultPic;
     private ImageButton saveresult, exportresult, home;
     Bitmap b;
+    String munsellValue;
+
+//    int actualRed, actualGreen, actualBlue;
+    int compareRed, compareGreen, compareBlue;
+    double smallestDif = 1000;
+    int smallRed, smallGreen, smallBlue;
 
     int red;
     int green;
@@ -50,13 +51,13 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.image_layout);
-        home = (ImageButton) findViewById(R.id.imageButton8);
+        home = (ImageButton) findViewById(R.id.homeButton);
         home.setOnClickListener(this);
         calibrate=(Button) findViewById(R.id.button3);
         ResultPic = (ImageView) findViewById(R.id.imageView1);
-        saveresult=(ImageButton)findViewById(R.id.imageButton10);
+        saveresult=(ImageButton)findViewById(R.id.saveButton);
         saveresult.setOnClickListener(this);
-        exportresult=(ImageButton)findViewById(R.id.imageButton9);
+        exportresult=(ImageButton)findViewById(R.id.submitButton);
         exportresult.setOnClickListener(this);
 
 /* Extracts image taken from camera or image selected from gallery and
@@ -77,6 +78,15 @@ passes it to imageview
 //         ResultPic.setImageBitmap(resultImage);
     }
 
+    public static double getDistance(float aR, float aG, float aB, float cR, float cG, float cB) {
+        float dx = aR - cR;
+        float dy = aG - cG;
+        float dz = aB - cB;
+
+        // We should avoid Math.pow or Math.hypot due to perfomance reasons
+        return Math.sqrt(dx * dx + dy * dy + dz * dz);
+    }
+
 
     public void munsell(View v) throws IOException {
 
@@ -95,34 +105,62 @@ passes it to imageview
 
 
         while ((line = csvReader.readNext()) != null) {
-            for (i = 0; i < 20; i++) {
-                if ((red >= (Integer.parseInt(line[3]) - i) && red <= (Integer.parseInt(line[3]) + i))) {
-                    if ((green >= (Integer.parseInt(line[4]) - i) && green <= (Integer.parseInt(line[4]) + i)))
-                        if ((blue >= (Integer.parseInt(line[5]) - i) && blue <= (Integer.parseInt(line[5]) + i))) {
-                            text.setText(line[0] + " " + line[1] + "/" + line[2]);
-                        }
+            compareRed = Integer.parseInt(line[line.length-3]);
+            compareGreen = Integer.parseInt(line[line.length-2]);
+            compareBlue = Integer.parseInt(line[line.length-1]);
+            if (getDistance(red, green, blue, compareRed, compareGreen, compareBlue) < smallestDif) {
+                smallestDif = getDistance(red, green, blue, compareRed, compareGreen, compareBlue);
+                smallRed = Integer.parseInt(line[3]);
+                smallGreen = Integer.parseInt(line[4]);
+                smallBlue = Integer.parseInt(line[5]);
+            }
+            else
+                csvReader.readNext();
+        }
+        System.out.println("smalled difference: "+Double.toString(smallestDif)+"/n smallest red: "+ Double.toString(smallRed)+"/n Actual red:"
+                +Integer.toString(red)+ "/n Smallest green: "+ Double.toString(smallGreen)+ "/n Actual Green:"+ Integer.toString(green)+
+                "/n Actual blue:" +Integer.toString(blue)+ "/n Smallest Blue: "+ Double.toString(smallBlue));
 
+        InputStream csv2;
+
+        csv2 = getAssets().open("munsell.csv");
+
+        InputStreamReader is2 = new InputStreamReader(csv2);
+
+        CSVReader csvReader2 = new CSVReader(is2);
+        String[] line2;
+        csvReader2.readNext();
+
+
+        while ((line2 = csvReader2.readNext()) != null) {
+            if (smallRed == (Integer.parseInt(line2[line2.length - 3]))) {
+                if (smallGreen == (Integer.parseInt(line2[line2.length - 2]))) {
+                    if (smallBlue == Integer.parseInt(line2[line2.length - 1])) {
+                        munsellValue = line2[0] + " " + line2[1] + "/" + line2[2];
+                        text.setText(munsellValue);
+
+                    }
                 }
-
             }
         }
-        setBackground(red, green, blue);
-
+//      setBackground(red,green,blue);
+        
     }
 
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.imageButton8:
+            case R.id.homeButton:
                 Intent i = new Intent(this, MainActivity.class);
                 startActivity(i);
                 break;
-            case R.id.imageButton9:
+            case R.id.submitButton:
                 Intent submitForm= new Intent(this, SubmitForm.class);
+                submitForm.putExtra(munsellValue, "MunsellValue");
                 startActivity(submitForm);
                 break;
-            case R.id.imageButton10:
+            case R.id.saveButton:
                 Intent save= new Intent(this, SubmitForm.class);
                 startActivity(save);
                 break;
