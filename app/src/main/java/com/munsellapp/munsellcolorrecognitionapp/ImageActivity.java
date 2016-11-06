@@ -143,8 +143,8 @@ passes it to imageview
                 }
             }
         }
-//      setBackground(red,green,blue);
-        
+  setBackground(smallRed,smallGreen,smallBlue);
+
     }
 
 
