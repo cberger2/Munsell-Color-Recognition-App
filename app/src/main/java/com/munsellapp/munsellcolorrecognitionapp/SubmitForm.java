@@ -20,7 +20,7 @@ public class SubmitForm extends AppCompatActivity implements View.OnClickListene
         Bundle bundle=getIntent().getExtras();
 //        String munsellValueString = bundle.getString("MunsellValue");
         String munsellValueString= bundle.getString("MunsellValue");
-        munsellValueText=(TextView) findViewById(R.id.sfMunsellChip);
+        munsellValueText=(TextView) findViewById(R.id.munsellChip);
         munsellValueText.setText(munsellValueString);
         save=(Button) findViewById(R.id.sfSaveButton);
         save.setOnClickListener(this);

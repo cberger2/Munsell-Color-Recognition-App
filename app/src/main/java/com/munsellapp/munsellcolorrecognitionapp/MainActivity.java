@@ -34,7 +34,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
     static int TAKE_PIC = 0;
     static int SELECT_FILE = 1;
     private ImageView imageView, img;
-    private Button calibrateButton, chooseImage, getMunsellButton;
+    private Button calibrateButton, chooseImage;
+    private ImageButton getMunsellButton;
     private TextView Munsell;
     protected final static String TAG = "ColorUtils";
     //Bitmap bitmapphoto;
@@ -51,7 +52,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         chooseImage.setOnClickListener(this);
         calibrateButton = (Button) findViewById(R.id.button3);
         //calibrateButton.setOnClickListener(this);
-        getMunsellButton = (Button) findViewById(R.id.munsellButton);
+        getMunsellButton = (ImageButton) findViewById(R.id.munsellButton);
         Munsell = (TextView) findViewById(R.id.textView2);
 
 
