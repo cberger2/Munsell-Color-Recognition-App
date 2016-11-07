@@ -78,16 +78,21 @@ passes it to imageview
 //         ResultPic.setImageBitmap(resultImage);
     }
 
+/* Distance formula for two 3D point */
     public static double getDistance(float aR, float aG, float aB, float cR, float cG, float cB) {
         float dx = aR - cR;
         float dy = aG - cG;
         float dz = aB - cB;
 
-        // We should avoid Math.pow or Math.hypot due to perfomance reasons
         return Math.sqrt(dx * dx + dy * dy + dz * dz);
     }
 
 
+    /*Goes through the munsell.csv file a first time and calculates the distance between the actual average RGB
+         * and the RGB values in the csv file. If the distance calculated is smaller than the previous smallest distance,
+          * the smallest distance value gets updated along with the smallest red, green, and blue value.
+          * It then goes through the csv file again with the new RGB values and finds the line with the matching values and
+          * returns the munsell color to the phone. It then changes the background to show the munsell chip color.*/
     public void munsell(View v) throws IOException {
 
         TextView text = (TextView) findViewById(R.id.musellValue);
@@ -157,12 +162,15 @@ passes it to imageview
                 break;
             case R.id.submitButton:
                 Intent submitForm= new Intent(this, SubmitForm.class);
-                submitForm.putExtra(munsellValue, "MunsellValue");
+                Bundle munsellBundle= new Bundle();
+                munsellBundle.putString("MunsellValue",munsellValue );
+                submitForm.putExtras(munsellBundle);
+//                submitForm.putExtra(munsellValue, "MunsellValue");
                 startActivity(submitForm);
                 break;
             case R.id.saveButton:
-                Intent save= new Intent(this, SubmitForm.class);
-                startActivity(save);
+//                Intent save= new Intent(this, SubmitForm.class);
+//                startActivity(save);
                 break;
 
 
@@ -172,11 +180,12 @@ passes it to imageview
 
     }
 
+    /*Changes the RGB values to hex numbers and then creates a HexString to change the background of the phone.
+       * If the R,G, or B value is a single digit, it adds a zero infront. */
     public void setBackground(int red, int green, int blue) {
         View view = this.getWindow().getDecorView();
 
 
-//Changes the background of the app to the color of the munsell chips
         if (red > 9 && green > 9 && blue > 9) {
             StringBuilder builder = new StringBuilder();
             builder.append("#");
@@ -256,7 +265,7 @@ passes it to imageview
         green = Color.green(pixel);
 
     }
-    //Test Comment
+
 }
 
 

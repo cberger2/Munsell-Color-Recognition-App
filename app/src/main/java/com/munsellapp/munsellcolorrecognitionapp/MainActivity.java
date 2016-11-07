@@ -14,6 +14,7 @@ import android.provider.MediaStore;
 import android.text.Html;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -32,20 +33,15 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     static int TAKE_PIC = 0;
     static int SELECT_FILE = 1;
-    private ImageView imageView;
-    private Button calibrateButton;
-    private Button chooseImage;
+    private ImageView imageView, img;
+    private Button calibrateButton, chooseImage, getMunsellButton;
     private TextView Munsell;
-    private ImageView img;
     protected final static String TAG = "ColorUtils";
     //Bitmap bitmapphoto;
-    Button getMunsellButton;
 
 
-//    int red = 160;
-//    int green = 170;
-//    int blue = 140;
-//    int i;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
