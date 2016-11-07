@@ -179,7 +179,6 @@ passes it to imageview -JB
                 Bundle munsellBundle = new Bundle();
                 munsellBundle.putString("MunsellValue", munsellValue);
                 submitForm.putExtras(munsellBundle);
-//                submitForm.putExtra(munsellValue, "MunsellValue");
                 startActivity(submitForm);
                 break;
             case R.id.saveButton:
