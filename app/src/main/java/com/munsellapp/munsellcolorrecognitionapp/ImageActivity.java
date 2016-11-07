@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -28,12 +29,13 @@ import java.io.InputStreamReader;
 
 public class ImageActivity extends AppCompatActivity implements View.OnClickListener {
     private Button calibrate;
+    static int TAKE_ANOTHERPIC = 0;
     private ImageView ResultPic;
-    private ImageButton saveresult, exportresult, home;
+    private ImageButton saveresult, exportresult, home, camera;
     Bitmap b;
     String munsellValue;
 
-//    int actualRed, actualGreen, actualBlue;
+    //    int actualRed, actualGreen, actualBlue;
     int compareRed, compareGreen, compareBlue;
     double smallestDif = 1000;
     int smallRed, smallGreen, smallBlue;
@@ -53,22 +55,23 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.image_layout);
         home = (ImageButton) findViewById(R.id.homeButton);
         home.setOnClickListener(this);
-        calibrate=(Button) findViewById(R.id.button3);
+        calibrate = (Button) findViewById(R.id.button3);
         ResultPic = (ImageView) findViewById(R.id.imageView1);
-        saveresult=(ImageButton)findViewById(R.id.saveButton);
+        saveresult = (ImageButton) findViewById(R.id.saveButton);
         saveresult.setOnClickListener(this);
-        exportresult=(ImageButton)findViewById(R.id.submitButton);
+        exportresult = (ImageButton) findViewById(R.id.submitButton);
         exportresult.setOnClickListener(this);
+        camera = (ImageButton) findViewById(R.id.imageButton2);
+
 
 /* Extracts image taken from camera or image selected from gallery and
-passes it to imageview
+passes it to imageview -JB
  */
         if (getIntent().hasExtra("byteArray")) {
             b = BitmapFactory.decodeByteArray(
                     getIntent().getByteArrayExtra("byteArray"), 0, getIntent().getByteArrayExtra("byteArray").length);
             ResultPic.setImageBitmap(b);
-        }
-        else if (getIntent().hasExtra("image")) {
+        } else if (getIntent().hasExtra("image")) {
             b = BitmapFactory.decodeByteArray(
                     getIntent().getByteArrayExtra("image"), 0, getIntent().getByteArrayExtra("image").length);
             ResultPic.setImageBitmap(b);
@@ -78,7 +81,19 @@ passes it to imageview
 //         ResultPic.setImageBitmap(resultImage);
     }
 
-/* Distance formula for two 3D point */
+    /*Starts camera Intent -JB*/
+    public void AnotherCameraClick(View v) {
+
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        //File file = new File(Environment.getExternalStorageDirectory(),
+        //       "MyPhoto.jpg");
+        //outPutfileUri = Uri.fromFile(file);
+        // intent.putExtra(MediaStore.EXTRA_OUTPUT, outPutfileUri);
+        startActivityForResult(intent, TAKE_ANOTHERPIC);
+    }
+
+
+    /* Distance formula for two 3D point */
     public static double getDistance(float aR, float aG, float aB, float cR, float cG, float cB) {
         float dx = aR - cR;
         float dy = aG - cG;
@@ -110,21 +125,20 @@ passes it to imageview
 
 
         while ((line = csvReader.readNext()) != null) {
-            compareRed = Integer.parseInt(line[line.length-3]);
-            compareGreen = Integer.parseInt(line[line.length-2]);
-            compareBlue = Integer.parseInt(line[line.length-1]);
+            compareRed = Integer.parseInt(line[line.length - 3]);
+            compareGreen = Integer.parseInt(line[line.length - 2]);
+            compareBlue = Integer.parseInt(line[line.length - 1]);
             if (getDistance(red, green, blue, compareRed, compareGreen, compareBlue) < smallestDif) {
                 smallestDif = getDistance(red, green, blue, compareRed, compareGreen, compareBlue);
                 smallRed = Integer.parseInt(line[3]);
                 smallGreen = Integer.parseInt(line[4]);
                 smallBlue = Integer.parseInt(line[5]);
-            }
-            else
+            } else
                 csvReader.readNext();
         }
-        System.out.println("smalled difference: "+Double.toString(smallestDif)+"/n smallest red: "+ Double.toString(smallRed)+"/n Actual red:"
-                +Integer.toString(red)+ "/n Smallest green: "+ Double.toString(smallGreen)+ "/n Actual Green:"+ Integer.toString(green)+
-                "/n Actual blue:" +Integer.toString(blue)+ "/n Smallest Blue: "+ Double.toString(smallBlue));
+        System.out.println("smalled difference: " + Double.toString(smallestDif) + "/n smallest red: " + Double.toString(smallRed) + "/n Actual red:"
+                + Integer.toString(red) + "/n Smallest green: " + Double.toString(smallGreen) + "/n Actual Green:" + Integer.toString(green) +
+                "/n Actual blue:" + Integer.toString(blue) + "/n Smallest Blue: " + Double.toString(smallBlue));
 
         InputStream csv2;
 
@@ -148,22 +162,22 @@ passes it to imageview
                 }
             }
         }
-  setBackground(smallRed,smallGreen,smallBlue);
+        setBackground(smallRed, smallGreen, smallBlue);
 
     }
 
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.homeButton:
                 Intent i = new Intent(this, MainActivity.class);
                 startActivity(i);
                 break;
             case R.id.submitButton:
-                Intent submitForm= new Intent(this, SubmitForm.class);
-                Bundle munsellBundle= new Bundle();
-                munsellBundle.putString("MunsellValue",munsellValue );
+                Intent submitForm = new Intent(this, SubmitForm.class);
+                Bundle munsellBundle = new Bundle();
+                munsellBundle.putString("MunsellValue", munsellValue);
                 submitForm.putExtras(munsellBundle);
 //                submitForm.putExtra(munsellValue, "MunsellValue");
                 startActivity(submitForm);
@@ -251,6 +265,7 @@ passes it to imageview
 
         }
     }
+
     public void getSpecs() {
         //When implementing with camera, change field i to get the image taken from the camera,
         //so it's no longer pre loaded in with Android Studio
@@ -266,6 +281,15 @@ passes it to imageview
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == TAKE_ANOTHERPIC && resultCode == RESULT_OK) {
+            Bitmap photo = (Bitmap) data.getExtras().get("data");
+            ResultPic.setImageBitmap(photo);
+
+
+        }
+    }
 }
 
 

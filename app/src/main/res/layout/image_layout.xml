@@ -76,6 +76,15 @@
             android:layout_toRightOf="@+id/saveButton"
             android:layout_toEndOf="@+id/saveButton"
             android:layout_weight="1" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/cam"
+            android:id="@+id/imageButton2"
+            android:onClick="AnotherCameraClick"
+            android:layout_weight="1" />
+
     </LinearLayout>
 
 </RelativeLayout>
