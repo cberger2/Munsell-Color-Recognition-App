@@ -80,6 +80,17 @@ public class MainActivity extends Activity implements View.OnClickListener {
         startActivityForResult(intent, TAKE_PIC);
     }
 
+    /*Starts camera Intent -JB*/
+    public void CalibrateCameraClick(View v) {
+
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        //File file = new File(Environment.getExternalStorageDirectory(),
+        //       "MyPhoto.jpg");
+        //outPutfileUri = Uri.fromFile(file);
+        // intent.putExtra(MediaStore.EXTRA_OUTPUT, outPutfileUri);
+        startActivityForResult(intent, TAKE_PIC);
+    }
+
     /*Opens gallery view, then sets Result Code signaling that
     image has been selected -JB
      */
