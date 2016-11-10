@@ -10,11 +10,14 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.io.IOException;
+import java.util.ArrayList;
+
 
 public class SubmitForm extends AppCompatActivity implements View.OnClickListener {
     ImageButton save, email;
     EditText idNumber, notes;
-    TextView munsell, munsellValueText;
+    TextView munsell, munsellValueText, munsellChip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +33,19 @@ public class SubmitForm extends AppCompatActivity implements View.OnClickListene
         email.setOnClickListener(this);
     }
 
-    //    public void save (View v) throws IOException{
+        public void save (View v) {
+            idNumber=(EditText) findViewById(R.id.sfIdEdit);
+            munsellChip=(TextView) findViewById(R.id.sfMunsellChip);
+            notes=(EditText) findViewById(R.id.sfNotesEdit);
+            Intent sendData= new Intent(this,DataForm.class);
+            Bundle dataBundle= new Bundle();
+            dataBundle.putString("idNumber", idNumber.getText().toString());
+            dataBundle.putString("munsellChip", munsellChip.getText().toString());
+            dataBundle.putString("notes", notes.getText().toString());
+            sendData.putExtras(dataBundle);
+            startActivity(sendData);
+
+        }
 //        idNumber=(EditText) findViewById(R.id.sfIdEdit);
 //        notes=(EditText) findViewById(R.id.sfNotesEdit);
 //        munsell=(TextView) findViewById(R.id.sfMunsellChip);
@@ -54,8 +69,16 @@ public class SubmitForm extends AppCompatActivity implements View.OnClickListene
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.sfSaveButton:
-                Intent i = new Intent(this, MainActivity.class);
-                startActivity(i);
+                idNumber=(EditText) findViewById(R.id.sfIdEdit);
+                munsellChip=(TextView) findViewById(R.id.sfMunsellChip);
+                notes=(EditText) findViewById(R.id.sfNotesEdit);
+                Intent sendData= new Intent(this,DataForm.class);
+                Bundle dataBundle= new Bundle();
+                dataBundle.putString("idNumber", idNumber.getText().toString());
+                dataBundle.putString("munsellChip", munsellChip.getText().toString());
+                dataBundle.putString("notes", notes.getText().toString());
+                sendData.putExtras(dataBundle);
+                startActivity(sendData);
                 break;
             case R.id.emailButton:
                 Intent emailIntent = new Intent(Intent.ACTION_SEND);

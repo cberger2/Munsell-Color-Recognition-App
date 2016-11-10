@@ -97,7 +97,6 @@
             android:scaleType="fitXY"
             android:id="@+id/sfSaveButton"
             app:srcCompat="@drawable/savebutt"
-            android:onClick="save"
             android:layout_alignParentBottom="true"
             android:layout_toRightOf="@+id/textView"
             android:layout_toEndOf="@+id/textView"
