@@ -77,6 +77,13 @@ passes it to imageview -JB
             ResultPic.setImageBitmap(b);
         }
 
+                try {
+            munsell(findViewById(R.id.musellValue));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
 
 //         ResultPic.setImageBitmap(resultImage);
     }
@@ -285,6 +292,7 @@ passes it to imageview -JB
         if (requestCode == TAKE_ANOTHERPIC && resultCode == RESULT_OK) {
             Bitmap photo = (Bitmap) data.getExtras().get("data");
             ResultPic.setImageBitmap(photo);
+
 
 
         }

@@ -33,19 +33,19 @@ public class SubmitForm extends AppCompatActivity implements View.OnClickListene
         email.setOnClickListener(this);
     }
 
-        public void save (View v) {
-            idNumber=(EditText) findViewById(R.id.sfIdEdit);
-            munsellChip=(TextView) findViewById(R.id.sfMunsellChip);
-            notes=(EditText) findViewById(R.id.sfNotesEdit);
-            Intent sendData= new Intent(this,DataForm.class);
-            Bundle dataBundle= new Bundle();
-            dataBundle.putString("idNumber", idNumber.getText().toString());
-            dataBundle.putString("munsellChip", munsellChip.getText().toString());
-            dataBundle.putString("notes", notes.getText().toString());
-            sendData.putExtras(dataBundle);
-            startActivity(sendData);
-
-        }
+//        public void save (View v) {
+//            idNumber=(EditText) findViewById(R.id.sfIdEdit);
+//            munsellChip=(TextView) findViewById(R.id.sfMunsellChip);
+//            notes=(EditText) findViewById(R.id.sfNotesEdit);
+//            Intent sendData= new Intent(this,DataForm.class);
+//            Bundle dataBundle= new Bundle();
+//            dataBundle.putString("idNumber", idNumber.getText().toString());
+//            dataBundle.putString("munsellChip", munsellChip.getText().toString());
+//            dataBundle.putString("notes", notes.getText().toString());
+//            sendData.putExtras(dataBundle);
+//            startActivity(sendData);
+//
+//        }
 //        idNumber=(EditText) findViewById(R.id.sfIdEdit);
 //        notes=(EditText) findViewById(R.id.sfNotesEdit);
 //        munsell=(TextView) findViewById(R.id.sfMunsellChip);

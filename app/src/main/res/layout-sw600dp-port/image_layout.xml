@@ -16,7 +16,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="95dp" />
+        android:layout_marginTop="95dp"
+        android:layout_margin="32dp"/>
 
     <ImageView
         android:id="@+id/imageView1"
@@ -49,17 +50,6 @@
             android:layout_weight="1"
             android:layout_margin="16dp"/>
 
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            app:srcCompat="@drawable/munsellicon"
-            android:id="@+id/munsellButton"
-            android:onClick="munsell"
-            android:layout_alignParentBottom="true"
-            android:layout_toRightOf="@+id/saveButton"
-            android:layout_toEndOf="@+id/saveButton"
-            android:layout_weight="1"
-            android:layout_margin="16dp"/>
 
         <ImageButton
             android:layout_width="wrap_content"
