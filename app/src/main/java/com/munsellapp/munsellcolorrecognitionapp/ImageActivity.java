@@ -287,7 +287,7 @@ passes it to imageview -JB
 
     }
 
-   
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
