@@ -86,25 +86,14 @@
 
         <ImageButton
            android:text="Save"
-           android:layout_width="wrap_content"
-            android:layout_height="138dp"
+           android:layout_width="148dp"
+            android:layout_height="129dp"
             android:layout_margin="32dp"
             android:id="@+id/sfSaveButton"
             app:srcCompat="@drawable/savebutttablet"
             android:layout_alignParentBottom="true"
             android:layout_toRightOf="@+id/textView"
             android:layout_toEndOf="@+id/textView" />
-
-        <ImageButton
-            android:text="Email All Results"
-            android:layout_width="wrap_content"
-            android:layout_height="140dp"
-            android:layout_alignTop="@+id/sfSaveButton"
-            app:srcCompat="@drawable/emailtablet"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:id="@+id/emailButton"
-            android:layout_margin="32dp"/>
 
     </LinearLayout>
 
@@ -119,5 +108,16 @@
         android:layout_toRightOf="@+id/textView"
         android:layout_toEndOf="@+id/textView"
         android:textSize="32sp"/>
+    <TextView
+        android:text="TextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sfNotesEdit"
+        android:layout_margin="32dp"
+        android:visibility="invisible"
+        android:layout_toLeftOf="@+id/sfMunsellChip"
+        android:layout_toStartOf="@+id/sfMunsellChip"
+        android:layout_marginBottom="41dp"
+        android:id="@+id/sfInfoStorage" />
 
 </RelativeLayout>

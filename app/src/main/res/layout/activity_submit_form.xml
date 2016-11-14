@@ -101,18 +101,19 @@
             android:layout_toEndOf="@+id/textView"
             android:layout_weight="1.02" />
 
-        <ImageButton
-            android:text="Email All Results"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignTop="@+id/sfSaveButton"
-            app:srcCompat="@drawable/email"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:id="@+id/emailButton"
-            android:layout_weight="1"
-            android:layout_margin="16dp"/>
 
     </LinearLayout>
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sfNotesEdit"
+        android:layout_margin="32dp"
+        android:visibility="invisible"
+        android:layout_toLeftOf="@+id/sfMunsellChip"
+        android:layout_toStartOf="@+id/sfMunsellChip"
+        android:layout_marginBottom="41dp"
+        android:id="@+id/sfInfoStorage" />
 
 </RelativeLayout>

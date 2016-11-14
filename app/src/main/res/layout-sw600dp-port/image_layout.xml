@@ -39,26 +39,15 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/linearLayout">
 
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="110dp"
-            app:srcCompat="@drawable/homebutt"
-            android:id="@+id/homeButton"
-            android:layout_below="@+id/imageView1"
-            android:layout_toRightOf="@+id/submitButton"
-            android:layout_toEndOf="@+id/submitButton"
-            android:layout_weight="1"
-            android:layout_margin="16dp"/>
 
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            app:srcCompat="@drawable/cam"
-            android:id="@+id/imageButton2"
-            android:onClick="AnotherCameraClick"
-            android:layout_weight="1"
-            android:layout_margin="16dp"/>
+        <!--<ImageButton-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--app:srcCompat="@drawable/cam"-->
+            <!--android:id="@+id/imageButton2"-->
+            <!--android:onClick="AnotherCameraClick"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_margin="16dp"/>-->
     </LinearLayout>
 
     <LinearLayout
@@ -70,8 +59,19 @@
 
         <ImageButton
             android:layout_width="wrap_content"
+            android:layout_height="110dp"
+            app:srcCompat="@drawable/homebutttablet"
+            android:id="@+id/homeButton"
+            android:layout_below="@+id/imageView1"
+            android:layout_toRightOf="@+id/submitButton"
+            android:layout_toEndOf="@+id/submitButton"
+            android:layout_weight="1"
+            android:layout_margin="16dp"/>
+
+        <ImageButton
+            android:layout_width="wrap_content"
             android:layout_height="102dp"
-            app:srcCompat="@drawable/submigbutt"
+            app:srcCompat="@drawable/submigbutttablet"
             android:id="@+id/submitButton"
             android:layout_alignParentBottom="true"
             android:layout_toRightOf="@+id/munsellButton"
@@ -82,7 +82,7 @@
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            app:srcCompat="@drawable/savebutt"
+            app:srcCompat="@drawable/savebutttablet"
             android:id="@+id/saveButton"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
@@ -91,6 +91,17 @@
             android:layout_margin="16dp"/>
 
     </LinearLayout>
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/imageView1"
+        android:layout_alignLeft="@+id/musellValue"
+        android:layout_alignStart="@+id/musellValue"
+        android:layout_marginLeft="13dp"
+        android:layout_marginStart="13dp"
+        android:id="@+id/dataStorage"
+        android:visibility="invisible"/>
 
 
 
