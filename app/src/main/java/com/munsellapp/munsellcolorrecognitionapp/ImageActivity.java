@@ -287,11 +287,25 @@ passes it to imageview -JB
 
     }
 
+   
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == TAKE_ANOTHERPIC && resultCode == RESULT_OK) {
             Bitmap photo = (Bitmap) data.getExtras().get("data");
+
             ResultPic.setImageBitmap(photo);
+            ResultPic.buildDrawingCache();
+            b = ResultPic.getDrawingCache();
+
+
+
+
+
+
+
+
+
 
 
 
