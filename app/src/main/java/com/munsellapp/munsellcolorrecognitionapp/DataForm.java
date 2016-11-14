@@ -25,11 +25,11 @@ public class DataForm extends AppCompatActivity implements View.OnClickListener 
         home = (ImageButton) findViewById(R.id.dfHome);
         home.setOnClickListener(this);
 //        if(dataListText.equals("")){
-//            Bundle getBundle= getIntent().getExtras();
-//            idNumber=getBundle.getString("idNumber");
-//            munsellChip=getBundle.getString("munsellChip");
-//            notes=getBundle.getString("notes");
-//            dataListText.setText(idNumber+" , "+munsellChip+" , "+notes+"\n");
+            Bundle getBundle= getIntent().getExtras();
+            idNumber=getBundle.getString("idNumber");
+            munsellChip=getBundle.getString("munsellChip");
+            notes=getBundle.getString("notes");
+            dataListText.setText(idNumber+" , "+munsellChip+" , "+notes+"\n");
 //        }
 //        else{
 //            Bundle getBundle= getIntent().getExtras();

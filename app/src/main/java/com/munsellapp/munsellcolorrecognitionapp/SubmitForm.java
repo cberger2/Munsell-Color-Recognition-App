@@ -108,13 +108,13 @@ public class SubmitForm extends AppCompatActivity implements View.OnClickListene
         notes=(EditText) findViewById(R.id.sfNotesEdit);
         updatedText=(TextView) findViewById(R.id.sfInfoStorage);
         Intent intent=new Intent(this, DataForm.class);
-//        Bundle bundle=new Bundle();
-//        bundle.putString("idNumber", idNumber.getText().toString());
-//        bundle.putString("munsellChip", munsellValueText.getText().toString());
-//        bundle.putString("notes", notes.getText().toString());
+        Bundle bundle=new Bundle();
+        bundle.putString("idNumber", idNumber.getText().toString());
+        bundle.putString("munsellChip", munsellValueText.getText().toString());
+        bundle.putString("notes", notes.getText().toString());
 //        if(updatedText.equals("")){
-//            intent.putExtras(bundle);
-//            startActivity(intent);
+            intent.putExtras(bundle);
+            startActivity(intent);
 //        }else{
 //            bundle.putString("dataList", updatedText.getText().toString());
 //            intent.putExtras(bundle);
