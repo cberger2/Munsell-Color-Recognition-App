@@ -116,12 +116,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
         if (data != null) {
             try {
                 bm = MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver(), data.getData());
-
-                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                Global.img = bm;
+               /* ByteArrayOutputStream stream = new ByteArrayOutputStream();
                 bm.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                byte[] mybytearray = stream.toByteArray();
+                byte[] mybytearray = stream.toByteArray();*/
                 Intent intent = new Intent(this, ImageActivity.class);
-                intent.putExtra("image", mybytearray);
+               // intent.putExtra("image", mybytearray);
                 startActivity(intent);
             } catch (IOException e) {
                 e.printStackTrace();

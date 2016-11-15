@@ -72,9 +72,8 @@ passes it to imageview -JB
             b = BitmapFactory.decodeByteArray(
                     getIntent().getByteArrayExtra("byteArray"), 0, getIntent().getByteArrayExtra("byteArray").length);
             ResultPic.setImageBitmap(b);
-        } else if (getIntent().hasExtra("image")) {
-            b = BitmapFactory.decodeByteArray(
-                    getIntent().getByteArrayExtra("image"), 0, getIntent().getByteArrayExtra("image").length);
+        } else {
+            b = Global.img;
             ResultPic.setImageBitmap(b);
         }
 
@@ -100,6 +99,7 @@ passes it to imageview -JB
 
 //         ResultPic.setImageBitmap(resultImage);
     }
+
 
     /*Starts camera Intent -JB*/
     public void AnotherCameraClick(View v) {
