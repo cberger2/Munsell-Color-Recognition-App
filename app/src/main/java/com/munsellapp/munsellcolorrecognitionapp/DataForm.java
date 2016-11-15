@@ -24,6 +24,9 @@ public class DataForm extends AppCompatActivity implements View.OnClickListener 
         dataListText = (TextView) findViewById(R.id.dataList);
         home = (ImageButton) findViewById(R.id.dfHome);
         home.setOnClickListener(this);
+        email=(ImageButton) findViewById(R.id.dfEmail);
+        email.setOnClickListener(this);
+
 //        if(dataListText.equals("")){
             Bundle getBundle= getIntent().getExtras();
             idNumber=getBundle.getString("idNumber");
@@ -86,7 +89,7 @@ public class DataForm extends AppCompatActivity implements View.OnClickListener 
                 emailIntent.setType("text/plain");
                 emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{ });
                 emailIntent.putExtra(Intent.EXTRA_SUBJECT, "");
-                emailIntent.putExtra(Intent.EXTRA_TEXT, "");
+                emailIntent.putExtra(Intent.EXTRA_TEXT, dataListText.getText().toString());
                 startActivity(emailIntent);
                 break;
 
