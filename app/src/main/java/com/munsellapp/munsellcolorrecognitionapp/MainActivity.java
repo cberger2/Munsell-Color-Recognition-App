@@ -104,10 +104,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
         startActivityForResult(Intent.createChooser(intent, "Select File"),SELECT_FILE);
     }
 
-    /*
-    Function to set bitmap as the selected
-    image from gallery intent, then passes bitmap to
-    ImageActivity -JB
+   /* bitmap is the selected image from gallery and is asigned to the bitmap object from the global class
+    so that it can be accessed by the ImageActivity Class -JB
      */
     @SuppressWarnings("deprecation")
     private void onSelectFromGalleryResult(Intent data) {
@@ -117,9 +115,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
             try {
                 bm = MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver(), data.getData());
                 Global.img = bm;
-               /* ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                bm.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                byte[] mybytearray = stream.toByteArray();*/
                 Intent intent = new Intent(this, ImageActivity.class);
                // intent.putExtra("image", mybytearray);
                 startActivity(intent);

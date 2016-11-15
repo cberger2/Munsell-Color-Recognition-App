@@ -68,20 +68,31 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
 /* Extracts image taken from camera or image selected from gallery and
 passes it to imageview -JB
  */
+        /* Takes bitmp image from Camera Intent, finds Munsell, and sets bitmap to imageview -JB*/
         if (getIntent().hasExtra("byteArray")) {
             b = BitmapFactory.decodeByteArray(
                     getIntent().getByteArrayExtra("byteArray"), 0, getIntent().getByteArrayExtra("byteArray").length);
+            try {
+                munsell(findViewById(R.id.musellValue), 1000.0);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
             ResultPic.setImageBitmap(b);
-        } else {
+        }
+        /* Takes bitmp image from gallery, finds Munsell, and resizes image to fit in imageview -JB*/
+         else {
             b = Global.img;
+            try {
+                munsell(findViewById(R.id.musellValue), 1000.0);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+/*Resizes Image only to be displayed in the imageview -JB*/
+            b= Bitmap.createScaledBitmap(b, 200, 200, true);
             ResultPic.setImageBitmap(b);
         }
 
-        try {
-            munsell(findViewById(R.id.musellValue), 1000.0);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
 //        Bundle getBundle=getIntent().getExtras();
 //        if(getBundle!=null){
