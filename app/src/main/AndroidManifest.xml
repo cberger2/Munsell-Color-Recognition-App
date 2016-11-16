@@ -16,7 +16,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:label="singleTask launchMode"
+            android:label="Munsell"
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -27,12 +27,12 @@
         </activity>
         <activity
             android:name=".ImageActivity"
-            android:label="singleTask launchMode"
+            android:label="Munsell"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
             android:name=".SubmitForm"
-            android:label="singleTask launchMode"
+            android:label="Munsell"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity android:name=".DataForm"></activity>

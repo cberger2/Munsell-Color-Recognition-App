@@ -12,14 +12,20 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.opencsv.CSVReader;
 
 import java.io.ByteArrayOutputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 //import androidinterview.com.androidcamera.R;
 
@@ -32,11 +38,12 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
     private Button calibrate;
     static int TAKE_ANOTHERPIC = 0;
     private ImageView ResultPic;
-    private ImageButton saveresult, exportresult, home, camera;
+    private ImageButton saveresult, exportresult, home;
     Bitmap b;
     String munsellValue;
     TextView munsellChip;
     TextView iaDataStorage;
+    RelativeLayout R1;
 //    TextView dataStorage=(TextView) findViewById(R.id.dataStorage);
 
     //    int actualRed, actualGreen, actualBlue;
@@ -54,6 +61,7 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.image_layout);
+        R1=(RelativeLayout)findViewById(R.id.R1);
         home = (ImageButton) findViewById(R.id.homeButton);
         home.setOnClickListener(this);
         calibrate = (Button) findViewById(R.id.button3);
@@ -222,8 +230,17 @@ passes it to imageview -JB
                 startActivity(submitForm);
                 break;
             case R.id.saveButton:
-//                Intent save= new Intent(this, SubmitForm.class);
-//                startActivity(save);
+                /*Takes Screenshot of Activity and Saves reading to Gallery */
+                View v1 =R1.getRootView();
+                v1.setDrawingCacheEnabled(true);
+                Bitmap savebm = v1.getDrawingCache();
+                BitmapDrawable bitmapDrawable = new BitmapDrawable(savebm);
+                String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+                Bitmap combination =savebm;
+                MediaStore.Images.Media.insertImage
+                        (getApplicationContext().getContentResolver(),combination,"test_"+ timeStamp + ".jpg",timeStamp.toString());
+                Toast.makeText(getApplicationContext(), "Your Image Has Been Saved Successfully",
+                        Toast.LENGTH_LONG).show();
                 break;
 
 
