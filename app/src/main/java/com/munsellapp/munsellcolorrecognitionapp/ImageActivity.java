@@ -41,7 +41,7 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
 
     //    int actualRed, actualGreen, actualBlue;
     int compareRed, compareGreen, compareBlue;
-    //    Double smallestDif;
+
     int smallRed, smallGreen, smallBlue;
 
     int red;
@@ -81,18 +81,17 @@ passes it to imageview -JB
             ResultPic.setImageBitmap(b);
         }
         /* Takes bitmp image from gallery, finds Munsell, and resizes image to fit in imageview -JB*/
-         else {
-            b = Global.img;
-            try {
-                munsell(findViewById(R.id.musellValue), 1000.0);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-/*Resizes Image only to be displayed in the imageview -JB*/
-            b= Bitmap.createScaledBitmap(b, 200, 200, true);
+        else if (getIntent().hasExtra("image")) {
+            b = BitmapFactory.decodeByteArray(
+                    getIntent().getByteArrayExtra("image"), 0, getIntent().getByteArrayExtra("image").length);
             ResultPic.setImageBitmap(b);
         }
 
+        try {
+            munsell(findViewById(R.id.musellValue),1000.0);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 //        Bundle getBundle=getIntent().getExtras();
 //        if(getBundle!=null){
@@ -142,7 +141,7 @@ passes it to imageview -JB
           * It then goes through the csv file again with the new RGB values and finds the line with the matching values and
           * returns the munsell color to the phone. It then changes the background to show the munsell chip color.*/
     public void munsell(View v, Double smallestDif) throws IOException {
-        smallestDif = 1000.0;
+
 
         TextView text = (TextView) findViewById(R.id.musellValue);
 
