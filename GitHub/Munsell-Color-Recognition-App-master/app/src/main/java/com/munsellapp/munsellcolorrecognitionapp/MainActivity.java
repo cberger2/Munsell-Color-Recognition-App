@@ -47,13 +47,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
         //calibrateButton.setOnClickListener(this);
         getMunsellButton = (ImageButton) findViewById(R.id.munsellButton);
         Munsell = (TextView) findViewById(R.id.textView2);
-        Bundle getBundle= getIntent().getExtras();
-        if(getBundle!=null){
-            dataList=getBundle.getString("dataList");
-            dataListText =(TextView) findViewById(R.id.maDataList);
-            dataListText.setText(dataList);
+//        Bundle getBundle= getIntent().getExtras();
+//        if(getBundle!=null){
+//            dataList=getBundle.getString("dataList");
+//            dataListText =(TextView) findViewById(R.id.maDataList);
+//            dataListText.setText(dataList);
 
-        }
 
 
         /*Creates text view with different colored text*/
@@ -65,10 +64,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 "<font color=#284F00>L</font> " +
                 "<font color=#03447D>L</font>";
         Munsell.setText(Html.fromHtml(text));
-
-
-
     }
+
+
+
+
 
 
     /*Starts camera Intent -JB*/

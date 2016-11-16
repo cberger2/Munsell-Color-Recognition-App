@@ -1,6 +1,7 @@
 package com.munsellapp.munsellcolorrecognitionapp;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -8,6 +9,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -26,6 +28,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import static android.widget.Toast.LENGTH_LONG;
 
 //import androidinterview.com.androidcamera.R;
 
@@ -55,6 +59,7 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
     int green;
     int blue;
     int i;
+    Double smallestDif;
 
 
     @Override
@@ -81,7 +86,7 @@ passes it to imageview -JB
             b = BitmapFactory.decodeByteArray(
                     getIntent().getByteArrayExtra("byteArray"), 0, getIntent().getByteArrayExtra("byteArray").length);
             try {
-                munsell(findViewById(R.id.musellValue), 1000.0);
+                munsell(findViewById(R.id.musellValue));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -96,7 +101,7 @@ passes it to imageview -JB
         }
 
         try {
-            munsell(findViewById(R.id.musellValue),1000.0);
+            munsell(findViewById(R.id.musellValue));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -148,7 +153,8 @@ passes it to imageview -JB
           * the smallest distance value gets updated along with the smallest red, green, and blue value.
           * It then goes through the csv file again with the new RGB values and finds the line with the matching values and
           * returns the munsell color to the phone. It then changes the background to show the munsell chip color.*/
-    public void munsell(View v, Double smallestDif) throws IOException {
+    public void munsell(View v) throws IOException {
+        smallestDif=1000.0;
 
 
         TextView text = (TextView) findViewById(R.id.musellValue);
@@ -237,10 +243,12 @@ passes it to imageview -JB
                 BitmapDrawable bitmapDrawable = new BitmapDrawable(savebm);
                 String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
                 Bitmap combination =savebm;
+
                 MediaStore.Images.Media.insertImage
                         (getApplicationContext().getContentResolver(),combination,"test_"+ timeStamp + ".jpg",timeStamp.toString());
                 Toast.makeText(getApplicationContext(), "Your Image Has Been Saved Successfully",
-                        Toast.LENGTH_LONG).show();
+                        LENGTH_LONG).show();
+
                 break;
 
 
@@ -382,7 +390,7 @@ passes it to imageview -JB
 //
         }
         try {
-            munsell(findViewById(R.id.musellValue), 1000.0);
+            munsell(findViewById(R.id.musellValue));
         } catch (IOException e) {
             e.printStackTrace();
         }
