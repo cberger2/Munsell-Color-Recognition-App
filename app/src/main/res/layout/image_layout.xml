@@ -26,7 +26,6 @@
         android:layout_above="@+id/linearLayout"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:scaleType="fitCenter"
         android:layout_marginBottom="47dp">
 
     </ImageView>
@@ -41,21 +40,21 @@
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/homebutt"
-            android:id="@+id/homeButton"
-            android:layout_below="@+id/imageView1"
-            android:layout_toRightOf="@+id/submitButton"
-            android:layout_toEndOf="@+id/submitButton"
-            android:layout_weight="1" />
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             app:srcCompat="@drawable/submigbutt"
             android:id="@+id/submitButton"
             android:layout_alignParentBottom="true"
             android:layout_toRightOf="@+id/munsellButton"
             android:layout_toEndOf="@+id/munsellButton"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/homebutt"
+            android:id="@+id/homeButton"
+            android:layout_below="@+id/imageView1"
+            android:layout_toRightOf="@+id/submitButton"
+            android:layout_toEndOf="@+id/submitButton"
             android:layout_weight="1" />
 
         <ImageButton
@@ -68,26 +67,14 @@
             android:layout_alignParentStart="true"
             android:layout_weight="1" />
 
-        <!--<ImageButton-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--app:srcCompat="@drawable/cam"-->
-            <!--android:id="@+id/imageButton2"-->
-            <!--android:onClick="AnotherCameraClick"-->
-            <!--android:layout_weight="1" />-->
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/cam"
+            android:id="@+id/imageButton2"
+            android:onClick="AnotherCameraClick"
+            android:layout_weight="1" />
 
     </LinearLayout>
-
-    <TextView
-        android:text="TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/imageView1"
-        android:layout_alignLeft="@+id/musellValue"
-        android:layout_alignStart="@+id/musellValue"
-        android:layout_marginLeft="13dp"
-        android:layout_marginStart="13dp"
-        android:id="@+id/dataStorage"
-        android:visibility="invisible"/>
 
 </RelativeLayout>

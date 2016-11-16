@@ -16,7 +16,6 @@ import android.widget.TextView;
 
 import com.opencsv.CSVReader;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -35,19 +34,19 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
     private ImageButton saveresult, exportresult, home, camera;
     Bitmap b;
     String munsellValue;
-    TextView munsellChip;
-    TextView iaDataStorage;
-//    TextView dataStorage=(TextView) findViewById(R.id.dataStorage);
 
     //    int actualRed, actualGreen, actualBlue;
     int compareRed, compareGreen, compareBlue;
-    //    Double smallestDif;
+    double smallestDif = 1000;
     int smallRed, smallGreen, smallBlue;
 
     int red;
     int green;
     int blue;
     int i;
+    //this is a comment
+    //this is another comment
+    //Can you see my comment
 
 
     @Override
@@ -62,55 +61,32 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
         saveresult.setOnClickListener(this);
         exportresult = (ImageButton) findViewById(R.id.submitButton);
         exportresult.setOnClickListener(this);
-//        camera = (ImageButton) findViewById(R.id.imageButton2);
+        camera = (ImageButton) findViewById(R.id.imageButton2);
 
 
 /* Extracts image taken from camera or image selected from gallery and
 passes it to imageview -JB
  */
-        /* Takes bitmp image from Camera Intent, finds Munsell, and sets bitmap to imageview -JB*/
         if (getIntent().hasExtra("byteArray")) {
             b = BitmapFactory.decodeByteArray(
                     getIntent().getByteArrayExtra("byteArray"), 0, getIntent().getByteArrayExtra("byteArray").length);
-            try {
-                munsell(findViewById(R.id.musellValue), 1000.0);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
             ResultPic.setImageBitmap(b);
-        }
-        /* Takes bitmp image from gallery, finds Munsell, and resizes image to fit in imageview -JB*/
-         else {
-            b = Global.img;
-            try {
-                munsell(findViewById(R.id.musellValue), 1000.0);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-/*Resizes Image only to be displayed in the imageview -JB*/
-            b= Bitmap.createScaledBitmap(b, 200, 200, true);
+        } else if (getIntent().hasExtra("image")) {
+            b = BitmapFactory.decodeByteArray(
+                    getIntent().getByteArrayExtra("image"), 0, getIntent().getByteArrayExtra("image").length);
             ResultPic.setImageBitmap(b);
         }
 
+                try {
+            munsell(findViewById(R.id.musellValue));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-//        Bundle getBundle=getIntent().getExtras();
-//        if(getBundle!=null){
-//            iaDataStorage=(TextView) findViewById(R.id.dataStorage);
-//            String dataList=getBundle.getString("dataList");
-//            iaDataStorage.setText(dataList);
-//        }
-//            String dataList= getBundle.getString("newText");
-////            TextView dataStorage=(TextView) findViewById(R.id.dataStorage);
-//            dataStorage.setText(dataList);
-//        }
-//        else
-//            dataStorage.setText("");
 
 
 //         ResultPic.setImageBitmap(resultImage);
     }
-
 
     /*Starts camera Intent -JB*/
     public void AnotherCameraClick(View v) {
@@ -120,9 +96,7 @@ passes it to imageview -JB
         //       "MyPhoto.jpg");
         //outPutfileUri = Uri.fromFile(file);
         // intent.putExtra(MediaStore.EXTRA_OUTPUT, outPutfileUri);
-
         startActivityForResult(intent, TAKE_ANOTHERPIC);
-
     }
 
 
@@ -141,8 +115,7 @@ passes it to imageview -JB
           * the smallest distance value gets updated along with the smallest red, green, and blue value.
           * It then goes through the csv file again with the new RGB values and finds the line with the matching values and
           * returns the munsell color to the phone. It then changes the background to show the munsell chip color.*/
-    public void munsell(View v, Double smallestDif) throws IOException {
-        smallestDif = 1000.0;
+    public void munsell(View v) throws IOException {
 
         TextView text = (TextView) findViewById(R.id.musellValue);
 
@@ -196,30 +169,23 @@ passes it to imageview -JB
                 }
             }
         }
-       setBackground(smallRed,smallGreen,smallBlue);
-
+        setBackground(smallRed, smallGreen, smallBlue);
 
     }
 
 
     @Override
     public void onClick(View v) {
-        iaDataStorage = (TextView) findViewById(R.id.dataStorage);
         switch (v.getId()) {
             case R.id.homeButton:
                 Intent i = new Intent(this, MainActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("dataList", iaDataStorage.getText().toString());
-                i.putExtras(bundle);
                 startActivity(i);
                 break;
             case R.id.submitButton:
-                munsellChip = (TextView) findViewById(R.id.musellValue);
                 Intent submitForm = new Intent(this, SubmitForm.class);
-                Bundle submitBundle = new Bundle();
-                submitBundle.putString("MunsellChip", munsellChip.getText().toString());
-                submitBundle.putString("dataList", iaDataStorage.getText().toString());
-                submitForm.putExtras(submitBundle);
+                Bundle munsellBundle = new Bundle();
+                munsellBundle.putString("MunsellValue", munsellValue);
+                submitForm.putExtras(munsellBundle);
                 startActivity(submitForm);
                 break;
             case R.id.saveButton:
@@ -233,22 +199,10 @@ passes it to imageview -JB
 //        startActivity(i);
 
     }
-//
-//public boolean validHex(Color color, String hexString){
-//    try {
-//        Color color = Color.parseColor(hexString);
-//        return true;
-//        // color is a valid color
-//    } catch (IllegalArgumentException iae) {
-//        // This color string is not valid
-//        return false;
-//    }
-//}
 
     /*Changes the RGB values to hex numbers and then creates a HexString to change the background of the phone.
        * If the R,G, or B value is a single digit, it adds a zero infront. */
     public void setBackground(int red, int green, int blue) {
-
         View view = this.getWindow().getDecorView();
 
 
@@ -259,7 +213,6 @@ passes it to imageview -JB
             builder.append(Integer.toHexString(green));
             builder.append(Integer.toHexString(blue));
             view.setBackgroundColor(Color.parseColor(builder.toString()));
-
         } else if (green < 10 && blue < 10 && red < 10) {
             StringBuilder builder = new StringBuilder();
             builder.append("#");
@@ -319,10 +272,7 @@ passes it to imageview -JB
             builder.append("0" + Integer.toString(blue));
             view.setBackgroundColor(Color.parseColor(builder.toString()));
         }
-
-
-        }
-
+    }
 
     public void getSpecs() {
         //When implementing with camera, change field i to get the image taken from the camera,
@@ -339,40 +289,17 @@ passes it to imageview -JB
 
     }
 
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == TAKE_ANOTHERPIC && resultCode == RESULT_OK) {
             Bitmap photo = (Bitmap) data.getExtras().get("data");
-
-
-
-            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            photo.compress(Bitmap.CompressFormat.PNG, 100, stream);
-            // byte[] byteArray = stream.toByteArray();
-
-
-//            dataListText =(TextView) findViewById(R.id.maDataList);
-//            Bundle bundle=new Bundle();
-//            bundle.putString("dataList",dataListText.getText().toString());
-//            intent.putExtras(bundle);
-
-
-
             ResultPic.setImageBitmap(photo);
-            ResultPic.buildDrawingCache();
-            b = ResultPic.getDrawingCache();
-//
-//
-        }
-        try {
-            munsell(findViewById(R.id.musellValue), 1000.0);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
+
+
         }
     }
-
+}
 
 
 

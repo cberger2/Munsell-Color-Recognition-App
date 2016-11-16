@@ -16,9 +16,7 @@
         android:text="Id Number , Munsell Chip, Notes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView3"
-        android:textSize="16sp"
-        android:textStyle="bold"/>
+        android:id="@+id/textView3" />
 
     <ScrollView
         android:layout_width="match_parent"
