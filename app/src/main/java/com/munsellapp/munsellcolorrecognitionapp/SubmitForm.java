@@ -35,11 +35,6 @@ public class SubmitForm extends AppCompatActivity implements View.OnClickListene
         Bundle getBundle= getIntent().getExtras();
         munsellChip=getBundle.getString("MunsellChip");
 
-//        if(getBundle!=null){
-//            String datalist= getBundle.getString("dataList");
-//            updatedText=(TextView) findViewById(R.id.sfInfoStorage);
-//            updatedText.setText(datalist+"\n");
-//        }
 
 
         munsellValueText = (TextView) findViewById(R.id.sfMunsellChip);

@@ -44,9 +44,8 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
     TextView munsellChip;
     TextView iaDataStorage;
     RelativeLayout R1;
-//    TextView dataStorage=(TextView) findViewById(R.id.dataStorage);
+    Double smallestDif;
 
-    //    int actualRed, actualGreen, actualBlue;
     int compareRed, compareGreen, compareBlue;
 
     int smallRed, smallGreen, smallBlue;
@@ -81,7 +80,7 @@ passes it to imageview -JB
             b = BitmapFactory.decodeByteArray(
                     getIntent().getByteArrayExtra("byteArray"), 0, getIntent().getByteArrayExtra("byteArray").length);
             try {
-                munsell(findViewById(R.id.musellValue), 1000.0);
+                munsell(findViewById(R.id.musellValue));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -96,26 +95,11 @@ passes it to imageview -JB
         }
 
         try {
-            munsell(findViewById(R.id.musellValue),1000.0);
+            munsell(findViewById(R.id.musellValue));
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-//        Bundle getBundle=getIntent().getExtras();
-//        if(getBundle!=null){
-//            iaDataStorage=(TextView) findViewById(R.id.dataStorage);
-//            String dataList=getBundle.getString("dataList");
-//            iaDataStorage.setText(dataList);
-//        }
-//            String dataList= getBundle.getString("newText");
-////            TextView dataStorage=(TextView) findViewById(R.id.dataStorage);
-//            dataStorage.setText(dataList);
-//        }
-//        else
-//            dataStorage.setText("");
-
-
-//         ResultPic.setImageBitmap(resultImage);
     }
 
 
@@ -148,7 +132,8 @@ passes it to imageview -JB
           * the smallest distance value gets updated along with the smallest red, green, and blue value.
           * It then goes through the csv file again with the new RGB values and finds the line with the matching values and
           * returns the munsell color to the phone. It then changes the background to show the munsell chip color.*/
-    public void munsell(View v, Double smallestDif) throws IOException {
+    public void munsell(View v) throws IOException {
+        smallestDif=1000.0;
 
 
         TextView text = (TextView) findViewById(R.id.musellValue);
@@ -163,6 +148,13 @@ passes it to imageview -JB
         String[] line;
         csvReader.readNext();
         getSpecs();
+
+
+        //This should  fix the colors from the calibration activity.
+        //UNCOMMENT ONCE WE CAN GET THE SPECS OF A KNOWS COLOR.
+//        red=red+fixRed;
+//        green=green+fixGreen;
+//        blue=blue+fixBlue;
 
 
         while ((line = csvReader.readNext()) != null) {
@@ -245,21 +237,9 @@ passes it to imageview -JB
 
 
         }
-//        Intent i = new Intent(this, MainActivity.class);
-//        startActivity(i);
 
     }
-//
-//public boolean validHex(Color color, String hexString){
-//    try {
-//        Color color = Color.parseColor(hexString);
-//        return true;
-//        // color is a valid color
-//    } catch (IllegalArgumentException iae) {
-//        // This color string is not valid
-//        return false;
-//    }
-//}
+
 
     /*Changes the RGB values to hex numbers and then creates a HexString to change the background of the phone.
        * If the R,G, or B value is a single digit, it adds a zero infront. */
@@ -336,7 +316,6 @@ passes it to imageview -JB
             view.setBackgroundColor(Color.parseColor(builder.toString()));
         }
 
-
         }
 
 
@@ -368,21 +347,13 @@ passes it to imageview -JB
             // byte[] byteArray = stream.toByteArray();
 
 
-//            dataListText =(TextView) findViewById(R.id.maDataList);
-//            Bundle bundle=new Bundle();
-//            bundle.putString("dataList",dataListText.getText().toString());
-//            intent.putExtras(bundle);
-
-
-
             ResultPic.setImageBitmap(photo);
             ResultPic.buildDrawingCache();
             b = ResultPic.getDrawingCache();
-//
-//
+
         }
         try {
-            munsell(findViewById(R.id.musellValue), 1000.0);
+            munsell(findViewById(R.id.musellValue));
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -29,8 +29,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private TextView Munsell;
     protected final static String TAG = "ColorUtils";
     //Bitmap bitmapphoto;
-    TextView dataListText;
-    String dataList;
 
 
 
@@ -47,13 +45,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         //calibrateButton.setOnClickListener(this);
         getMunsellButton = (ImageButton) findViewById(R.id.munsellButton);
         Munsell = (TextView) findViewById(R.id.textView2);
-        Bundle getBundle= getIntent().getExtras();
-        if(getBundle!=null){
-            dataList=getBundle.getString("dataList");
-            dataListText =(TextView) findViewById(R.id.maDataList);
-            dataListText.setText(dataList);
 
-        }
 
 
         /*Creates text view with different colored text*/
@@ -152,6 +144,22 @@ public class MainActivity extends Activity implements View.OnClickListener {
         if (requestCode == SELECT_FILE && resultCode == RESULT_OK)
             onSelectFromGalleryResult(data);
 
+
+//This didn't work: it would open the calibrate activity for both take picturea dn calibrate
+
+        //        else if(requestCode==TAKE_CAL && resultCode==RESULT_OK){
+//            Bitmap photo = (Bitmap) data.getExtras().get("data");
+//            Intent caliIntent= new Intent(this, Calibrate.class);
+//            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+//            photo.compress(Bitmap.CompressFormat.PNG, 100, stream);
+//            // byte[] byteArray = stream.toByteArray();
+//            caliIntent.putExtra("byteArrayCali", stream.toByteArray());
+//
+//
+//            startActivity(caliIntent);
+//
+//        }
+
     }
 
 /*
@@ -165,11 +173,7 @@ or opens cameraIntent -JB
 
 
         } else {
-            dataListText =(TextView) findViewById(R.id.maDataList);
             Intent intent=new Intent(this, ImageActivity.class);
-//            Bundle bundle=new Bundle();
-//            bundle.putString("dataList",dataListText.getText().toString() );
-//            intent.putExtras(bundle);
             startActivity(intent);
 
         }
