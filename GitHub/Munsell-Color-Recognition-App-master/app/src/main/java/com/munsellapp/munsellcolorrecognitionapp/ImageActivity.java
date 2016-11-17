@@ -1,7 +1,6 @@
 package com.munsellapp.munsellcolorrecognitionapp;
 
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -9,12 +8,10 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,7 +19,6 @@ import android.widget.Toast;
 import com.opencsv.CSVReader;
 
 import java.io.ByteArrayOutputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -39,37 +35,42 @@ import static android.widget.Toast.LENGTH_LONG;
 //comment
 
 public class ImageActivity extends AppCompatActivity implements View.OnClickListener {
-    private Button calibrate;
     static int TAKE_ANOTHERPIC = 0;
-    private ImageView ResultPic;
-    private ImageButton saveresult, exportresult, home;
     Bitmap b;
     String munsellValue;
     TextView munsellChip;
     TextView iaDataStorage;
     RelativeLayout R1;
-//    TextView dataStorage=(TextView) findViewById(R.id.dataStorage);
-
     //    int actualRed, actualGreen, actualBlue;
     int compareRed, compareGreen, compareBlue;
-
     int smallRed, smallGreen, smallBlue;
-
     int red;
+    //    TextView dataStorage=(TextView) findViewById(R.id.dataStorage);
     int green;
     int blue;
     int i;
     Double smallestDif;
+    private Button calibrate;
+    private ImageView ResultPic;
+    private ImageButton saveresult, exportresult, home;
 
+    /* Distance formula for two 3D point */
+    public static double getDistance(float aR, float aG, float aB, float cR, float cG, float cB) {
+        float dx = aR - cR;
+        float dy = aG - cG;
+        float dz = aB - cB;
+
+        return Math.sqrt(dx * dx + dy * dy + dz * dz);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.image_layout);
-        R1=(RelativeLayout)findViewById(R.id.R1);
+        R1 = (RelativeLayout) findViewById(R.id.R1);
         home = (ImageButton) findViewById(R.id.homeButton);
         home.setOnClickListener(this);
-        calibrate = (Button) findViewById(R.id.button3);
+        calibrate = (Button) findViewById(R.id.calibrateButton);
         ResultPic = (ImageView) findViewById(R.id.imageView1);
         saveresult = (ImageButton) findViewById(R.id.saveButton);
         saveresult.setOnClickListener(this);
@@ -106,23 +107,7 @@ passes it to imageview -JB
             e.printStackTrace();
         }
 
-//        Bundle getBundle=getIntent().getExtras();
-//        if(getBundle!=null){
-//            iaDataStorage=(TextView) findViewById(R.id.dataStorage);
-//            String dataList=getBundle.getString("dataList");
-//            iaDataStorage.setText(dataList);
-//        }
-//            String dataList= getBundle.getString("newText");
-////            TextView dataStorage=(TextView) findViewById(R.id.dataStorage);
-//            dataStorage.setText(dataList);
-//        }
-//        else
-//            dataStorage.setText("");
-
-
-//         ResultPic.setImageBitmap(resultImage);
     }
-
 
     /*Starts camera Intent -JB*/
     public void AnotherCameraClick(View v) {
@@ -137,24 +122,13 @@ passes it to imageview -JB
 
     }
 
-
-    /* Distance formula for two 3D point */
-    public static double getDistance(float aR, float aG, float aB, float cR, float cG, float cB) {
-        float dx = aR - cR;
-        float dy = aG - cG;
-        float dz = aB - cB;
-
-        return Math.sqrt(dx * dx + dy * dy + dz * dz);
-    }
-
-
     /*Goes through the munsell.csv file a first time and calculates the distance between the actual average RGB
          * and the RGB values in the csv file. If the distance calculated is smaller than the previous smallest distance,
           * the smallest distance value gets updated along with the smallest red, green, and blue value.
           * It then goes through the csv file again with the new RGB values and finds the line with the matching values and
           * returns the munsell color to the phone. It then changes the background to show the munsell chip color.*/
     public void munsell(View v) throws IOException {
-        smallestDif=1000.0;
+        smallestDif = 1000.0;
 
 
         TextView text = (TextView) findViewById(R.id.musellValue);
@@ -169,6 +143,12 @@ passes it to imageview -JB
         String[] line;
         csvReader.readNext();
         getSpecs();
+
+        //This should  fix the colors from the calibration activity.
+        //UNCOMMENT ONCE WE CAN GET THE SPECS OF A KNOWS COLOR.
+//        red=red+fixRed;
+//        green=green+fixGreen;
+//        blue=blue+fixBlue;
 
 
         while ((line = csvReader.readNext()) != null) {
@@ -209,7 +189,7 @@ passes it to imageview -JB
                 }
             }
         }
-       setBackground(smallRed,smallGreen,smallBlue);
+        setBackground(smallRed, smallGreen, smallBlue);
 
 
     }
@@ -237,15 +217,15 @@ passes it to imageview -JB
                 break;
             case R.id.saveButton:
                 /*Takes Screenshot of Activity and Saves reading to Gallery */
-                View v1 =R1.getRootView();
+                View v1 = R1.getRootView();
                 v1.setDrawingCacheEnabled(true);
                 Bitmap savebm = v1.getDrawingCache();
                 BitmapDrawable bitmapDrawable = new BitmapDrawable(savebm);
                 String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-                Bitmap combination =savebm;
+                Bitmap combination = savebm;
 
                 MediaStore.Images.Media.insertImage
-                        (getApplicationContext().getContentResolver(),combination,"test_"+ timeStamp + ".jpg",timeStamp.toString());
+                        (getApplicationContext().getContentResolver(), combination, "test_" + timeStamp + ".jpg", timeStamp.toString());
                 Toast.makeText(getApplicationContext(), "Your Image Has Been Saved Successfully",
                         LENGTH_LONG).show();
 
@@ -293,8 +273,7 @@ passes it to imageview -JB
 
             view.setBackgroundColor(Color.parseColor(builder.toString()));
 
-        }
-        else if (red < 10 && green < 10) {
+        } else if (red < 10 && green < 10) {
             StringBuilder builder = new StringBuilder();
             builder.append("#");
             builder.append("0" + Integer.toString(red));
@@ -318,8 +297,7 @@ passes it to imageview -JB
             builder.append("0" + Integer.toString(blue));
 
             view.setBackgroundColor(Color.parseColor(builder.toString()));
-        }
-        else if (red < 10) {
+        } else if (red < 10) {
             StringBuilder builder = new StringBuilder();
             builder.append("#");
             builder.append("0" + Integer.toString(red));
@@ -345,7 +323,7 @@ passes it to imageview -JB
         }
 
 
-        }
+    }
 
 
     public void getSpecs() {
@@ -370,7 +348,6 @@ passes it to imageview -JB
             Bitmap photo = (Bitmap) data.getExtras().get("data");
 
 
-
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
             photo.compress(Bitmap.CompressFormat.PNG, 100, stream);
             // byte[] byteArray = stream.toByteArray();
@@ -380,7 +357,6 @@ passes it to imageview -JB
 //            Bundle bundle=new Bundle();
 //            bundle.putString("dataList",dataListText.getText().toString());
 //            intent.putExtras(bundle);
-
 
 
             ResultPic.setImageBitmap(photo);
@@ -394,8 +370,8 @@ passes it to imageview -JB
         } catch (IOException e) {
             e.printStackTrace();
         }
-        }
     }
+}
 
 
 

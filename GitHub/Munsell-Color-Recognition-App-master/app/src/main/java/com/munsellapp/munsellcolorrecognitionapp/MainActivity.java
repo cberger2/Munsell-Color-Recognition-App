@@ -3,7 +3,6 @@ package com.munsellapp.munsellcolorrecognitionapp;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.media.Image;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.Html;
@@ -22,6 +21,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
 
     static int TAKE_PIC = 0;
+    static int TAKE_CAL = 0;
     static int SELECT_FILE = 1;
     private ImageView imageView, img;
     private Button calibrateButton, chooseImage;
@@ -43,7 +43,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_main);
         chooseImage = (Button) findViewById(R.id.ChooseImage);
         chooseImage.setOnClickListener(this);
-        calibrateButton = (Button) findViewById(R.id.button3);
+        calibrateButton = (Button) findViewById(R.id.calibrateButton);
         //calibrateButton.setOnClickListener(this);
         getMunsellButton = (ImageButton) findViewById(R.id.munsellButton);
         Munsell = (TextView) findViewById(R.id.textView2);
@@ -90,7 +90,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         //       "MyPhoto.jpg");
         //outPutfileUri = Uri.fromFile(file);
         // intent.putExtra(MediaStore.EXTRA_OUTPUT, outPutfileUri);
-        startActivityForResult(intent, TAKE_PIC);
+        startActivityForResult(intent, TAKE_CAL);
     }
 
     /*Opens gallery view, then sets Result Code signaling that
@@ -151,6 +151,18 @@ public class MainActivity extends Activity implements View.OnClickListener {
         }
         if (requestCode == SELECT_FILE && resultCode == RESULT_OK)
             onSelectFromGalleryResult(data);
+//        else if(requestCode==TAKE_CAL && resultCode==RESULT_OK){
+//            Bitmap photo = (Bitmap) data.getExtras().get("data");
+//            Intent caliIntent= new Intent(this, Calibrate.class);
+//            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+//            photo.compress(Bitmap.CompressFormat.PNG, 100, stream);
+//            // byte[] byteArray = stream.toByteArray();
+//            caliIntent.putExtra("byteArrayCali", stream.toByteArray());
+//
+//
+//            startActivity(caliIntent);
+//
+//        }
 
     }
 
