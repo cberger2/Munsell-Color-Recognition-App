@@ -3,12 +3,22 @@ package com.munsellapp.munsellcolorrecognitionapp;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class DataForm extends AppCompatActivity implements View.OnClickListener {
     TextView dataListText, savedData;
@@ -75,6 +85,22 @@ public class DataForm extends AppCompatActivity implements View.OnClickListener 
 
                 break;
             case R.id.dfEmail:
+                File Root= (Environment.getExternalStorageDirectory());
+                File dir=new File(Root.getAbsolutePath()+"/MyAppFile");
+                File dataText=new File(dir,"data.txt");
+                String string=dataText.toString();
+
+                writeFile();
+                Intent emailIntent = new Intent(Intent.ACTION_SEND);
+                emailIntent.setData(Uri.parse("mailto:"));
+                emailIntent.setType("text/plain");
+                emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{});
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "");
+                emailIntent.putExtra(Intent.EXTRA_TEXT, dataListText.getText().toString());
+                emailIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse(string));
+                startActivity(emailIntent);
+                break;
+
 
                 //                try {
 //                    FileOutputStream fos = new FileOutputStream(myExternalFile);
@@ -88,18 +114,83 @@ public class DataForm extends AppCompatActivity implements View.OnClickListener 
 
 //
 
-                Intent emailIntent = new Intent(Intent.ACTION_SEND);
-                emailIntent.setData(Uri.parse("mailto:"));
-                emailIntent.setType("text/plain");
-                emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{});
-                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "");
-                emailIntent.putExtra(Intent.EXTRA_TEXT, dataListText.getText().toString());
-                startActivity(emailIntent);
-                break;
+//                Intent emailIntent = new Intent(Intent.ACTION_SEND);
+//                emailIntent.setData(Uri.parse("mailto:"));
+//                emailIntent.setType("text/plain");
+//                emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{});
+//                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "");
+//                emailIntent.putExtra(Intent.EXTRA_TEXT, dataListText.getText().toString());
+//                startActivity(emailIntent);
+//                break;
 
 
         }
     }
+public void writeFile(){
+
+    String state;
+    state=Environment.getExternalStorageState();
+
+    if(Environment.MEDIA_MOUNTED.equals(state)){
+        File Root= Environment.getExternalStorageDirectory();
+        File dir=new File(Root.getAbsolutePath()+"/MyAppFile");
+
+        if(!dir.exists()) {
+
+            dir.mkdir();
+        }
+        File dataText=new File(dir,"data.txt");
+        String data=dataListText.getText().toString();
+        try {
+            FileOutputStream fos=new FileOutputStream(dataText);
+            fos.write(data.getBytes());
+            fos.close();
+            dataListText.setText("");
+            Toast.makeText(this,"File saved", Toast.LENGTH_LONG ).show();
+
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+    else{
+        Toast.makeText(this, "SD card not found", Toast.LENGTH_LONG).show();
+    }
+//    readFile();
+
+    File Root= Environment.getExternalStorageDirectory();
+
+}
+    public void readFile(){
+        File Root= Environment.getExternalStorageDirectory();
+        File dir=new File(Root.getAbsolutePath()+"/MyAppFile");
+        File dataText=new File(dir,"data.txt");
+
+        String message;
+        try {
+            FileInputStream fis=new FileInputStream(dataText);
+            InputStreamReader isr= new InputStreamReader(fis);
+            BufferedReader buffRead= new BufferedReader(isr);
+            StringBuffer stringBuff= new StringBuffer();
+
+            while((message=buffRead.readLine())!=null){
+                stringBuff.append(message+"/n");
+            }
+
+            System.out.println(stringBuff.toString());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
 }
 
 

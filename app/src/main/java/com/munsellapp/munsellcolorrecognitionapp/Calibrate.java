@@ -1,35 +1,40 @@
 package com.munsellapp.munsellcolorrecognitionapp;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
-public class Calibrate extends AppCompatActivity {
+public class Calibrate extends AppCompatActivity implements View.OnClickListener {
 
     Bitmap b;
     ImageView caliPic;
     int actualRed, actualGreen, actualBlue;
     int specRed, specGreen, specBlue;
     static int fixRed, fixGreen, fixBlue;
+    ImageButton calibrateButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calibrate);
         caliPic=(ImageView) findViewById(R.id.caliPic);
+        calibrateButton=(ImageButton) findViewById(R.id.calibrateImageButton);
+        calibrateButton.setOnClickListener(this);
 
-        if (getIntent().hasExtra("byteArrayCali")) {
+        if (getIntent().hasExtra("byteArray")) {
             b = BitmapFactory.decodeByteArray(
-                    getIntent().getByteArrayExtra("byteArrayCali"), 0, getIntent().getByteArrayExtra("byteArrayCali").length);
+                    getIntent().getByteArrayExtra("byteArray"), 0, getIntent().getByteArrayExtra("byteArray").length);
 
             caliPic.setImageBitmap(b);
         }
-        getSpecs();
-        fixColors(specRed,specGreen,specBlue);
+
 
     }
 
@@ -53,5 +58,14 @@ public class Calibrate extends AppCompatActivity {
         fixRed=actualRed-Red;
         fixGreen=actualGreen-Green;
         fixBlue=actualBlue-Blue;
+    }
+
+    @Override
+    public void onClick(View v) {
+        //getSpecs();
+        //fixColors(specRed,specGreen,specBlue);
+        Intent intent=new Intent(this, MainActivity.class);
+        startActivity(intent);
+
     }
 }
