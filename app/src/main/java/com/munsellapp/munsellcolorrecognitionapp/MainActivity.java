@@ -22,6 +22,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
 
     static int TAKE_PIC = 0;
+    static int CALIBRATE_PIC=2;
     static int SELECT_FILE = 1;
     private ImageView imageView, img;
     private Button calibrateButton, chooseImage;
@@ -82,7 +83,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         //       "MyPhoto.jpg");
         //outPutfileUri = Uri.fromFile(file);
         // intent.putExtra(MediaStore.EXTRA_OUTPUT, outPutfileUri);
-        startActivityForResult(intent, TAKE_PIC);
+        startActivityForResult(intent, CALIBRATE_PIC);
     }
 
     /*Opens gallery view, then sets Result Code signaling that
@@ -141,8 +142,21 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
             startActivity(intent);
         }
-        if (requestCode == SELECT_FILE && resultCode == RESULT_OK)
+        if (requestCode == SELECT_FILE && resultCode == RESULT_OK) {
             onSelectFromGalleryResult(data);
+        }
+        if(requestCode == CALIBRATE_PIC && resultCode == RESULT_OK){
+            Bitmap photo = (Bitmap) data.getExtras().get("data");
+
+            Intent intent = new Intent(this, Calibrate.class);
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            photo.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            // byte[] byteArray = stream.toByteArray();
+            intent.putExtra("byteArray", stream.toByteArray());
+
+
+            startActivity(intent);
+        }
 
 
 //This didn't work: it would open the calibrate activity for both take picturea dn calibrate
