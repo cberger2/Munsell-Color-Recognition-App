@@ -85,45 +85,28 @@ public class DataForm extends AppCompatActivity implements View.OnClickListener 
 
                 break;
             case R.id.dfEmail:
-                File Root= (Environment.getExternalStorageDirectory());
-                File dir=new File(Root.getAbsolutePath()+"/MyAppFile");
-                File dataText=new File(dir,"data.txt");
-                String string=dataText.toString();
+
 
                 writeFile();
-                Intent emailIntent = new Intent(Intent.ACTION_SEND);
-                emailIntent.setData(Uri.parse("mailto:"));
+                String filelocation="/storage/emulated/0/MyAppFile/data.txt";
+                Intent emailIntent= new Intent((Intent.ACTION_SEND));
                 emailIntent.setType("text/plain");
-                emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{});
-                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "");
-                emailIntent.putExtra(Intent.EXTRA_TEXT, dataListText.getText().toString());
-                emailIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse(string));
-                startActivity(emailIntent);
-                break;
-
-
-                //                try {
-//                    FileOutputStream fos = new FileOutputStream(myExternalFile);
-//                    fos.write(dataListText.getText().toString().getBytes());
-//                    fos.close();
-//                } catch (IOException e) {
-//                    e.printStackTrace();
+                emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] {""});
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Munsell Data List");
+                emailIntent.putExtra(Intent.EXTRA_TEXT, "");
+//                File root=Environment.getExternalStorageDirectory();
+//                String pathToMyAttachedFile= " /storage/emulated/0/MyAppFile/data.txt";
+//                File file= new File(root, pathToMyAttachedFile);
+//                if(!file.exists()||!file.canRead()){
+//                    System.out.println("ERROR DID NOT FIND CORRECT ROOT TO FILE");
+//                    return;
 //                }
-//                inputText.setText("");
-//                System.out.println("SampleFile.txt saved to External Storage...");
-
-//
-
-//                Intent emailIntent = new Intent(Intent.ACTION_SEND);
-//                emailIntent.setData(Uri.parse("mailto:"));
-//                emailIntent.setType("text/plain");
-//                emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{});
-//                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "");
-//                emailIntent.putExtra(Intent.EXTRA_TEXT, dataListText.getText().toString());
-//                startActivity(emailIntent);
-//                break;
+//                Uri uri= Uri.fromFile(file);
+                emailIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse( "file://"+filelocation));
+                startActivity(emailIntent);
 
 
+                break;
         }
     }
 public void writeFile(){
@@ -140,6 +123,7 @@ public void writeFile(){
             dir.mkdir();
         }
         File dataText=new File(dir,"data.txt");
+        System.out.print(dataText);
         String data=dataListText.getText().toString();
         try {
             FileOutputStream fos=new FileOutputStream(dataText);

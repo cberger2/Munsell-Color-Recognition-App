@@ -52,7 +52,7 @@ public class Calibrate extends AppCompatActivity implements View.OnClickListener
 
     }
 
-    //MUST PUT IN THE ACTUAL RGB VALUES THAT WE EXPECT TO GET
+    //MUST PUT IN THE ACTUAL RGB VALUES THAT WE EXPECT TO GET (replace actualRGB value)
     public void fixColors(int Red, int Green, int Blue){
         fixRed=actualRed-Red;
         fixGreen=actualGreen-Green;
