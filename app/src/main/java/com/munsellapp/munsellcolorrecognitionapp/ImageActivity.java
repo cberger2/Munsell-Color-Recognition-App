@@ -76,9 +76,9 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
 passes it to imageview -JB
  */
         /* Takes bitmp image from Camera Intent, finds Munsell, and sets bitmap to imageview -JB*/
-        if (getIntent().hasExtra("byteArray")) {
+        if (getIntent().hasExtra("CameraImage")) {
             b = BitmapFactory.decodeByteArray(
-                    getIntent().getByteArrayExtra("byteArray"), 0, getIntent().getByteArrayExtra("byteArray").length);
+                    getIntent().getByteArrayExtra("CameraImage"), 0, getIntent().getByteArrayExtra("CameraImage").length);
             try {
                 munsell(findViewById(R.id.musellValue));
             } catch (IOException e) {
@@ -88,9 +88,9 @@ passes it to imageview -JB
             ResultPic.setImageBitmap(b);
         }
         /* Takes bitmp image from gallery, finds Munsell, and resizes image to fit in imageview -JB*/
-        else if (getIntent().hasExtra("image")) {
+        else if (getIntent().hasExtra("GalleryImage")) {
             b = BitmapFactory.decodeByteArray(
-                    getIntent().getByteArrayExtra("image"), 0, getIntent().getByteArrayExtra("image").length);
+                    getIntent().getByteArrayExtra("GalleryImage"), 0, getIntent().getByteArrayExtra("GalleryImage").length);
             ResultPic.setImageBitmap(b);
         }
 

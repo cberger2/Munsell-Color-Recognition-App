@@ -21,9 +21,9 @@ import java.io.IOException;
 public class MainActivity extends Activity implements View.OnClickListener {
 
 
-    static int TAKE_PIC = 0;
-    static int CALIBRATE_PIC=2;
-    static int SELECT_FILE = 1;
+    private static int TAKE_PIC = 0;
+    private static int CALIBRATE_PIC=2;
+    private static int SELECT_FILE = 1;
     private ImageView imageView, img;
     private Button calibrateButton, chooseImage;
     private ImageButton getMunsellButton;
@@ -68,10 +68,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
     public void CameraClick(View v) {
 
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        //File file = new File(Environment.getExternalStorageDirectory(),
-        //       "MyPhoto.jpg");
-        //outPutfileUri = Uri.fromFile(file);
-        // intent.putExtra(MediaStore.EXTRA_OUTPUT, outPutfileUri);
         startActivityForResult(intent, TAKE_PIC);
     }
 
@@ -79,10 +75,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
     public void CalibrateCameraClick(View v) {
 
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        //File file = new File(Environment.getExternalStorageDirectory(),
-        //       "MyPhoto.jpg");
-        //outPutfileUri = Uri.fromFile(file);
-        // intent.putExtra(MediaStore.EXTRA_OUTPUT, outPutfileUri);
         startActivityForResult(intent, CALIBRATE_PIC);
     }
 
@@ -97,30 +89,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
         startActivityForResult(Intent.createChooser(intent, "Select File"),SELECT_FILE);
     }
 
-   /* bitmap is the selected image from gallery and is asigned to the bitmap object from the global class
-    so that it can be accessed by the ImageActivity Class -JB
-     */
-    @SuppressWarnings("deprecation")
-    private void onSelectFromGalleryResult(Intent data) {
-
-        Bitmap bm;
-        if (data != null) {
-            try {
-                bm = MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver(), data.getData());
-
-                ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                bm.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                byte[] mybytearray = stream.toByteArray();
-                Intent intent = new Intent(this, ImageActivity.class);
-                intent.putExtra("image", mybytearray);
-                startActivity(intent);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-    }
-
 
    /*Gets result code from camera and gallery intents
    if result is from camera intent, sends image to ImageActivity;
@@ -130,49 +98,36 @@ public class MainActivity extends Activity implements View.OnClickListener {
      */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
         if (requestCode == TAKE_PIC && resultCode == RESULT_OK) {
             Bitmap photo = (Bitmap) data.getExtras().get("data");
-
-            Intent intent = new Intent(this, ImageActivity.class);
-            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            photo.compress(Bitmap.CompressFormat.PNG, 100, stream);
-            // byte[] byteArray = stream.toByteArray();
-            intent.putExtra("byteArray", stream.toByteArray());
-
-
-            startActivity(intent);
+            PassBitmapToNextActivity(photo,ImageActivity.class,"CameraImage");
         }
+
         if (requestCode == SELECT_FILE && resultCode == RESULT_OK) {
-            onSelectFromGalleryResult(data);
+            Bitmap bm;
+            if (data != null) {
+                try {
+                    bm = MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver(), data.getData());
+                    PassBitmapToNextActivity(bm,ImageActivity.class,"GalleryImage");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }}}
+
+        if (requestCode == CALIBRATE_PIC && resultCode == RESULT_OK){
+            Bitmap Calphoto = (Bitmap) data.getExtras().get("data");
+            PassBitmapToNextActivity(Calphoto,Calibrate.class,"CalibrateImage");
+
         }
-        if(requestCode == CALIBRATE_PIC && resultCode == RESULT_OK){
-            Bitmap photo = (Bitmap) data.getExtras().get("data");
+    }
 
-            Intent intent = new Intent(this, Calibrate.class);
-            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            photo.compress(Bitmap.CompressFormat.PNG, 100, stream);
-            // byte[] byteArray = stream.toByteArray();
-            intent.putExtra("byteArray", stream.toByteArray());
-
-
-            startActivity(intent);
-        }
-
-
-//This didn't work: it would open the calibrate activity for both take picturea dn calibrate
-
-        //        else if(requestCode==TAKE_CAL && resultCode==RESULT_OK){
-//            Bitmap photo = (Bitmap) data.getExtras().get("data");
-//            Intent caliIntent= new Intent(this, Calibrate.class);
-//            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-//            photo.compress(Bitmap.CompressFormat.PNG, 100, stream);
-//            // byte[] byteArray = stream.toByteArray();
-//            caliIntent.putExtra("byteArrayCali", stream.toByteArray());
-//
-//
-//            startActivity(caliIntent);
-//
-//        }
+    /*Passes Bitmap from any intent (camera, gallery, or calibrate camera) and passes it to specified activity)*/
+    public void PassBitmapToNextActivity (Bitmap bm, Class myClass, String extraName ){
+        Intent intent = new Intent(this, myClass);
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bm.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        intent.putExtra(extraName, stream.toByteArray());
+        startActivity(intent);
 
     }
 
@@ -184,8 +139,6 @@ or opens cameraIntent -JB
     public void onClick(View view) {
         if (view.getId() == R.id.ChooseImage) {
             galleryIntent();
-
-
         } else {
             Intent intent=new Intent(this, ImageActivity.class);
             startActivity(intent);

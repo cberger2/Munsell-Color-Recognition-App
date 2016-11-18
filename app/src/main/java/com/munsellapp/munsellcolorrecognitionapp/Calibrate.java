@@ -28,9 +28,9 @@ public class Calibrate extends AppCompatActivity implements View.OnClickListener
         calibrateButton=(ImageButton) findViewById(R.id.calibrateImageButton);
         calibrateButton.setOnClickListener(this);
 
-        if (getIntent().hasExtra("byteArray")) {
+        if (getIntent().hasExtra("CalibrateImage")) {
             b = BitmapFactory.decodeByteArray(
-                    getIntent().getByteArrayExtra("byteArray"), 0, getIntent().getByteArrayExtra("byteArray").length);
+                    getIntent().getByteArrayExtra("CalibrateImage"), 0, getIntent().getByteArrayExtra("CalibrateImage").length);
 
             caliPic.setImageBitmap(b);
         }
