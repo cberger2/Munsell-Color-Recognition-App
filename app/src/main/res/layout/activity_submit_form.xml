@@ -116,4 +116,23 @@
         android:layout_marginBottom="41dp"
         android:id="@+id/sfInfoStorage" />
 
+    <TextView
+        android:text="Location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/amMunsellText"
+        android:layout_toRightOf="@+id/linearLayout"
+        android:layout_toEndOf="@+id/linearLayout"
+        android:layout_marginTop="17dp"
+        android:id="@+id/textView5" />
+
+    <TextView
+        android:text="Location Not Available"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textView5"
+        android:layout_alignLeft="@+id/sfMunsellChip"
+        android:layout_alignStart="@+id/sfMunsellChip"
+        android:id="@+id/textView6" />
+
 </RelativeLayout>
