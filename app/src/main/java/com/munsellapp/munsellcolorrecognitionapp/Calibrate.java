@@ -35,7 +35,6 @@ public class Calibrate extends AppCompatActivity implements View.OnClickListener
             caliPic.setImageBitmap(b);
         }
 
-
     }
 
     public void getSpecs() {

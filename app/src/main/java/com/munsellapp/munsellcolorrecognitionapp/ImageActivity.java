@@ -107,11 +107,6 @@ passes it to imageview -JB
     public void AnotherCameraClick(View v) {
 
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        //File file = new File(Environment.getExternalStorageDirectory(),
-        //       "MyPhoto.jpg");
-        //outPutfileUri = Uri.fromFile(file);
-        // intent.putExtra(MediaStore.EXTRA_OUTPUT, outPutfileUri);
-
         startActivityForResult(intent, TAKE_ANOTHERPIC);
 
     }
@@ -339,14 +334,9 @@ passes it to imageview -JB
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == TAKE_ANOTHERPIC && resultCode == RESULT_OK) {
             Bitmap photo = (Bitmap) data.getExtras().get("data");
-
-
-
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
             photo.compress(Bitmap.CompressFormat.PNG, 100, stream);
             // byte[] byteArray = stream.toByteArray();
-
-
             ResultPic.setImageBitmap(photo);
             ResultPic.buildDrawingCache();
             b = ResultPic.getDrawingCache();

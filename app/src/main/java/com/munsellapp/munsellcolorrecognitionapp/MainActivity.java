@@ -117,7 +117,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
         if (requestCode == CALIBRATE_PIC && resultCode == RESULT_OK){
             Bitmap Calphoto = (Bitmap) data.getExtras().get("data");
             PassBitmapToNextActivity(Calphoto,Calibrate.class,"CalibrateImage");
-
         }
     }
 
