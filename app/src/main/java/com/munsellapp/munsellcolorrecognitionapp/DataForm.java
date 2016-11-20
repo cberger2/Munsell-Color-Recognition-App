@@ -46,7 +46,7 @@ public class DataForm extends AppCompatActivity implements View.OnClickListener 
 
         SharedPreferences sp = getSharedPreferences("key", 0);
         savedDataPref = sp.getString("savedDataPref", "");
-        dataListText.setText(idNumber + " , " + munsellChip + " , " + notes + "\n" + savedDataPref);
+        dataListText.setText("\""+idNumber +"\""+ " , " +"\""+ munsellChip +"\""+ " , " +"\""+ notes+"\"" + "\n" + savedDataPref);
     }
 
 //    @Override
@@ -110,43 +110,58 @@ public class DataForm extends AppCompatActivity implements View.OnClickListener 
         }
     }
 public void writeFile(){
-
-    String state;
-    state=Environment.getExternalStorageState();
-
-    if(Environment.MEDIA_MOUNTED.equals(state)){
-        File Root= Environment.getExternalStorageDirectory();
-        File dir=new File(Root.getAbsolutePath()+"/MyAppFile");
-
-        if(!dir.exists()) {
-
-            dir.mkdir();
-        }
-        File dataText=new File(dir,"data.txt");
-        System.out.print(dataText);
-        String data=dataListText.getText().toString();
-        try {
-            FileOutputStream fos=new FileOutputStream(dataText);
-            fos.write(data.getBytes());
-            fos.close();
-            dataListText.setText("");
-            Toast.makeText(this,"File saved", Toast.LENGTH_LONG ).show();
-
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+    String content=dataListText.getText().toString();
+    File file;
+    FileOutputStream outputStream;
+    try{
+        file=new File(Environment.getExternalStorageDirectory(), "MyCache");
+        outputStream=new FileOutputStream(file);
+        outputStream.write(content.getBytes());
+        outputStream.close();
+        System.out.println(file);}
+    catch (IOException e){
+        e.printStackTrace();
 
     }
-    else{
-        Toast.makeText(this, "SD card not found", Toast.LENGTH_LONG).show();
-    }
-//    readFile();
+    dataListText.setText("");
 
-    File Root= Environment.getExternalStorageDirectory();
+
+//    String state;
+//    state=Environment.getExternalStorageState();
+//
+//    if(Environment.MEDIA_MOUNTED.equals(state)){
+//        File Root= Environment.getExternalStorageDirectory();
+//        File dir=new File(Root.getAbsolutePath()+"/MyAppFile");
+//
+//        if(!dir.exists()) {
+//
+//            dir.mkdir();
+//        }
+//        File dataText=new File(dir,"data.txt");
+//        System.out.print(dataText);
+//        String data=dataListText.getText().toString();
+//        try {
+//            FileOutputStream fos=new FileOutputStream(dataText);
+//            fos.write(data.getBytes());
+//            fos.close();
+//            dataListText.setText("");
+//            Toast.makeText(this,"File saved", Toast.LENGTH_LONG ).show();
+//
+//
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//
+//    }
+//    else{
+//        Toast.makeText(this, "SD card not found", Toast.LENGTH_LONG).show();
+//    }
+////    readFile();
+//
+//    File Root= Environment.getExternalStorageDirectory();
 
 }
     public void readFile(){

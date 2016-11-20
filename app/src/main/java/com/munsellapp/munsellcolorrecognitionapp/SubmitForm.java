@@ -74,38 +74,9 @@ public class SubmitForm extends AppCompatActivity implements View.OnClickListene
                 break;
         }
     }
-    //        public void save (View v) {
-//            idNumber=(EditText) findViewById(R.id.sfIdEdit);
-//            munsellChip=(TextView) findViewById(R.id.sfMunsellChip);
-//            notes=(EditText) findViewById(R.id.sfNotesEdit);
-//            Intent sendData= new Intent(this,DataForm.class);
-//            Bundle dataBundle= new Bundle();
-//            dataBundle.putString("idNumber", idNumber.getText().toString());
-//            dataBundle.putString("munsellChip", munsellChip.getText().toString());
-//            dataBundle.putString("notes", notes.getText().toString());
-//            sendData.putExtras(dataBundle);
-//            startActivity(sendData);
-//
-//        }
-//        idNumber=(EditText) findViewById(R.id.sfIdEdit);
-//        notes=(EditText) findViewById(R.id.sfNotesEdit);
-//        munsell=(TextView) findViewById(R.id.sfMunsellChip);
-//        String csv = android.os.Environment.getExternalStorageDirectory().getAbsolutePath();
-//        CSVWriter writer = new CSVWriter(new FileWriter(csv));
-//        List<String[]> data = new ArrayList<String[]>();
-//        data.add(new String[] {idNumber.getText().toString(), ", ",munsell.getText().toString(), ", ", notes.getText().toString(), "/n" });
-//
-//        writer.writeAll(data);
-//
-//        Toast toast= Toast.makeText(this, "INFORMATION SAVED", Toast.LENGTH_LONG);
-//        toast.show();
-//
-//        writer.close();
-//
-//
-//
-//
-//    }
+
+    //I (Camille) don't think I wrote this... I don't know if we need this since we don't want to write to
+    //internal storage.
     private void saveInInternalFolder(String aStringToSave, String aFileName){
         FileOutputStream fos=null;
         aStringToSave=idNumber+" , "+munsellChip+" , "+ notes;
