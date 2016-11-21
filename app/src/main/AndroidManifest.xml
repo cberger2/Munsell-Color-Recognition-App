@@ -39,9 +39,12 @@
             android:label="Munsell"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
-        <activity android:name=".DataForm" />
-        <activity android:name=".Calibrate" />
-        <activity android:name=".ImageSelection"></activity>
+        <activity android:name=".DataForm"
+            android:launchMode="singleTask"/>
+        <activity android:name=".Calibrate"
+            android:launchMode="singleTask"/>
+        <activity android:name=".ImageSelection"
+            android:launchMode="singleTask"></activity>
     </application>
 
 </manifest>
