@@ -110,6 +110,7 @@ public class SubmitForm extends AppCompatActivity implements View.OnClickListene
         bundle.putString("idNumber", idNumber.getText().toString());
         bundle.putString("munsellChip", munsellValueText.getText().toString());
         bundle.putString("notes", notes.getText().toString());
+        bundle.putString("location", location.getText().toString());
 //        if(updatedText.equals("")){
             intent.putExtras(bundle);
             startActivity(intent);

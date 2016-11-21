@@ -30,7 +30,7 @@ public class DataForm extends AppCompatActivity implements View.OnClickListener 
     SharedPreferences savedValues;
     String savedDataString, restoreData;
     String savedDataPref;
-    String fileLocation;
+    String fileLocation, location;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,10 +47,11 @@ public class DataForm extends AppCompatActivity implements View.OnClickListener 
         idNumber = getBundle.getString("idNumber");
         munsellChip = getBundle.getString("munsellChip");
         notes = getBundle.getString("notes");
+        location= getBundle.getString("location");
 
         SharedPreferences sp = getSharedPreferences("key", 0);
         savedDataPref = sp.getString("savedDataPref", "");
-        dataListText.setText("\"" + idNumber + "\"" + " , " + "\"" + munsellChip + "\"" + " , " + "\"" + notes + "\"" + "\n" + savedDataPref);
+        dataListText.setText("\"" + idNumber + "\"" + " , " + "\"" + munsellChip + "\"" + " , " + "\""+location+ "\""+ " , "+"\"" + notes + "\"" + "\n" + savedDataPref);
     }
 
 //    @Override
