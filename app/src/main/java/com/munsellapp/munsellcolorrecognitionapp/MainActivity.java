@@ -1,12 +1,16 @@
 package com.munsellapp.munsellcolorrecognitionapp;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.v7.app.AlertDialog;
 import android.text.Html;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -58,6 +62,18 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 "<font color=#284F00>L</font> " +
                 "<font color=#03447D>L</font>";
         Munsell.setText(Html.fromHtml(text));
+
+        new AlertDialog.Builder(MainActivity.this)
+                .setTitle("Warning!")
+                .setMessage("If you would like to use the location feature of this app, please turn your" +
+                        " location on.")
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                })
+                
+                .show();
 
 
 

@@ -75,31 +75,7 @@ public class SubmitForm extends AppCompatActivity implements View.OnClickListene
         }
     }
 
-    //I (Camille) don't think I wrote this... I don't know if we need this since we don't want to write to
-    //internal storage.
-    private void saveInInternalFolder(String aStringToSave, String aFileName){
-        FileOutputStream fos=null;
-        aStringToSave=idNumber+" , "+munsellChip+" , "+ notes;
-        try{
-            fos=openFileOutput(aFileName, this.MODE_PRIVATE);
-            fos.write(aStringToSave.getBytes());
-            fos.close();
-            Toast.makeText(this, "file saved", Toast.LENGTH_LONG).show();
 
-            FileInputStream fis = this.openFileInput(aFileName);
-            InputStreamReader isr = new InputStreamReader(fis);
-            BufferedReader bufferedReader = new BufferedReader(isr);
-            StringBuilder sb = new StringBuilder();
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                sb.append(line);
-            }
-
-        }catch (IOException e){
-            Toast.makeText(this, "There is a problem saving to the internal file", Toast.LENGTH_LONG).show();
-
-        }
-    }
     @Override
     public void onClick(View v) {
         idNumber=(EditText) findViewById(R.id.sfIdEdit);
@@ -111,31 +87,12 @@ public class SubmitForm extends AppCompatActivity implements View.OnClickListene
         bundle.putString("munsellChip", munsellValueText.getText().toString());
         bundle.putString("notes", notes.getText().toString());
         bundle.putString("location", location.getText().toString());
-//        if(updatedText.equals("")){
+
             intent.putExtras(bundle);
             startActivity(intent);
-//        }else{
-//            bundle.putString("dataList", updatedText.getText().toString());
-//            intent.putExtras(bundle);
-            startActivity(intent);
+
         }
 
-//        idNumber = (EditText) findViewById(R.id.sfIdEdit);
-//        munsellChip = (TextView) findViewById(R.id.sfMunsellChip);
-//        notes = (EditText) findViewById(R.id.sfNotesEdit);
-//        saveInInternalFolder((idNumber+" , "+munsellChip+" , "+ notes), "data.txt");
-
-
-
-//            case R.id.emailButton:
-//                Intent emailIntent = new Intent(Intent.ACTION_SEND);
-//                emailIntent.setData(Uri.parse("mailto:"));
-//                emailIntent.setType("text/plain");
-//                emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{ });
-//                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "");
-//                emailIntent.putExtra(Intent.EXTRA_TEXT, "");
-//                startActivity(emailIntent);
-//                break;
 protected String cityName;
 
     @Override
