@@ -64,7 +64,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         Munsell.setText(Html.fromHtml(text));
 
         new AlertDialog.Builder(MainActivity.this)
-                .setTitle("Warning!")
+                .setTitle("Alert")
                 .setMessage("If you would like to use the location feature of this app, please turn your" +
                         " location on.")
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {

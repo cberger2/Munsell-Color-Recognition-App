@@ -27,39 +27,29 @@
             android:layout_alignBottom="@+id/sfNotesEdit"
             android:layout_alignParentLeft="true"
            android:layout_alignParentStart="true"
-            android:textSize="32sp"/>
+            android:textSize="32sp"
+            android:textStyle="bold"/>
 
     <TextView
             android:text="ID #:"
+        android:textStyle="bold"
             android:layout_width="wrap_content"
            android:layout_height="wrap_content"
             android:id="@+id/textView4"
             android:layout_weight="1"
             android:textSize="32sp"
             android:layout_alignBaseline="@+id/sfIdEdit"
-            android:layout_alignBottom="@+id/sfIdEdit"/>
+            android:layout_alignBottom="@+id/sfIdEdit" />
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textMultiLine"
-            android:ems="10"
-            android:id="@+id/sfNotesEdit"
-            android:hint="Enter notes here..."
-            android:layout_marginTop="132dp"
-            android:maxLines="2"
-            android:layout_below="@+id/sfIdEdit"
-            android:textSize="32sp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
-
-        <TextView
+    <TextView
             android:text="Munsell Chip:"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/amMunsellText"
             android:layout_below="@+id/sfIdEdit"
-            android:textSize="32sp"/>
+            android:textSize="32sp"
+        android:layout_marginTop="16dp"
+        android:textStyle="bold"/>
 
     <TextView
         android:text="Testing "
@@ -119,5 +109,41 @@
         android:layout_toStartOf="@+id/sfMunsellChip"
         android:layout_marginBottom="41dp"
         android:id="@+id/sfInfoStorage" />
+
+    <TextView
+        android:text="Location Not Available"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textView5"
+        android:layout_alignLeft="@+id/sfMunsellChip"
+        android:layout_alignStart="@+id/sfMunsellChip"
+        android:id="@+id/textView6"
+        android:textSize="32sp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:id="@+id/sfNotesEdit"
+        android:hint="Enter notes here..."
+        android:layout_marginTop="76dp"
+        android:maxLines="2"
+        android:textSize="32sp"
+        android:layout_below="@+id/textView5"
+        android:layout_toRightOf="@+id/linearLayout"
+        android:layout_toEndOf="@+id/linearLayout" />
+
+    <TextView
+        android:text="Location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="55dp"
+        android:id="@+id/textView5"
+        android:textSize="32sp"
+        android:layout_below="@+id/amMunsellText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textStyle="bold"/>
 
 </RelativeLayout>

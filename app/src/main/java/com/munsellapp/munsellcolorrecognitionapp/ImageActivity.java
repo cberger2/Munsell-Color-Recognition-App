@@ -92,14 +92,15 @@ passes it to imageview -JB
             b = BitmapFactory.decodeByteArray(
                     getIntent().getByteArrayExtra("GalleryImage"), 0, getIntent().getByteArrayExtra("GalleryImage").length);
 
+            try {
+                munsell(findViewById(R.id.musellValue));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
             ResultPic.setImageBitmap(b);
         }
 
-        try {
-            munsell(findViewById(R.id.musellValue));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
 
     }
@@ -166,6 +167,7 @@ passes it to imageview -JB
             } else
                 csvReader.readNext();
         }
+        csvReader.close();
         System.out.println("smalled difference: " + Double.toString(smallestDif) + "/n smallest red: " + Double.toString(smallRed) + "/n Actual red:"
                 + Integer.toString(red) + "/n Smallest green: " + Double.toString(smallGreen) + "/n Actual Green:" + Integer.toString(green) +
                 "/n Actual blue:" + Integer.toString(blue) + "/n Smallest Blue: " + Double.toString(smallBlue));
@@ -192,6 +194,7 @@ passes it to imageview -JB
                 }
             }
         }
+        csvReader2.close();
        setBackground(smallRed,smallGreen,smallBlue);
 
 

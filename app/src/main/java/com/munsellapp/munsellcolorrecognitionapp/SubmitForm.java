@@ -67,7 +67,7 @@ public class SubmitForm extends AppCompatActivity implements View.OnClickListene
         switch (requestCode) {
             case PERMISSION_ACCESS_COARSE_LOCATION:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(this, "All good?!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "All good.", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(this, "Need your location!", Toast.LENGTH_SHORT).show();
                 }
