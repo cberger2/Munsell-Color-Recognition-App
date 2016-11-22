@@ -103,7 +103,7 @@ protected String cityName;
     @Override
     public void onConnected(Bundle bundle) {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
-                == PackageManager.PERMISSION_GRANTED) {
+                == PackageManager.PERMISSION_GRANTED && LocationServices.FusedLocationApi!=null) {
             Location lastLocation = LocationServices.FusedLocationApi.getLastLocation(googleApiClient);
             double lat = lastLocation.getLatitude(), lon = lastLocation.getLongitude();
             String units = "imperial";
