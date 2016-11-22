@@ -41,7 +41,7 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
     private ImageButton saveresult, exportresult, home;
     Bitmap b;
     String munsellValue;
-    TextView munsellChip;
+    TextView munsellChip, backgroundWarning;
     TextView iaDataStorage;
     RelativeLayout R1;
     Double smallestDif;
@@ -91,6 +91,7 @@ passes it to imageview -JB
         else if (getIntent().hasExtra("GalleryImage")) {
             b = BitmapFactory.decodeByteArray(
                     getIntent().getByteArrayExtra("GalleryImage"), 0, getIntent().getByteArrayExtra("GalleryImage").length);
+
             ResultPic.setImageBitmap(b);
         }
 
@@ -99,6 +100,7 @@ passes it to imageview -JB
         } catch (IOException e) {
             e.printStackTrace();
         }
+
 
     }
 
@@ -242,73 +244,87 @@ passes it to imageview -JB
 
         View view = this.getWindow().getDecorView();
 
+        if(red==0 || green==0 || blue==0){
+            backgroundWarning=(TextView) findViewById(R.id.backgroundWarning);
+            backgroundWarning.setText("The correct background color was unable to be set.");
+            return;
+        }
 
-        if (red > 9 && green > 9 && blue > 9) {
+
+         else if (red > 9 && green > 9 && blue > 9) {
             StringBuilder builder = new StringBuilder();
             builder.append("#");
             builder.append(Integer.toHexString(red));
             builder.append(Integer.toHexString(green));
             builder.append(Integer.toHexString(blue));
             view.setBackgroundColor(Color.parseColor(builder.toString()));
-
-        } else if (green < 10 && blue < 10 && red < 10) {
+            return;
+        }
+        else if (green < 10 && blue < 10 && red < 10) {
             StringBuilder builder = new StringBuilder();
             builder.append("#");
-            builder.append("0" + Integer.toString(red));
-            builder.append("0" + Integer.toString(green));
-            builder.append("0" + Integer.toString(blue));
+                builder.append("0" + Integer.toString(red));
+                builder.append("0" + Integer.toString(green));
+                builder.append("0" + Integer.toString(blue));
 
             view.setBackgroundColor(Color.parseColor(builder.toString()));
+            return;
 
         }
         else if (red < 10 && green < 10) {
             StringBuilder builder = new StringBuilder();
             builder.append("#");
-            builder.append("0" + Integer.toString(red));
-            builder.append("0" + Integer.toString(green));
+                builder.append("0" + Integer.toString(red));
+                builder.append("0" + Integer.toString(green));
             builder.append(Integer.toHexString(blue));
 
             view.setBackgroundColor(Color.parseColor(builder.toString()));
+            return;
         } else if (red < 10 && blue < 10) {
             StringBuilder builder = new StringBuilder();
             builder.append("#");
-            builder.append("0" + Integer.toString(red));
+                builder.append("0" + Integer.toString(red));
             builder.append(Integer.toHexString(green));
-            builder.append("0" + Integer.toString(blue));
+                builder.append("0" + Integer.toString(blue));
 
             view.setBackgroundColor(Color.parseColor(builder.toString()));
+            return;
         } else if (green < 10 && blue < 10) {
             StringBuilder builder = new StringBuilder();
             builder.append("#");
             builder.append(Integer.toHexString(red));
-            builder.append("0" + Integer.toString(green));
-            builder.append("0" + Integer.toString(blue));
+                builder.append("0" + Integer.toString(green));
+                builder.append("0" + Integer.toString(blue));
 
             view.setBackgroundColor(Color.parseColor(builder.toString()));
+            return;
         }
         else if (red < 10) {
             StringBuilder builder = new StringBuilder();
             builder.append("#");
-            builder.append("0" + Integer.toString(red));
+                builder.append("0" + Integer.toString(red));
             builder.append(Integer.toHexString(green));
             builder.append(Integer.toHexString(blue));
 
             view.setBackgroundColor(Color.parseColor(builder.toString()));
+            return;
         } else if (green < 10) {
             StringBuilder builder = new StringBuilder();
             builder.append("#");
             builder.append(Integer.toHexString(red));
-            builder.append("0" + Integer.toString(green));
+                builder.append("0" + Integer.toString(green));
             builder.append(Integer.toHexString(blue));
 
             view.setBackgroundColor(Color.parseColor(builder.toString()));
+            return;
         } else if (blue < 10) {
             StringBuilder builder = new StringBuilder();
             builder.append("#");
             builder.append(Integer.toHexString(red));
             builder.append(Integer.toHexString(green));
-            builder.append("0" + Integer.toString(blue));
+                builder.append("0" + Integer.toString(blue));
             view.setBackgroundColor(Color.parseColor(builder.toString()));
+            return;
         }
 
         }
