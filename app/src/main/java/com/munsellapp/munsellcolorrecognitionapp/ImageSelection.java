@@ -1,6 +1,7 @@
 package com.munsellapp.munsellcolorrecognitionapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -15,14 +16,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import java.io.ByteArrayOutputStream;
 
 
-public class ImageSelection extends AppCompatActivity implements SeekBar.OnSeekBarChangeListener {
+public class ImageSelection extends AppCompatActivity implements SeekBar.OnSeekBarChangeListener, View.OnClickListener {
     private Bitmap DrawBitmap;
     private Canvas mCanvas;
     private Path mPath;
@@ -37,6 +40,9 @@ public class ImageSelection extends AppCompatActivity implements SeekBar.OnSeekB
     private TextView textView;
     Bitmap bitmap;
     Bitmap b;
+    int red0,green0,blue0;
+    Button munsellReading;
+    Bitmap test, secondBitmap;
 
     protected void onCreate(Bundle savedInstances) {
         super.onCreate(savedInstances);
@@ -58,6 +64,9 @@ public class ImageSelection extends AppCompatActivity implements SeekBar.OnSeekB
 
         textView = (TextView) findViewById(R.id.textView);
         seekbar = (SeekBar) findViewById(R.id.seekBar);
+
+        munsellReading=(Button) findViewById(R.id.munsellReading);
+        munsellReading.setOnClickListener(this);
 
         seekbar.setOnSeekBarChangeListener(this);
         seekbar.setProgress(30);
@@ -94,6 +103,40 @@ public class ImageSelection extends AppCompatActivity implements SeekBar.OnSeekB
 
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        Intent imageActivity=new Intent(this, ImageActivity.class);
+        System.out.println(red0+" "+green0+" "+blue0);
+        String redString=Integer.toString(red0);
+        String greenString=Integer.toString(green0);
+        String blueString=Integer.toString(blue0);
+
+        Bundle bundle=new Bundle();
+        bundle.putString("redString", redString);
+        bundle.putString("greenString", greenString);
+        bundle.putString("blueString", blueString);
+
+        imageActivity.putExtras(bundle);
+
+        PassBitmapToNextActivity(bitmap,ImageActivity.class,"CameraImage");
+
+//        imageActivity.putExtras(bundle);
+
+
+        startActivity(imageActivity);
+
+    }
+
+    /*Passes Bitmap from any intent (camera, gallery, or calibrate camera) and passes it to specified activity)*/
+    public void PassBitmapToNextActivity (Bitmap bm, Class myClass, String extraName ){
+        Intent intent = new Intent(this, myClass);
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bm.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        intent.putExtra(extraName, stream.toByteArray());
+        startActivity(intent);
 
     }
 
@@ -134,18 +177,16 @@ public class ImageSelection extends AppCompatActivity implements SeekBar.OnSeekB
 
             rectShape.set((int) x - getBounds(), (int) y - getBounds(), getBounds() + (int) x, getBounds() + (int) y);
 
-            if (y <Disp.getHeight()) {
+            if (y <Disp.getHeight()-200) {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         clear_canvas();
 
                         mCanvas.drawRect(rectShape, mPaint);
 
-                        Bitmap secondBitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
-                        System.out.println("secondBitmap width   height:"+ secondBitmap.getWidth()+" "+ secondBitmap.getHeight());
+                        secondBitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
 
-                        Bitmap test = Bitmap.createBitmap(secondBitmap, (int) x-300, (int) y-500, rectShape.width(), rectShape.height());
-                        System.out.println("test width   height:"+ test.getWidth()+" "+ test.getHeight());
+                         test = Bitmap.createBitmap(secondBitmap, (int) x-300, (int) y-500, rectShape.width(), rectShape.height());
 
 
                         int red = 0;
@@ -165,14 +206,11 @@ public class ImageSelection extends AppCompatActivity implements SeekBar.OnSeekB
                             }
                         }
 
-                        int red0 = (red / pixelCount);
-                        int blue0 = (blue / pixelCount);
-                        int green0 = (green / pixelCount);
+                        red0 = (red / pixelCount);
+                        blue0 = (blue / pixelCount);
+                        green0 = (green / pixelCount);
 
-                        System.out.println(red0);
-                        System.out.println(blue0);
-                        System.out.println(green0);
-                        System.out.println(pixelCount);
+
 
                         invalidate();
                         break;

@@ -54,13 +54,15 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
     int green;
     int blue;
     int i;
+    Bitmap bitmap;
+//    String redString,greenString,blueString;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.image_layout);
-        R1=(RelativeLayout)findViewById(R.id.R1);
+        R1 = (RelativeLayout) findViewById(R.id.R1);
         home = (ImageButton) findViewById(R.id.homeButton);
         home.setOnClickListener(this);
         calibrate = (Button) findViewById(R.id.button3);
@@ -71,38 +73,59 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
         exportresult.setOnClickListener(this);
 //        camera = (ImageButton) findViewById(R.id.imageButton2);
 
+        Bundle bundle = this.getIntent().getExtras();
+//        Intent mIntent = getIntent();
+
+        String redString = bundle.getString("redString");
+        String greenString = bundle.getString("greenString");
+        String blueString = bundle.getString("blueString");
+
+        try {
+            red = Integer.parseInt(redString);
+            green = Integer.parseInt(greenString);
+            blue = Integer.parseInt(blueString);
+        } catch (NumberFormatException nfe) {
+            System.out.println("RGB:" + red + " " + green + " " + blue);
+
+            try {
+                munsell(findViewById(R.id.musellValue), red, green, blue);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            b = BitmapFactory.decodeByteArray(
+                    getIntent().getByteArrayExtra("CameraImage"), 0, getIntent().getByteArrayExtra("CameraImage").length);
+
+
+            ResultPic.setImageBitmap(b);
+
 
 /* Extracts image taken from camera or image selected from gallery and
 passes it to imageview -JB
  */
         /* Takes bitmp image from Camera Intent, finds Munsell, and sets bitmap to imageview -JB*/
-        if (getIntent().hasExtra("CameraImage")) {
-            b = BitmapFactory.decodeByteArray(
-                    getIntent().getByteArrayExtra("CameraImage"), 0, getIntent().getByteArrayExtra("CameraImage").length);
-            try {
-                munsell(findViewById(R.id.musellValue));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+//        if (getIntent().hasExtra("CameraImage")) {
+//            b = BitmapFactory.decodeByteArray(
+//                    getIntent().getByteArrayExtra("CameraImage"), 0, getIntent().getByteArrayExtra("CameraImage").length);
+//
+//            ResultPic.setImageBitmap(b);
+//        }
+//        /* Takes bitmp image from gallery, finds Munsell, and resizes image to fit in imageview -JB*/
+//        else if (getIntent().hasExtra("GalleryImage")) {
+//            b = BitmapFactory.decodeByteArray(
+//                    getIntent().getByteArrayExtra("GalleryImage"), 0, getIntent().getByteArrayExtra("GalleryImage").length);
+//
+//            try {
+//                munsell(findViewById(R.id.musellValue));
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//
+//            ResultPic.setImageBitmap(b);
+//        }
 
-            ResultPic.setImageBitmap(b);
+
         }
-        /* Takes bitmp image from gallery, finds Munsell, and resizes image to fit in imageview -JB*/
-        else if (getIntent().hasExtra("GalleryImage")) {
-            b = BitmapFactory.decodeByteArray(
-                    getIntent().getByteArrayExtra("GalleryImage"), 0, getIntent().getByteArrayExtra("GalleryImage").length);
-
-            try {
-                munsell(findViewById(R.id.musellValue));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            ResultPic.setImageBitmap(b);
-        }
-
-
-
     }
 
 
@@ -130,7 +153,7 @@ passes it to imageview -JB
           * the smallest distance value gets updated along with the smallest red, green, and blue value.
           * It then goes through the csv file again with the new RGB values and finds the line with the matching values and
           * returns the munsell color to the phone. It then changes the background to show the munsell chip color.*/
-    public void munsell(View v) throws IOException {
+    public void munsell(View v, int red, int green, int blue) throws IOException {
         smallestDif=1000.0;
 
 
@@ -145,7 +168,7 @@ passes it to imageview -JB
         CSVReader csvReader = new CSVReader(is);
         String[] line;
         csvReader.readNext();
-        getSpecs();
+//        getSpecs();
 
 
         //This should  fix the colors from the calibration activity.
@@ -156,9 +179,9 @@ passes it to imageview -JB
 
 
         while ((line = csvReader.readNext()) != null) {
-            compareRed = Integer.parseInt(line[line.length - 3]);
-            compareGreen = Integer.parseInt(line[line.length - 2]);
-            compareBlue = Integer.parseInt(line[line.length - 1]);
+            compareRed = Integer.parseInt(line[3]);
+            compareGreen = Integer.parseInt(line[4]);
+            compareBlue = Integer.parseInt(line[5]);
             if (getDistance(red, green, blue, compareRed, compareGreen, compareBlue) < smallestDif) {
                 smallestDif = getDistance(red, green, blue, compareRed, compareGreen, compareBlue);
                 smallRed = Integer.parseInt(line[3]);
@@ -362,7 +385,7 @@ passes it to imageview -JB
 
         }
         try {
-            munsell(findViewById(R.id.musellValue));
+            munsell(findViewById(R.id.musellValue), red, green, blue);
         } catch (IOException e) {
             e.printStackTrace();
         }
