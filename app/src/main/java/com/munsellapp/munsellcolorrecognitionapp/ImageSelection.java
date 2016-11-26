@@ -2,6 +2,7 @@ package com.munsellapp.munsellcolorrecognitionapp;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -20,6 +21,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 
+
 public class ImageSelection extends AppCompatActivity implements SeekBar.OnSeekBarChangeListener {
     private Bitmap DrawBitmap;
     private Canvas mCanvas;
@@ -33,14 +35,12 @@ public class ImageSelection extends AppCompatActivity implements SeekBar.OnSeekB
     private float mX, mY;
     private ImageView imageView;
     private TextView textView;
-
-    public ImageSelection(ImageView imageView){
-        this.imageView = imageView;
-    }
+    Bitmap bitmap;
+    Bitmap b;
 
     protected void onCreate(Bundle savedInstances) {
         super.onCreate(savedInstances);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_image_selection);
         customView = new CustomView(this);
         Rl = (RelativeLayout) findViewById(R.id.activity_image_selection);
         Rl.addView(customView);
@@ -52,15 +52,25 @@ public class ImageSelection extends AppCompatActivity implements SeekBar.OnSeekB
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setStrokeJoin(Paint.Join.ROUND);
         mPaint.setStrokeCap(Paint.Cap.ROUND);
-        mPaint.setStrokeWidth(10);
+        mPaint.setStrokeWidth(5);
 
-        //imageView = (ImageView) findViewById(R.id.imageView1);
+        imageView = (ImageView) findViewById(R.id.imageView1);
 
         textView = (TextView) findViewById(R.id.textView);
         seekbar = (SeekBar) findViewById(R.id.seekBar);
 
         seekbar.setOnSeekBarChangeListener(this);
-        seekbar.setProgress(200);
+        seekbar.setProgress(30);
+
+        b = BitmapFactory.decodeByteArray(
+                getIntent().getByteArrayExtra("CameraImage"), 0, getIntent().getByteArrayExtra("CameraImage").length);
+
+        bitmap = b;
+//        BitmapDrawable ob=new BitmapDrawable(getResources(),bitmap);
+
+
+        imageView.setImageBitmap(bitmap);
+//        imageView.setScaleType(ImageView.ScaleType.FIT_XY);
 
     }
 
@@ -73,7 +83,7 @@ public class ImageSelection extends AppCompatActivity implements SeekBar.OnSeekB
         customView.setBounds(progress);
         customView.invalidate();
 
-        textView.setText("Width: " + progress);
+        //textView.setText("Width: " + progress);
 
     }
 
@@ -124,16 +134,19 @@ public class ImageSelection extends AppCompatActivity implements SeekBar.OnSeekB
 
             rectShape.set((int) x - getBounds(), (int) y - getBounds(), getBounds() + (int) x, getBounds() + (int) y);
 
-            if (y < Disp.getHeight() - 550) {
+            if (y <Disp.getHeight()) {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         clear_canvas();
 
                         mCanvas.drawRect(rectShape, mPaint);
 
-                        Bitmap bitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
+                        Bitmap secondBitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
+                        System.out.println("secondBitmap width   height:"+ secondBitmap.getWidth()+" "+ secondBitmap.getHeight());
 
-                        Bitmap test = Bitmap.createBitmap(bitmap, (int) x, (int) y, rectShape.width(), rectShape.height());
+                        Bitmap test = Bitmap.createBitmap(secondBitmap, (int) x-300, (int) y-500, rectShape.width(), rectShape.height());
+                        System.out.println("test width   height:"+ test.getWidth()+" "+ test.getHeight());
+
 
                         int red = 0;
                         int blue = 0;
