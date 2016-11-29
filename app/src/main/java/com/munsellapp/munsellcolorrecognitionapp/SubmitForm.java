@@ -1,8 +1,10 @@
 package com.munsellapp.munsellcolorrecognitionapp;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -21,7 +23,16 @@ import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.PendingResult;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.LocationSettingsRequest;
+import com.google.android.gms.location.LocationSettingsResult;
+import com.google.android.gms.location.LocationSettingsStates;
+import com.google.android.gms.location.LocationSettingsStatusCodes;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -32,8 +43,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import static com.munsellapp.munsellcolorrecognitionapp.R.id.textView;
 
-public class SubmitForm extends AppCompatActivity implements View.OnClickListener,GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+
+public class SubmitForm extends AppCompatActivity implements View.OnClickListener,GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
     ImageButton save, email;
     EditText idNumber, notes;
     TextView munsell, munsellValueText, updatedText;
@@ -67,9 +80,9 @@ public class SubmitForm extends AppCompatActivity implements View.OnClickListene
         switch (requestCode) {
             case PERMISSION_ACCESS_COARSE_LOCATION:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(this, "All good.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Location Enabled", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(this, "Need your location!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Turn on location", Toast.LENGTH_SHORT).show();
                 }
                 break;
         }
@@ -99,7 +112,9 @@ protected String cityName;
     protected void onStart() {
         super.onStart();
         googleApiClient.connect();
+        settingsrequest();
     }
+
     @Override
     public void onConnected(Bundle bundle) {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
@@ -133,10 +148,91 @@ protected String cityName;
     public void onConnectionFailed(ConnectionResult connectionResult) {
 
     }
-}
 
 
+    protected void startLocationUpdates() {
+        LocationServices.FusedLocationApi.requestLocationUpdates(googleApiClient, locationRequest, this);
+    }
 
 
+    LocationRequest locationRequest;
+    public void settingsrequest()
+    {
+        locationRequest = LocationRequest.create();
+        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        locationRequest.setInterval(30 * 1000);
+        locationRequest.setFastestInterval(5 * 1000);
+        LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder()
+                .addLocationRequest(locationRequest);
+        builder.setAlwaysShow(true); //this is the key ingredient
+
+        PendingResult<LocationSettingsResult> result =
+                LocationServices.SettingsApi.checkLocationSettings(googleApiClient, builder.build());
+        result.setResultCallback(new ResultCallback<LocationSettingsResult>() {
+            @Override
+            public void onResult(LocationSettingsResult result) {
+                final Status status = result.getStatus();
+                final LocationSettingsStates state = result.getLocationSettingsStates();
+                switch (status.getStatusCode()) {
+                    case LocationSettingsStatusCodes.SUCCESS:
+                        // All location settings are satisfied. The client can initialize location
+                        // requests here
+                        startLocationUpdates();
+                        break;
+                    case LocationSettingsStatusCodes.RESOLUTION_REQUIRED:
+                        // Location settings are not satisfied. But could be fixed by showing the user
+                        // a dialog.
+                        try {
+                            // Show the dialog by calling startResolutionForResult(),
+                            // and check the result in onActivityResult().
+                            status.startResolutionForResult(SubmitForm.this, REQUEST_CHECK_SETTINGS);
+                            startLocationUpdates();
+                        } catch (IntentSender.SendIntentException e) {
+                            // Ignore the error.
+                        }
+                        break;
+                    case LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE:
+                        // Location settings are not satisfied. However, we have no way to fix the
+                        // settings so we won't show the dialog.
+                        break;
+                }
+            }
+        });
+    }protected static final int REQUEST_CHECK_SETTINGS = 0x1;
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+// Check for the integer request code originally supplied to startResolutionForResult().
+            case REQUEST_CHECK_SETTINGS:
+                switch (resultCode) {
+                    case Activity.RESULT_OK:
+                        break;
+                    case Activity.RESULT_CANCELED:
+                        settingsrequest();//keep asking if imp or do whatever
+                        break;
+                }
+                break;
+        }
+    }
 
 
+    @Override
+    public void onLocationChanged(Location location) {
+        Geocoder gcd = new Geocoder(this, Locale.getDefault());
+        List<Address> addresses = null;
+
+
+        try {
+            addresses = gcd.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if(addresses!=null)
+            if (addresses.size() > 0) {
+                //System.out.println(addresses.get(0).getLocality());
+                //textView.setText(addresses.get(0).getLocality());
+                this.location.setText(addresses.get(0).getLocality());
+            }
+            }
+    }
