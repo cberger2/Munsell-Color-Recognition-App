@@ -22,7 +22,7 @@ import java.io.IOException;
 
 //import androidinterview.com.androidcamera.R;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements View.OnClickListener {
 
 
     private static int TAKE_PIC = 0;
@@ -34,7 +34,6 @@ public class MainActivity extends Activity {
     private TextView Munsell;
     protected final static String TAG = "ColorUtils";
     //Bitmap bitmapphoto;
-    Bitmap photo;
 
 
 
@@ -46,7 +45,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         chooseImage = (Button) findViewById(R.id.ChooseImage);
-//        chooseImage.setOnClickListener(this);
+        chooseImage.setOnClickListener(this);
         calibrateButton = (Button) findViewById(R.id.button3);
         //calibrateButton.setOnClickListener(this);
         getMunsellButton = (ImageButton) findViewById(R.id.munsellButton);
@@ -64,17 +63,17 @@ public class MainActivity extends Activity {
                 "<font color=#03447D>L</font>";
         Munsell.setText(Html.fromHtml(text));
 
-//        new AlertDialog.Builder(MainActivity.this)
-//                .setTitle("Alert")
-//                .setMessage("If you would like to use the location feature of this app, please turn your" +
-//                        " location on.")
-//                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-//                    public void onClick(DialogInterface dialog, int which) {
-//
-//                    }
-//                })
-//
-//                .show();
+        new AlertDialog.Builder(MainActivity.this)
+                .setTitle("Alert")
+                .setMessage("If you would like to use the location feature of this app, please turn your" +
+                        " location on.")
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                })
+
+                .show();
 
 
 
@@ -107,18 +106,17 @@ public class MainActivity extends Activity {
     }
 
 
-   /*Gets result code from camera and gallery intents
-   if result is from camera intent, sends image to ImageActivity;
-   if result is from gallery intent, calls function to send image to
-   ImageActivity -JB
-
-     */
+    /*Gets result code from camera and gallery intents
+    if result is from camera intent, sends image to ImageActivity;
+    if result is from gallery intent, calls function to send image to
+    ImageActivity -JB
+      */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         if (requestCode == TAKE_PIC && resultCode == RESULT_OK) {
             Bitmap photo = (Bitmap) data.getExtras().get("data");
-            PassBitmapToNextActivity(photo,ImageSelection.class,"CameraImage");
+            PassBitmapToNextActivity(photo,ImageActivity.class,"CameraImage");
         }
 
         if (requestCode == SELECT_FILE && resultCode == RESULT_OK) {
@@ -126,7 +124,7 @@ public class MainActivity extends Activity {
             if (data != null) {
                 try {
                     bm = MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver(), data.getData());
-                    PassBitmapToNextActivity(bm,ImageSelection.class,"GalleryImage");
+                    PassBitmapToNextActivity(bm,ImageActivity.class,"GalleryImage");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }}}
@@ -147,22 +145,22 @@ public class MainActivity extends Activity {
 
     }
 
-/*
-Either calls galleryIntent when ChooseImage button is clicked
-or opens cameraIntent -JB
- */
-//    @Override
-//    public void onClick(View view) {
-//        if (view.getId() == R.id.ChooseImage) {
-//            galleryIntent();
-//        } else {
-//            Intent intent=new Intent(this, ImageActivity.class);
-//            startActivity(intent);
-//
-//        }
-//
-//
-//    }
+    /*
+    Either calls galleryIntent when ChooseImage button is clicked
+    or opens cameraIntent -JB
+     */
+    @Override
+    public void onClick(View view) {
+        if (view.getId() == R.id.ChooseImage) {
+            galleryIntent();
+        } else {
+            Intent intent=new Intent(this, ImageActivity.class);
+            startActivity(intent);
+
+        }
+
+
+    }
 
 
 
