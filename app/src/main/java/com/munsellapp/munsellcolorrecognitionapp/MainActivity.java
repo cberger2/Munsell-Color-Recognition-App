@@ -21,7 +21,11 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 //import androidinterview.com.androidcamera.R;
-
+/* THis activity displays the main screen of the app, with three buttons (Take picture, Select from gallery and calibrate camera)
+NOTE calibrate camera button does not work yet, will have to be integrated when ImageSelction and Calibration activities work
+as expected. Take Picture Button and Select from Gallery Button will prompt the camera intent, which will pass the image to Image 
+Activity. NOTE select from gallery option currently only works on images that were not previously taken by the camera, but does
+work for images that are downloaded. */
 public class MainActivity extends Activity implements View.OnClickListener {
 
 
