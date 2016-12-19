@@ -31,7 +31,9 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-
+/* This activity allows the user to enter details about the image they have taken. Munsell Value of the image will be
+passed from ImageActivity and location will appear automatically. User has the option to save the information to the data.txt text
+file, which will promp the DataForm class.*/
 
 public class SubmitForm extends AppCompatActivity implements View.OnClickListener,GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
     ImageButton save, email;
