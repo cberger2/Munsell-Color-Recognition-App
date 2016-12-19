@@ -10,7 +10,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-
+// This class is currently not integrated into the app, however it has been 
+//set up for when image selection is implemented completely. This activith will
+//recieve a bitmap image of a Munsell Chip passed from Main Activity, which will be compared to it's known Munsell
+//RGB values, and an adjustment will be made to the RGB value of image to match what the RGB values
+//are supposed to be. This adustment will be mad on all RGB-Munsell combinations according to the environment
+//each time the camera is calibrated.
 public class Calibrate extends AppCompatActivity implements View.OnClickListener {
 
     Bitmap b;
