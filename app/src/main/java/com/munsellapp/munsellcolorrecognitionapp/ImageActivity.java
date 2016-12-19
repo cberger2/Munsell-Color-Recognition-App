@@ -33,7 +33,10 @@ import java.util.Date;
  * Created by Victorine on 10/12/16.
  */
 //comment
-
+//This class takes the image selected from gallery or take by the camera, get's the image's munsell value,
+//displays it on the screen, and changes the background color to match the Munsell value. Three buttons
+//appear at the bottom , home button, submit button ( whic will take the user to the submitForm activity ), and save 
+//button (which will screenshot the result and save the image in an album labeled "photos" in the device gallery)
 public class ImageActivity extends AppCompatActivity implements View.OnClickListener {
     private Button calibrate;
     static int TAKE_ANOTHERPIC = 0;
