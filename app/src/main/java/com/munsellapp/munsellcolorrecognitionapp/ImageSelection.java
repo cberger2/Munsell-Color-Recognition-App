@@ -23,7 +23,10 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import java.io.ByteArrayOutputStream;
-
+//NOTE this activity has not yet been integrated with the rest of the app, but has been set up to try and implement image selection
+//This will allow the user to select a certain part of an image to get it's Munsell Value of just that portion.
+//This does not work completely. NOTE activity this will allow calibration to be done, so that the user can take an image
+//of a Munsell chip ( which is very small ) and implement calibration for all RGB-Munsell values.
 
 public class ImageSelection extends AppCompatActivity implements SeekBar.OnSeekBarChangeListener, View.OnClickListener {
     private Bitmap DrawBitmap;
