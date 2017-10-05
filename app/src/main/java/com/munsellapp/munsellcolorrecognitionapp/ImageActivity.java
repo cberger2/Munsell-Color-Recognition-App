@@ -48,6 +48,7 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
     TextView iaDataStorage;
     RelativeLayout R1;
     Double smallestDif;
+    int fixRed, fixGreen, fixBlue;
 
     int compareRed, compareGreen, compareBlue;
 
@@ -73,6 +74,11 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
         exportresult = (ImageButton) findViewById(R.id.submitButton);
         exportresult.setOnClickListener(this);
 //        camera = (ImageButton) findViewById(R.id.imageButton2);
+        Bundle extras = getIntent().getExtras();
+        fixRed = extras.getInt("fixRed");
+        fixBlue = extras.getInt("fixBlue");
+        fixGreen = extras.getInt("fixGreen");
+
 
 
 /* Extracts image taken from camera or image selected from gallery and
@@ -153,9 +159,9 @@ passes it to imageview -JB
 
         //This should  fix the colors from the calibration activity.
         //UNCOMMENT ONCE WE CAN GET THE SPECS OF A KNOWS COLOR.
-//        red=red+fixRed;
-//        green=green+fixGreen;
-//        blue=blue+fixBlue;
+        red=red+fixRed;
+        green=green+fixGreen;
+        blue=blue+fixBlue;
 
 
         while ((line = csvReader.readNext()) != null) {
@@ -199,6 +205,8 @@ passes it to imageview -JB
         }
         csvReader2.close();
         setBackground(smallRed,smallGreen,smallBlue);
+        Toast.makeText(getApplicationContext(), " R "+smallRed+" G "+smallGreen+" B "+smallBlue,
+                Toast.LENGTH_LONG).show();
 
 
     }

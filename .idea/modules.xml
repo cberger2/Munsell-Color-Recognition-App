@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Munsell-Color-Recognition-App.iml" filepath="$PROJECT_DIR$/Munsell-Color-Recognition-App.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/reverted.iml" filepath="$PROJECT_DIR$/reverted.iml" />
     </modules>
   </component>
 </project>
