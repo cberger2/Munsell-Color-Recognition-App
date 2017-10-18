@@ -10,7 +10,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-
+// This class is currently not integrated into the app, however it has been
+//set up for when image selection is implemented completely. This activith will
+//recieve a bitmap image of a Munsell Chip passed from Main Activity, which will be compared to it's known Munsell
+//RGB values, and an adjustment will be made to the RGB value of image to match what the RGB values
+//are supposed to be. This adustment will be mad on all RGB-Munsell combinations according to the environment
+//each time the camera is calibrated.
 public class Calibrate extends AppCompatActivity implements View.OnClickListener {
 
     Bitmap b;
@@ -20,6 +25,7 @@ public class Calibrate extends AppCompatActivity implements View.OnClickListener
     static int fixRed, fixGreen, fixBlue;
     ImageButton calibrateButton;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +33,9 @@ public class Calibrate extends AppCompatActivity implements View.OnClickListener
         caliPic=(ImageView) findViewById(R.id.caliPic);
         calibrateButton=(ImageButton) findViewById(R.id.calibrateImageButton);
         calibrateButton.setOnClickListener(this);
-
+        actualRed=255;
+        actualBlue=28;
+        actualGreen=95;
         if (getIntent().hasExtra("CalibrateImage")) {
             b = BitmapFactory.decodeByteArray(
                     getIntent().getByteArrayExtra("CalibrateImage"), 0, getIntent().getByteArrayExtra("CalibrateImage").length);
@@ -61,10 +69,16 @@ public class Calibrate extends AppCompatActivity implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
-        //getSpecs();
-        //fixColors(specRed,specGreen,specBlue);
+        getSpecs();
+        fixColors(specRed,specGreen,specBlue);
+        Intent i = new Intent(getApplicationContext(), ImageActivity.class);
+        i.putExtra("fixRed",fixRed);
+        i.putExtra("fixBlue",fixBlue);
+        i.putExtra("fixGreen",fixGreen);
+        // startActivity(i);
         Intent intent=new Intent(this, MainActivity.class);
         startActivity(intent);
 
     }
 }
+

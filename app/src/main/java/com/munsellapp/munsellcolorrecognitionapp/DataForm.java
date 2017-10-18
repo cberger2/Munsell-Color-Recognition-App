@@ -22,7 +22,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-
+//This activity appends to a data.txt file each time a new submission is made from submitform activity, 
+//from here the user has the option to email the data.txt file.
 public class DataForm extends AppCompatActivity implements View.OnClickListener {
     TextView dataListText, savedData;
     String idNumber, munsellChip, notes, dataString, dataListString, dataListStringBundle;
