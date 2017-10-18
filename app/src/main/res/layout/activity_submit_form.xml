@@ -11,32 +11,32 @@
     tools:context="com.munsellapp.munsellcolorrecognitionapp.SubmitForm">
 
     <LinearLayout
-           android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/linearLayout">
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout">
 
-        </LinearLayout>
+    </LinearLayout>
 
     <TextView
-            android:text="Munsell Chip:"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/amMunsellText"
-            android:layout_below="@+id/sfIdEdit"
-            android:textStyle="bold"
-            android:textSize="16sp"/>
+        android:text="Munsell Chip:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/amMunsellText"
+        android:layout_below="@+id/sfIdEdit"
+        android:textStyle="bold"
+        android:textSize="16sp"/>
 
     <EditText
-            android:layout_width="286dp"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/sfIdEdit"
-            android:hint="Enter ID here..."
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
+        android:layout_width="286dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/sfIdEdit"
+        android:hint="Enter ID here..."
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:textSize="16sp"
         android:layout_alignLeft="@+id/sfMunsellChip"
         android:layout_alignStart="@+id/sfMunsellChip" />
@@ -64,8 +64,8 @@
         android:layout_toEndOf="@+id/linearLayout">
 
         <ImageButton
-           android:text="Save"
-           android:layout_width="wrap_content"
+            android:text="Save"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_margin="16dp"
             android:id="@+id/sfSaveButton"
@@ -125,12 +125,12 @@
         android:layout_marginTop="39dp" />
 
     <TextView
-            android:text="ID #:"
-            android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-            android:id="@+id/textView4"
-            android:layout_weight="1"
-            android:textSize="16sp"
+        android:text="ID #:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView4"
+        android:layout_weight="1"
+        android:textSize="16sp"
         android:textStyle="bold"
         android:layout_alignBaseline="@+id/sfIdEdit"
         android:layout_alignBottom="@+id/sfIdEdit"
@@ -138,14 +138,14 @@
         android:layout_toStartOf="@+id/sfMunsellChip" />
 
     <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="textMultiLine"
-            android:ems="10"
-            android:id="@+id/sfNotesEdit"
-            android:hint="Enter notes here..."
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:id="@+id/sfNotesEdit"
+        android:hint="Enter notes here..."
         android:maxLines="2"
-            android:textSize="16sp"
+        android:textSize="16sp"
         android:layout_alignBaseline="@+id/textView"
         android:layout_alignBottom="@+id/textView"
         android:layout_alignLeft="@+id/textView6"

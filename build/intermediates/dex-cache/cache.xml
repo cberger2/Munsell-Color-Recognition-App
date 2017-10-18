@@ -3,183 +3,408 @@
 
     <item
         is-multidex="true"
-        jar="/Users/Camille/Munsell-Color-Recognition-App/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/classes.jar"
+        jar="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/8.3.0/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
-        <dex dex="/Users/Camille/Munsell-Color-Recognition-App/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-media-compat-24.2.1_eeb53b7616aa7c28d79b42d2396b05a11ec36d0e/classes.dex" />
+        sha1="77f9593d979f4347344be233bd0d888315f79517">
+        <dex dex="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-maps-8.3.0_a016a3666e0253b96b2275f60a1f27bc66901a6b/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/Users/Camille/Munsell-Color-Recognition-App/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/libs/internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
-        <dex dex="/Users/Camille/Munsell-Color-Recognition-App/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_0d849ff7e48c9281f211d09908086437509b8e3d/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Camille/Munsell-Color-Recognition-App/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
-        <dex dex="/Users/Camille/Munsell-Color-Recognition-App/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-fragment-24.2.1_dc7f45a6fad2a730bde816481074fd8907aab269/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Camille/Munsell-Color-Recognition-App/app/libs/opencsv-3.8.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="248d4d05fe253a02a05601978f7de1305b8a961e">
-        <dex dex="/Users/Camille/Munsell-Color-Recognition-App/app/build/intermediates/transforms/dex/debug/folders/1000/2/opencsv-3.8_a6da25110255b6f71fd4dc8e3013a7ea5f11bc9d/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Camille/Munsell-Color-Recognition-App/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="dfc2b58ce39c81147ab0d2fa1daa2ccab3b99f4a">
-        <dex dex="/Users/Camille/Munsell-Color-Recognition-App/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_56a77e215a2ade6decc2ed49aa46190707d4a393/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Camille/Munsell-Color-Recognition-App/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
-        <dex dex="/Users/Camille/Munsell-Color-Recognition-App/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-compat-24.2.1_af866ee030acb328281352324ec7ed782b5bd622/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Camille/Munsell-Color-Recognition-App/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
-        <dex dex="/Users/Camille/Munsell-Color-Recognition-App/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-24.2.1_dce3bd5f234dcaf4814387a9285723e5e329cb14/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Camille/Munsell-Color-Recognition-App/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
-        <dex dex="/Users/Camille/Munsell-Color-Recognition-App/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-24.2.1_595a28257b052c3af00119a9b41f05cef217c49a/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Camille/Munsell-Color-Recognition-App/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
-        <dex dex="/Users/Camille/Munsell-Color-Recognition-App/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_531195ab2f41a0115aedd05bf0c9e849a77ce62e/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Camille/Munsell-Color-Recognition-App/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
-        <dex dex="/Users/Camille/Munsell-Color-Recognition-App/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-utils-24.2.1_055f149c414525c1f832ee30d34567018bf6ac1e/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Camille/Munsell-Color-Recognition-App/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/libs/internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
-        <dex dex="/Users/Camille/Munsell-Color-Recognition-App/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_65adeca0a83339293017f5657d2171edb64f916f/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Camille/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/24.2.1/support-annotations-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
-        <dex dex="/Users/Camille/Munsell-Color-Recognition-App/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-24.2.1_85ab0d36941b68f9dea068cce7c1c6d31ebb2432/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Camille/Munsell-Color-Recognition-App/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="/Users/Camille/Munsell-Color-Recognition-App/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-24.2.1_f5bbf981ae2a6361d01cb8c11a212bf385183653/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Camille/Munsell-Color-Recognition-App/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/libs/internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="867dad63c33388ff8c7644b236579355036d075f">
-        <dex dex="/Users/Camille/Munsell-Color-Recognition-App/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_85389b8050d4ffafd02ecf6d453c777fc6d24579/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Camille/Munsell-Color-Recognition-App/app/build/intermediates/exploded-aar/com.android.support/design/24.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="e03f47f3d1017a093bb3239d4ec47c3447f40744">
-        <dex dex="/Users/Camille/Munsell-Color-Recognition-App/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-design-24.2.1_1d946f602616c4faf8a8a0da583ed51d710c9333/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Camille/Munsell-Color-Recognition-App/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="ed4f38513fa800d7067ce00732d9f520fd3e7959">
-        <dex dex="/Users/Camille/Munsell-Color-Recognition-App/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_62f392414d4cf3506089be9fd390f5e7fc253e71/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Camille/Munsell-Color-Recognition-App/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
-        <dex dex="/Users/Camille/Munsell-Color-Recognition-App/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-ui-24.2.1_31147d5cca3a4545f75bf6613c184fb83e000b85/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Camille/Munsell-Color-Recognition-App/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/24.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="7521486d9bfd2cd9e756e0cf75ed7d97f2ce2d3b">
-        <dex dex="/Users/Camille/Munsell-Color-Recognition-App/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-recyclerview-v7-24.2.1_178dd2e298c98e22999bc9aa257511b9c26e2834/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Camille/Munsell-Color-Recognition-App/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/jars/classes.jar"
+        jar="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
         sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
-        <dex dex="/Users/Camille/Munsell-Color-Recognition-App/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-24.2.1_49d97454cee9cdb36efce90a08edb9fd7162069b/classes.dex" />
+        <dex dex="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-24.2.1_963771de38c16524d6889a60f1f48fe57f1e50f6/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/Users/Camille/Munsell-Color-Recognition-App/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jar="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-vision/8.3.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="724ce977487ab3a215d4d2eb47d8dccd9f30013f">
+        <dex dex="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-vision-8.3.0_4afe4bbd39b4cf0f0b5f04091f632a4287cb2f51/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-plus/8.3.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="0af4f577b4a21eb9be2a7f52e33b077b67e6d9f8">
+        <dex dex="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-plus-8.3.0_b11e9131525c89d3cb4f80ee1dac3bf235b29d91/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-nearby/8.3.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="eb576427887e497cd958a475475f9206e38dc314">
+        <dex dex="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-nearby-8.3.0_47ea1ef40a06acb62fdc054146c9af6421a2a07c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="345a1b5cf5b144ce18ba6962bc66a7e2f26c1c1b">
+        <dex dex="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-basement-8.3.0_67d9f5fafde813e3068607e6458495bd1e0f2c97/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="7521486d9bfd2cd9e756e0cf75ed7d97f2ce2d3b">
+        <dex dex="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-recyclerview-v7-24.2.1_e07a4d64e61c9d2ab849306c369955e56a75bfd9/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/24.2.1/support-annotations-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
+        <dex dex="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-24.2.1_4e4e93d1d926db025130a59df14adaca3cb11373/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
+        <dex dex="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-utils-24.2.1_b5bdea7206f863a27d380c353e76de1195398a09/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
+        <dex dex="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-ui-24.2.1_5bd72d7e4e114944a2597da254988cd8dc01f49d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
+        <dex dex="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-fragment-24.2.1_d4948c947c68882112d02c9ca9791907678762d4/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-safetynet/8.3.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="ea34579b1be157cd792376362157e9c54ebb4cd7">
+        <dex dex="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-safetynet-8.3.0_22ec82c31ebbfc3ad6814033113134256467d825/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-auth/8.3.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="fd76d95678a6b2b8a49bb8a9fb5bcef7aedb70e7">
+        <dex dex="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-auth-8.3.0_378d23ac026d96f3b9187dfa0fc747edbdb5fdfd/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.3.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="b000ecceb9877fefcdc7ab1959ff03df91551656">
+        <dex dex="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-measurement-8.3.0_93c8600535555bad3a7cc17b6fb9c80366d98041/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="867dad63c33388ff8c7644b236579355036d075f">
+        <dex dex="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_8eab0b365540d9a1ed12c96c9f0dd03573c574b3/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
+        <dex dex="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-24.2.1_4321146e3aad6f01efef904e4331ab7f2775c529/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
+        <dex dex="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_0ca7e37eb0881b63c2a728197a0c9d7e8eae6b19/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-fitness/8.3.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="697679619b00837e3d09e9988a2e1e2a9009d502">
+        <dex dex="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-fitness-8.3.0_f801a83c1927fd75f475146abe6e4714e3514f3d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
+        <dex dex="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-24.2.1_311cca2184762593e2882784d4cffed6faa9c86d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.2.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="dcf8c83c3dead00a6c4fe313e95f7aaca20dc641">
+        <dex dex="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-mediarouter-v7-22.2.0_0f82b3aa47523a14eef460cf4b4f830ec414d854/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.3.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="01a90bbb9495a8bbf6f3cfdf12f1b35caaa9524b">
+        <dex dex="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-base-8.3.0_bedda5577a7d94fb84d9cb23d745777912377080/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.2.0/jars/libs/internal_impl-22.2.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="0632f06970823b7e3436f649bfa65b47035c91d0">
+        <dex dex="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-22.2.0_24b6b2fd23ee15304420715343a8fbfdfa764c13/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-drive/8.3.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="0a1897426566e408a5c20a3d931f77d89771d07f">
+        <dex dex="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-drive-8.3.0_e60ab8f582a299b19adc03af27ac9b0d515a6da7/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
+        <dex dex="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-media-compat-24.2.1_2a64cfb08a93966532022a885f6ef7990546e8ca/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-24.2.1_2d8eb1e1d2b1089051118e70fff63c04350b36e9/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-panorama/8.3.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="744c49c02a27569cc4cc049685d3649e4ef439f2">
+        <dex dex="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-panorama-8.3.0_d3037e8b63002f83bd152fa1b8274529b8de2e9b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appinvite/8.3.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="58adcfbe2c8393765e84c5489d01bba6a5159eb2">
+        <dex dex="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-appinvite-8.3.0_7f3e0564494ee082108c898212df59eb83cfe7ed/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Desktop/Munsell project 11-22-16/app/libs/opencsv-3.8.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="248d4d05fe253a02a05601978f7de1305b8a961e">
+        <dex dex="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/transforms/dex/debug/folders/1000/2/opencsv-3.8_37d385f61a394f1184bb1bce5cbc01051c704e42/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
         sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
-        <dex dex="/Users/Camille/Munsell-Color-Recognition-App/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_185a7d7d7ad86f58f28429a8ff9c0a094e129a4b/classes.dex" />
+        <dex dex="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_a2c30ea43bee593ec0aa47bec8d743cd55b15595/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/8.3.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="6d9ed9a288364688e7fcf6704776284dac1eb42e">
+        <dex dex="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-location-8.3.0_83760322e525abdecba414f7d282700d8e438740/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/8.3.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="9c9bdb4b2497465a6cf7d5e8f57c5298f828a380">
+        <dex dex="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-wallet-8.3.0_786b57dce6ae36156e3756cff8402b98c1bcb6fb/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/8.3.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="0c3e81d3eb86b86d194b5cdb6a4de78203f6f7fd">
+        <dex dex="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-appindexing-8.3.0_7274abcc5cbc722424c36c7366feb63de082787f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/8.3.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="71eda10e33212e44245524b5087366ff8d805825">
+        <dex dex="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-gcm-8.3.0_4a6a193cb63166698928be30876b0d970099b034/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="1a39ffe3bbcdfd3938f596cf714e3abb0e90093a">
+        <dex dex="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_ab0a302436365cd76a67ec0f466fca8f9aaf2df7/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wearable/8.3.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="9aedc597d74c6d77258ce5236e9abff0c3cc65e3">
+        <dex dex="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-wearable-8.3.0_2474e0e449b6213d0968b3b1df119e4db56b42ae/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
+        <dex dex="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-compat-24.2.1_1c9c14247f43229aafd38f49c27224aec6e4ec50/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-identity/8.3.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="4b8df1b1e51fe14b0e89b3845dc2e215a024a09f">
+        <dex dex="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-identity-8.3.0_1c54b79920d198a69fb864a9c7eb15d17cdff341/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-games/8.3.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="2c6fcd6267cbac6509a2e72a61127534a1d616cf">
+        <dex dex="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-games-8.3.0_186e1aa9f55886d7ff7383c39fdbbb0084165803/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/8.3.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="27775d59b16610ac76f1b83693fedd9520396332">
+        <dex dex="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-ads-8.3.0_95c85286146d4bec3948c23bf2575cdd1d61f4f8/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="0b13b2c378d0049f8c560ea56086c4c5f4bd0dac">
+        <dex dex="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_5788141ecca49412bd5da0d62a66e7dca84f5073/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
+        <dex dex="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_4220323f0a22f1e288221a1b8b291e654261ba7c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
+        <dex dex="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_f7a70d6bd9689bfc9f355bb00845745f429d0330/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast/8.3.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="cb4af597d079ffdc0984a3ec2c03cbf6a1b9f869">
+        <dex dex="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-cast-8.3.0_70c2f9f9a194602b6576c13171639c5d59d3b345/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/exploded-aar/com.android.support/design/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="e03f47f3d1017a093bb3239d4ec47c3447f40744">
+        <dex dex="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-design-24.2.1_b875be6fac82433dff3ce181ab319144b10961bf/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/8.3.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="af6ee25641df3142059c0828517aa7ee6eba08d6">
+        <dex dex="/Users/Victorine/Desktop/Munsell project 11-22-16/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-analytics-8.3.0_7251ce1e1af22e682553853e0747f54b53ab2b36/classes.dex" />
     </item>
 
 </items>

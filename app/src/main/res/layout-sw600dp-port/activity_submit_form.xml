@@ -11,43 +11,43 @@
     tools:context="com.munsellapp.munsellcolorrecognitionapp.SubmitForm">
 
     <LinearLayout
-           android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/linearLayout">
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout">
 
-        </LinearLayout>
-
-        <TextView
-            android:text="Notes:"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView"
-            android:layout_marginBottom="61dp"
-            android:layout_alignBottom="@+id/sfNotesEdit"
-            android:layout_alignParentLeft="true"
-           android:layout_alignParentStart="true"
-            android:textSize="32sp"
-            android:textStyle="bold"/>
+    </LinearLayout>
 
     <TextView
-            android:text="ID #:"
+        android:text="Notes:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:layout_marginBottom="61dp"
+        android:layout_alignBottom="@+id/sfNotesEdit"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textSize="32sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:text="ID #:"
         android:textStyle="bold"
-            android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-            android:id="@+id/textView4"
-            android:layout_weight="1"
-            android:textSize="32sp"
-            android:layout_alignBaseline="@+id/sfIdEdit"
-            android:layout_alignBottom="@+id/sfIdEdit" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView4"
+        android:layout_weight="1"
+        android:textSize="32sp"
+        android:layout_alignBaseline="@+id/sfIdEdit"
+        android:layout_alignBottom="@+id/sfIdEdit" />
 
     <TextView
-            android:text="Munsell Chip:"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/amMunsellText"
-            android:layout_below="@+id/sfIdEdit"
-            android:textSize="32sp"
+        android:text="Munsell Chip:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/amMunsellText"
+        android:layout_below="@+id/sfIdEdit"
+        android:textSize="32sp"
         android:layout_marginTop="16dp"
         android:textStyle="bold"/>
 
@@ -75,8 +75,8 @@
         android:layout_alignParentEnd="true">
 
         <ImageButton
-           android:text="Save"
-           android:layout_width="148dp"
+            android:text="Save"
+            android:layout_width="148dp"
             android:layout_height="129dp"
             android:layout_margin="32dp"
             android:id="@+id/sfSaveButton"
@@ -88,12 +88,12 @@
     </LinearLayout>
 
     <EditText
-            android:layout_width="286dp"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/sfIdEdit"
-            android:hint="Enter ID here..."
+        android:layout_width="286dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/sfIdEdit"
+        android:hint="Enter ID here..."
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/textView"
         android:layout_toEndOf="@+id/textView"
