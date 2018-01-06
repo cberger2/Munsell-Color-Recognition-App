@@ -31,13 +31,18 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-
+import java.lang.Math;
+/* This activity allows the user to enter details about the image they have taken. Munsell Value of the image will be
+passed from ImageActivity and location will appear automatically. User has the option to save the information to the data.txt text
+file, which will promp the DataForm class.*/
 
 public class SubmitForm extends AppCompatActivity implements View.OnClickListener,GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
     ImageButton save, email;
     EditText idNumber, notes;
-    TextView munsell, munsellValueText, updatedText;
-    String munsellChip;
+    TextView munsell, munsellValueText, updatedText, expectedMunsellValueText, distanceValueText;
+    String munsellChip, expectedChip, expectedHue, expectedValue, expectedChroma;
+    String foundMunsellHue, foundMunsellValue, foundMunsellChroma;
+    double distance;
     TextView location;
     private GoogleApiClient googleApiClient;
     private static final int PERMISSION_ACCESS_COARSE_LOCATION = 0;
@@ -49,11 +54,29 @@ public class SubmitForm extends AppCompatActivity implements View.OnClickListene
         save.setOnClickListener(this);
         Bundle getBundle= getIntent().getExtras();
         munsellChip=getBundle.getString("MunsellChip");
+        expectedChip=getBundle.getString("expectedMunsellChip");
+        expectedHue=getBundle.getString("expectedHue");
+        expectedValue=getBundle.getString("expectedValue");
+        expectedChroma=getBundle.getString("expectedChroma");
+        foundMunsellHue=getBundle.getString("foundMunsellHue");
+        foundMunsellValue=getBundle.getString("foundMunsellValue");
+        foundMunsellChroma=getBundle.getString("foundMunsellChroma");
+        System.out.println(expectedHue);
+        System.out.println(expectedValue);
+        System.out.println(expectedChroma);
+        System.out.println(foundMunsellHue);
+        System.out.println(foundMunsellValue);
+        System.out.println(foundMunsellChroma);
+        distance=getMunsellDistance(expectedHue,expectedValue,expectedChroma,foundMunsellHue,foundMunsellValue,foundMunsellChroma);
 
 
 
         munsellValueText = (TextView) findViewById(R.id.sfMunsellChip);
         munsellValueText.setText(munsellChip);
+        expectedMunsellValueText= (TextView) findViewById(R.id.textView16);
+        expectedMunsellValueText.setText(expectedChip);
+        distanceValueText=(TextView) findViewById(R.id.textView18);
+        distanceValueText.setText(Double.toString(distance));
         location = (TextView) findViewById(R.id.textView6);
         googleApiClient = new GoogleApiClient.Builder(this, this, this).addApi(LocationServices.API).build();
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
@@ -62,6 +85,153 @@ public class SubmitForm extends AppCompatActivity implements View.OnClickListene
                     PERMISSION_ACCESS_COARSE_LOCATION);
         }
     }
+
+    private double getMunsellDistance(String expectedHue, String expectedValue, String expectedChroma, String foundMunsellHue, String foundMunsellValue, String foundMunsellChroma) {
+        double distance;
+        double expectedHueAngle=findAngle(expectedHue);
+        System.out.println(expectedHueAngle);
+        double foundMunsellHueAngle=findAngle(foundMunsellHue);
+        System.out.println(foundMunsellHueAngle);
+        double x1 = Math.sin(expectedHueAngle)*Double.parseDouble(expectedChroma);
+        double y1= Math.cos(expectedHueAngle)*Double.parseDouble(expectedChroma);
+        double z1=Double.parseDouble(expectedValue);
+        double x2 = Math.sin(Math.toRadians(foundMunsellHueAngle))*Double.parseDouble(foundMunsellChroma);
+        double y2= Math.cos(Math.toRadians(foundMunsellHueAngle))*Double.parseDouble(foundMunsellChroma);
+        double z2=Double.parseDouble(foundMunsellValue);
+        distance=Math.sqrt((x2-x1)*(x2-x1) + (y2-y1)*(y2-y1) + (z2-z1)*(z2-z1));
+        System.out.println(x1+" "+y1+" "+z1+" "+x2+" "+y2+" "+z2);
+        return distance;
+    }
+
+    private double findAngle(String hue) {
+        double angle= 0.0;
+        switch (hue) {
+            case "5.0R":
+                angle = 0.0;
+                break;
+            case "7.5R":
+                angle = 9.0;
+                break;
+            case "10.0R":
+                angle = 18.0;
+                break;
+            case "2.5YR":
+                angle = 27.0;
+                break;
+            case "5.0YR":
+                angle = 36.0;
+                break;
+            case "7.5YR":
+                angle = 45.0;
+                break;
+            case "10.0YR":
+                angle = 54.0;
+                break;
+            case "2.5Y":
+                angle = 63.0;
+                break;
+            case "5.0Y":
+                angle = 72.0;
+                break;
+            case "7.5Y":
+                angle = 81.0;
+                break;
+            case "10.0Y":
+                angle = 90.0;
+                break;
+            case "2.5GY":
+                angle = 99.0;
+                break;
+            case "5.0GY":
+                angle = 108.0;
+                break;
+            case "7.5GY":
+                angle = 117.0;
+                break;
+            case "10.0GY":
+                angle = 126.0;
+                break;
+            case "2.5G":
+                angle = 135.0;
+                break;
+            case "5.0G":
+                angle = 144.0;
+                break;
+            case "7.5G":
+                angle = 153.0;
+                break;
+            case "10.0G":
+                angle = 162.0;
+                break;
+            case "2.5BG":
+                angle = 171.0;
+                break;
+            case "5.0BG":
+                angle = 180.0;
+                break;
+            case "7.5BG":
+                angle = 189.0;
+                break;
+            case "10.0BG":
+                angle = 198.0;
+                break;
+            case "2.5B":
+                angle = 207.0;
+                break;
+            case "5.0B":
+                angle = 216.0;
+                break;
+            case "7.5B":
+                angle = 225.0;
+                break;
+            case "10.0B":
+                angle = 234.0;
+                break;
+            case "2.5PB":
+                angle = 243.0;
+                break;
+            case "5.0PB":
+                angle = 252.0;
+                break;
+            case "7.5PB":
+                angle = 261.0;
+                break;
+            case "10.0PB":
+                angle = 270.0;
+                break;
+            case "2.5P":
+                angle = 279.0;
+                break;
+            case "5.0P":
+                angle = 288.0;
+                break;
+            case "7.5P":
+                angle = 297.0;
+                break;
+            case "10.0P":
+                angle = 306.0;
+                break;
+            case "2.5RP":
+                angle = 315.0;
+                break;
+            case "5.0RP":
+                angle = 324.0;
+                break;
+            case "7.5RP":
+                angle = 333.0;
+                break;
+            case "10.0RP":
+                angle = 342.0;
+                break;
+            case "2.5R":
+                angle= 351.0;
+                break;
+            default:
+                break;
+        }
+        return angle;
+    }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         switch (requestCode) {
@@ -139,6 +309,14 @@ public class SubmitForm extends AppCompatActivity implements View.OnClickListene
         bundle.putString("idNumber", idNumber.getText().toString());
         bundle.putString("munsellChip", munsellValueText.getText().toString());
         bundle.putString("notes", notes.getText().toString());
+        bundle.putString("location",location.getText().toString());
+        bundle.putString("expectedChip",expectedChip);
+        bundle.putString("expectedHue",expectedHue);
+        bundle.putString("expectedValue",expectedValue);
+        bundle.putString("expectedChroma",expectedChroma);
+        bundle.putString("distance",Double.toString(distance));
+
+
 //        if(updatedText.equals("")){
         intent.putExtras(bundle);
         startActivity(intent);

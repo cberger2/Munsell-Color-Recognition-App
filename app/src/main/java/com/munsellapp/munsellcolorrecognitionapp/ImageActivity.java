@@ -1,10 +1,12 @@
 package com.munsellapp.munsellcolorrecognitionapp;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +16,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,7 +28,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+
+import static com.munsellapp.munsellcolorrecognitionapp.R.id.spinner;
+import static com.munsellapp.munsellcolorrecognitionapp.R.id.spinner2;
+import static com.munsellapp.munsellcolorrecognitionapp.R.id.spinner3;
 
 //import androidinterview.com.androidcamera.R;
 
@@ -33,27 +41,33 @@ import java.util.Date;
  * Created by Victorine on 10/12/16.
  */
 //comment
-
+//This class takes the image selected from gallery or take by the camera, get's the image's munsell value,
+//displays it on the screen, and changes the background color to match the Munsell value. Three buttons
+//appear at the bottom , home button, submit button ( whic will take the user to the submitForm activity ), and save 
+//button (which will screenshot the result and save the image in an album labeled "photos" in the device gallery)
 public class ImageActivity extends AppCompatActivity implements View.OnClickListener {
     private Button calibrate;
     static int TAKE_ANOTHERPIC = 0;
     private ImageView ResultPic;
-    private ImageButton saveresult, exportresult, home;
+    private ImageButton saveresult, exportresult, home, takeAnotherPic;
     Bitmap b;
     String munsellValue;
     TextView munsellChip, backgroundWarning;
     TextView iaDataStorage;
     RelativeLayout R1;
     Double smallestDif;
-
+    int fixRed, fixGreen, fixBlue;
+    private Uri photo;
     int compareRed, compareGreen, compareBlue;
-
+    final int CROP_PIC = 3;
     int smallRed, smallGreen, smallBlue;
-
+    int calibrateRed,calibrateGreen,calibrateBlue;
+    Spinner expectedHue, expectedValue, expectedChroma;
     int red;
     int green;
     int blue;
     int i;
+    String foundMunsellHue, foundMunsellValue, foundMunsellChroma;
 
 
     @Override
@@ -69,7 +83,25 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
         saveresult.setOnClickListener(this);
         exportresult = (ImageButton) findViewById(R.id.submitButton);
         exportresult.setOnClickListener(this);
-//        camera = (ImageButton) findViewById(R.id.imageButton2);
+        takeAnotherPic = (ImageButton) findViewById(R.id.button4);
+        Bundle extras = getIntent().getExtras();
+        fixRed = extras.getInt("fixRed");
+        fixBlue = extras.getInt("fixBlue");
+        fixGreen = extras.getInt("fixGreen");
+        calibrateRed=extras.getInt("calibrateRed");
+        calibrateGreen=extras.getInt("calibrateGreen");
+        calibrateBlue=extras.getInt("calibrateBlue");
+        expectedHue = (Spinner)findViewById(spinner);
+        expectedValue = (Spinner)findViewById(spinner2);
+        expectedChroma = (Spinner)findViewById(spinner3);
+
+
+
+
+
+        //System.out.println("redfactor: "+ fixRed+" greenfactor: "+ fixGreen+" bluefactor: "+ fixBlue);
+
+
 
 
 /* Extracts image taken from camera or image selected from gallery and
@@ -80,7 +112,7 @@ passes it to imageview -JB
             b = BitmapFactory.decodeByteArray(
                     getIntent().getByteArrayExtra("CameraImage"), 0, getIntent().getByteArrayExtra("CameraImage").length);
             try {
-                munsell(findViewById(R.id.musellValue));
+                munsell(findViewById(R.id.musellValue),b);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -93,7 +125,7 @@ passes it to imageview -JB
                     getIntent().getByteArrayExtra("GalleryImage"), 0, getIntent().getByteArrayExtra("GalleryImage").length);
 
             try {
-                munsell(findViewById(R.id.musellValue));
+                munsell(findViewById(R.id.musellValue),b);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -108,9 +140,16 @@ passes it to imageview -JB
 
     /*Starts camera Intent -JB*/
     public void AnotherCameraClick(View v) {
+        try {
+            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            startActivityForResult(intent, TAKE_ANOTHERPIC);
+            // we will handle the returned data in onActivityResult
+        } catch (ActivityNotFoundException anfe) {
+            Toast toast = Toast.makeText(this, "This device doesn't support the crop action!",
+                    Toast.LENGTH_SHORT);
+            toast.show();
+        }
 
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(intent, TAKE_ANOTHERPIC);
 
     }
 
@@ -130,7 +169,7 @@ passes it to imageview -JB
           * the smallest distance value gets updated along with the smallest red, green, and blue value.
           * It then goes through the csv file again with the new RGB values and finds the line with the matching values and
           * returns the munsell color to the phone. It then changes the background to show the munsell chip color.*/
-    public void munsell(View v) throws IOException {
+    public void munsell(View v, Bitmap bit) throws IOException {
         smallestDif=1000.0;
 
 
@@ -145,14 +184,16 @@ passes it to imageview -JB
         CSVReader csvReader = new CSVReader(is);
         String[] line;
         csvReader.readNext();
-        getSpecs();
+        getSpecs(bit);
 
 
         //This should  fix the colors from the calibration activity.
         //UNCOMMENT ONCE WE CAN GET THE SPECS OF A KNOWS COLOR.
-//        red=red+fixRed;
-//        green=green+fixGreen;
-//        blue=blue+fixBlue;
+        System.out.println("redfactor: "+ fixRed+" greenfactor: "+ fixGreen+" bluefactor: "+ fixBlue);
+        red=red+fixRed;
+        green=green+fixGreen;
+        blue=blue+fixBlue;
+        System.out.println("fixed red: "+ red + " fixed green"+ green +" fixed blue"+ blue);
 
 
         while ((line = csvReader.readNext()) != null) {
@@ -164,8 +205,8 @@ passes it to imageview -JB
                 smallRed = Integer.parseInt(line[3]);
                 smallGreen = Integer.parseInt(line[4]);
                 smallBlue = Integer.parseInt(line[5]);
-            } else
-                csvReader.readNext();
+            } //else
+                //csvReader.readNext();
         }
         csvReader.close();
         System.out.println("smalled difference: " + Double.toString(smallestDif) + "/n smallest red: " + Double.toString(smallRed) + "/n Actual red:"
@@ -188,6 +229,9 @@ passes it to imageview -JB
                 if (smallGreen == (Integer.parseInt(line2[line2.length - 2]))) {
                     if (smallBlue == Integer.parseInt(line2[line2.length - 1])) {
                         munsellValue = line2[0] + " " + line2[1] + "/" + line2[2];
+                        foundMunsellHue=line2[0];
+                        foundMunsellValue=line2[1];
+                        foundMunsellChroma=line2[2];
                         text.setText(munsellValue);
 
                     }
@@ -195,8 +239,11 @@ passes it to imageview -JB
             }
         }
         csvReader2.close();
-        setBackground(smallRed,smallGreen,smallBlue);
-
+        //setBackground(red,green,blue);
+        Toast.makeText(getApplicationContext(), " R "+red+" G "+green+" B "+blue,
+                Toast.LENGTH_LONG).show();
+       // System.out.println("Distance is: "+getDistance(calibrateRed,calibrateGreen,calibrateBlue,red,green,blue));
+    //input expected RGBs ^^
 
     }
 
@@ -213,11 +260,19 @@ passes it to imageview -JB
                 startActivity(i);
                 break;
             case R.id.submitButton:
+                String expected= expectedHue.getSelectedItem().toString()+" "+expectedValue.getSelectedItem().toString()+"/"+expectedChroma.getSelectedItem().toString();
                 munsellChip = (TextView) findViewById(R.id.musellValue);
                 Intent submitForm = new Intent(this, SubmitForm.class);
                 Bundle submitBundle = new Bundle();
                 submitBundle.putString("MunsellChip", munsellChip.getText().toString());
                 submitBundle.putString("dataList", iaDataStorage.getText().toString());
+                submitBundle.putString("expectedMunsellChip", expected);
+                submitBundle.putString("expectedHue", expectedHue.getSelectedItem().toString());
+                submitBundle.putString("expectedValue", expectedValue.getSelectedItem().toString());
+                submitBundle.putString("expectedChroma", expectedChroma.getSelectedItem().toString());
+                submitBundle.putString("foundMunsellHue", foundMunsellHue);
+                submitBundle.putString("foundMunsellValue", foundMunsellValue);
+                submitBundle.putString("foundMunsellChroma", foundMunsellChroma);
                 submitForm.putExtras(submitBundle);
                 startActivity(submitForm);
                 break;
@@ -247,14 +302,15 @@ passes it to imageview -JB
 
         View view = this.getWindow().getDecorView();
 
-        if(red==0 || green==0 || blue==0){
+     /*   if(red==0 || green==0 || blue==0){
             backgroundWarning=(TextView) findViewById(R.id.backgroundWarning);
             backgroundWarning.setText("The correct background color was unable to be set.");
             return;
-        }
+        }*/
 
+        //else if (red > 9 && green > 9 && blue > 9) {
 
-        else if (red > 9 && green > 9 && blue > 9) {
+         if (red > 9 && green > 9 && blue > 9) {
             StringBuilder builder = new StringBuilder();
             builder.append("#");
             builder.append(Integer.toHexString(red));
@@ -333,18 +389,38 @@ passes it to imageview -JB
     }
 
 
-    public void getSpecs() {
+    public void getSpecs(Bitmap bit) {
         //When implementing with camera, change field i to get the image taken from the camera,
         //so it's no longer pre loaded in with Android Studio
         ImageView i = new ImageView(this);
-        i.setImageBitmap(b);
-        int w = i.getWidth();
-        int h = i.getHeight();
+        i.setImageBitmap(bit);
+        //System.out.println(w +" "+ h);
         Bitmap bitmap = ((BitmapDrawable) i.getDrawable()).getBitmap();
-        int pixel = bitmap.getPixel(w, h);
-        red = Color.red(pixel);
-        blue = Color.blue(pixel);
-        green = Color.green(pixel);
+        int w = bitmap.getWidth();
+        int h = bitmap.getHeight();
+        int count=0;
+        //System.out.println(bitmap.getWidth() + " " + bitmap.getHeight());
+        for(int x = 0; x< w-1; x++){
+            for(int y = 0; y< h-1; y++){
+                int pixel = bitmap.getPixel(x, y);
+                red += Color.red(pixel);
+                blue += Color.blue(pixel);
+                green += Color.green(pixel);
+                count++;
+                //
+
+            }
+        }
+        //int ww= bitmap.getWidth();
+        //int hh=bitmap.getHeight();
+       // System.out.println(ww +" "+ hh);
+        //int pixel = bitmap.getPixel(w, h);
+        red = red/count;
+        blue = blue/count;
+        green = green/count;
+        System.out.println("image red: "+ red + " image green: "+ green +" image blue: "+ blue);
+
+        //array to return rgb
 
     }
 
@@ -352,19 +428,60 @@ passes it to imageview -JB
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == TAKE_ANOTHERPIC && resultCode == RESULT_OK) {
-            Bitmap photo = (Bitmap) data.getExtras().get("data");
-            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            photo.compress(Bitmap.CompressFormat.PNG, 100, stream);
-            // byte[] byteArray = stream.toByteArray();
-            ResultPic.setImageBitmap(photo);
-            ResultPic.buildDrawingCache();
-            b = ResultPic.getDrawingCache();
+            photo = data.getData();
+            performCrop();
+//            Bitmap photo = (Bitmap) data.getExtras().get("data");
+//            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+//            photo.compress(Bitmap.CompressFormat.PNG, 100, stream);
+//            // byte[] byteArray = stream.toByteArray();
+//            ResultPic.setImageBitmap(photo);
+//            ResultPic.buildDrawingCache();
+//            b = ResultPic.getDrawingCache();
+
+        } else if (requestCode == CROP_PIC) {
+            // get the returned data
+            Bundle extras = data.getExtras();
+            // get the cropped bitmap
+            Bitmap croppedPic = extras.getParcelable("data");
+            try {
+                munsell(findViewById(R.id.musellValue), croppedPic);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            ResultPic.setImageBitmap(croppedPic);
 
         }
+    }
+
+
+    private void performCrop() {
+        // take care of exceptions
         try {
-            munsell(findViewById(R.id.musellValue));
-        } catch (IOException e) {
-            e.printStackTrace();
+            // call the standard crop action intent (the user device may not
+            // support it)
+            Intent cropIntent = new Intent("com.android.camera.action.CROP");
+            // indicate image type and Uri
+            cropIntent.setDataAndType(photo, "image/*");
+            // set crop properties
+            cropIntent.putExtra("crop", "true");
+            // indicate aspect of desired crop
+            cropIntent.putExtra("aspectX", 2);
+            cropIntent.putExtra("aspectY", 1);
+            // indicate output X and Y
+            cropIntent.putExtra("outputX", 256);
+            cropIntent.putExtra("outputY", 256);
+            // retrieve data on return
+            cropIntent.putExtra("return-data", true);
+            // start the activity - we handle returning in onActivityResult
+            startActivityForResult(cropIntent, CROP_PIC);
+        }
+        // respond to users whose devices do not support the crop action
+        catch (ActivityNotFoundException anfe) {
+            Toast toast = Toast
+                    .makeText(this, "This device doesn't support the crop action!", Toast.LENGTH_SHORT);
+            toast.show();
         }
     }
 }
+//addition

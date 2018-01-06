@@ -31,7 +31,8 @@ public class DataForm extends AppCompatActivity implements View.OnClickListener 
     SharedPreferences savedValues;
     String savedDataString, restoreData;
     String savedDataPref;
-    String fileLocation, location;
+    String fileLocation, location, expectedChip;
+    String distance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,10 +50,14 @@ public class DataForm extends AppCompatActivity implements View.OnClickListener 
         munsellChip = getBundle.getString("munsellChip");
         notes = getBundle.getString("notes");
         location= getBundle.getString("location");
-
+        expectedChip= getBundle.getString("expectedChip");
+        distance= getBundle.getString("distance");
         SharedPreferences sp = getSharedPreferences("key", 0);
         savedDataPref = sp.getString("savedDataPref", "");
-        dataListText.setText("\"" + idNumber + "\"" + " , " + "\"" + munsellChip + "\"" + " , " + "\""+location+ "\""+ " , "+"\"" + notes + "\"" + "\n" + savedDataPref);
+        //uncomment for final this is just for testing
+        //dataListText.setText("\"" + idNumber + "\"" + " , " + "\"" + munsellChip + "\"" + " , " + "\""+expectedChip+"\"" + " , " + "\""+location+ "\""+ " , "+"\"" + notes + "\"" + "\n" + savedDataPref);
+        dataListText.setText( munsellChip  + " , " +expectedChip+ " , "+distance+"\n"+ savedDataPref);
+
     }
 
 //    @Override
