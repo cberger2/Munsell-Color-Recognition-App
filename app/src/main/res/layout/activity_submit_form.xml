@@ -79,18 +79,6 @@
     </LinearLayout>
 
     <TextView
-        android:text="TextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/sfNotesEdit"
-        android:layout_margin="32dp"
-        android:visibility="invisible"
-        android:layout_toLeftOf="@+id/sfMunsellChip"
-        android:layout_toStartOf="@+id/sfMunsellChip"
-        android:layout_marginBottom="41dp"
-        android:id="@+id/sfInfoStorage" />
-
-    <TextView
         android:text="Location Not Available"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -150,5 +138,53 @@
         android:layout_alignBottom="@+id/textView"
         android:layout_alignLeft="@+id/textView6"
         android:layout_alignStart="@+id/textView6" />
+
+    <TextView
+        android:text="Expected Munsell Chip:"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:id="@+id/textView15"
+        android:layout_below="@+id/sfNotesEdit"
+        android:layout_alignLeft="@+id/textView5"
+        android:layout_alignStart="@+id/textView5"
+        android:layout_toLeftOf="@+id/sfNotesEdit"
+        android:layout_toStartOf="@+id/sfNotesEdit" />
+
+    <TextView
+        android:text="Testing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textView15"
+        android:layout_toRightOf="@+id/textView15"
+        android:layout_toEndOf="@+id/textView15"
+        android:layout_marginBottom="14dp"
+        android:id="@+id/textView16"
+        android:textSize="16sp"
+        />
+
+    <TextView
+        android:text="Distance:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:id="@+id/textView17"
+        android:layout_below="@+id/textView15"
+        android:layout_alignRight="@+id/textView"
+        android:layout_alignEnd="@+id/textView" />
+
+    <TextView
+        android:text="testing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textView17"
+        android:layout_toRightOf="@+id/textView15"
+        android:layout_toEndOf="@+id/textView15"
+        android:id="@+id/textView18"
+        android:textSize="16sp" />
 
 </RelativeLayout>
