@@ -43,10 +43,13 @@
         <item>7.5RP</item>
         <item>10.0RP</item>
         <item>2.5R</item>
+        <item>N</item>
     </string-array>
 
     <string name="MunsellValuePrompt">Expected Munsell</string>
     <string-array name="MunsellValueArray">
+        <item>0</item>
+        <item>2</item>
         <item>2.5</item>
         <item>3</item>
         <item>4</item>
@@ -59,6 +62,7 @@
 
     <string name="MunsellChromaPrompt">Expected Munsell</string>
     <string-array name="MunsellChromaArray">
+        <item>0</item>
         <item>2</item>
         <item>4</item>
         <item>6</item>

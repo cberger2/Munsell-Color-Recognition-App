@@ -94,8 +94,11 @@
         android:id="@+id/dataStorage"
         android:visibility="invisible"/>
 
+    <!--The following widget is set to invisible for now, set to visible when testing-->
+
     <Spinner
         android:layout_width="match_parent"
+        android:visibility="invisible"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
@@ -103,9 +106,11 @@
         android:id="@+id/spinner"
         android:entries="@array/MunsellHueArray"
         android:prompt="@string/MunsellHuePrompt"/>
+    <!--The following widget is set to invisible for now, set to visible when testing-->
 
     <Spinner
         android:layout_width="match_parent"
+        android:visibility="invisible"
         android:layout_height="wrap_content"
         android:layout_below="@+id/spinner"
         android:layout_alignParentLeft="true"
@@ -113,9 +118,11 @@
         android:id="@+id/spinner2"
         android:entries="@array/MunsellValueArray"
         android:prompt="@string/MunsellValuePrompt"/>
+    <!--The following widget is set to invisible for now, set to visible when testing-->
 
     <Spinner
         android:layout_width="match_parent"
+        android:visibility="invisible"
         android:layout_height="wrap_content"
         android:layout_below="@+id/spinner2"
         android:layout_alignParentLeft="true"
