@@ -1,27 +1,34 @@
-package com.murach.invoice.imageselection;
+package com.munsellapp.munsellcolorrecognitionapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.graphics.Point;
 import android.graphics.PorterDuff;
+import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
+import android.widget.TextView;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Random;
+import java.io.ByteArrayOutputStream;
+//NOTE this activity has not yet been integrated with the rest of the app, but has been set up to try and implement image selection
+//This will allow the user to select a certain part of an image to get it's Munsell Value of just that portion.
+//This does not work completely. NOTE activity this will allow calibration to be done, so that the user can take an image
+//of a Munsell chip ( which is very small ) and implement calibration for all RGB-Munsell values.
 
-public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBarChangeListener {
+public class ImageSelection extends AppCompatActivity implements SeekBar.OnSeekBarChangeListener, View.OnClickListener {
     private Bitmap DrawBitmap;
     private Canvas mCanvas;
     private Path mPath;
@@ -30,16 +37,23 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
     private CustomView customView;
     private Display Disp;
     private SeekBar seekbar;
-    private float mX, mY, lastX, lastY;
-    private static final float TOUCH_TOLERANCE = 4;
-    ImageView imageView;
+    private Rect rectShape = new Rect();
+    private float mX, mY;
+    private ImageView imageView;
+    private TextView textView;
+    Bitmap bitmap;
+    Bitmap b;
+    int red0,green0,blue0;
+    Button munsellReading;
+    Bitmap test, secondBitmap;
 
     protected void onCreate(Bundle savedInstances) {
         super.onCreate(savedInstances);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_image_selection);
         customView = new CustomView(this);
-        Rl = (RelativeLayout) findViewById(R.id.activity_main);
+        Rl = (RelativeLayout) findViewById(R.id.activity_image_selection);
         Rl.addView(customView);
+
         mPaint = new Paint();
         mPaint.setAntiAlias(true);
         mPaint.setDither(true);
@@ -47,24 +61,41 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setStrokeJoin(Paint.Join.ROUND);
         mPaint.setStrokeCap(Paint.Cap.ROUND);
-        mPaint.setStrokeWidth(10);
+        mPaint.setStrokeWidth(5);
 
-//        imageView = (ImageView) findViewById(R.id.imageView1);
+        imageView = (ImageView) findViewById(R.id.imageView1);
 
+        textView = (TextView) findViewById(R.id.textView);
         seekbar = (SeekBar) findViewById(R.id.seekBar);
+
+        munsellReading=(Button) findViewById(R.id.munsellReading);
+        munsellReading.setOnClickListener(this);
+
         seekbar.setOnSeekBarChangeListener(this);
+        seekbar.setProgress(30);
+
+        b = BitmapFactory.decodeByteArray(
+                getIntent().getByteArrayExtra("CameraImage"), 0, getIntent().getByteArrayExtra("CameraImage").length);
+
+        bitmap = b;
+//        BitmapDrawable ob=new BitmapDrawable(getResources(),bitmap);
+
+
+        imageView.setImageBitmap(bitmap);
+//        imageView.setScaleType(ImageView.ScaleType.FIT_XY);
 
     }
 
 
     /**
-     *Changing radius via the seekbar.
+     * Changing bound via the seekbar.
      */
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
-        customView.setRadius(progress);
-//        mCanvas.drawCircle(lastX, lastY, customView.setRadius(progress), mPaint);
+        customView.setBounds(progress);
         customView.invalidate();
+
+        //textView.setText("Width: " + progress);
 
     }
 
@@ -78,8 +109,42 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
 
     }
 
+    @Override
+    public void onClick(View v) {
+        Intent imageActivity=new Intent(this, ImageActivity.class);
+        System.out.println(red0+" "+green0+" "+blue0);
+        String redString=Integer.toString(red0);
+        String greenString=Integer.toString(green0);
+        String blueString=Integer.toString(blue0);
+
+        Bundle bundle=new Bundle();
+        bundle.putString("redString", redString);
+        bundle.putString("greenString", greenString);
+        bundle.putString("blueString", blueString);
+
+        imageActivity.putExtras(bundle);
+
+        PassBitmapToNextActivity(bitmap,ImageActivity.class,"CameraImage");
+
+//        imageActivity.putExtras(bundle);
+
+
+        startActivity(imageActivity);
+
+    }
+
+    /*Passes Bitmap from any intent (camera, gallery, or calibrate camera) and passes it to specified activity)*/
+    public void PassBitmapToNextActivity (Bitmap bm, Class myClass, String extraName ){
+        Intent intent = new Intent(this, myClass);
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bm.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        intent.putExtra(extraName, stream.toByteArray());
+        startActivity(intent);
+
+    }
+
     public class CustomView extends View {
-        private float radius;
+        private int bound;
 
         @SuppressWarnings("deprecation")
         public CustomView(Context c) {
@@ -87,7 +152,7 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
             super(c);
             Disp = getWindowManager().getDefaultDisplay();
 
-            DrawBitmap = Bitmap.createBitmap(Disp.getWidth(), Disp.getHeight(),
+            DrawBitmap = Bitmap.createBitmap(Disp.getWidth(), Disp.getHeight() - 400,
                     Bitmap.Config.ARGB_4444);
 
             mCanvas = new Canvas(DrawBitmap);
@@ -102,57 +167,9 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
             canvas.drawBitmap(DrawBitmap, 0, 0, DrawBitmapPaint);
             canvas.drawPath(mPath, mPaint);
             canvas.drawRect(mY, 0, mY, 0, DrawBitmapPaint);
-            System.out.println(Disp.getHeight() + " ANDREW");
         }
-
-        private void clear_canvas() {
-            mCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
-        }
-
-        Random random = new Random();
 
         /**
-         * Method's I've been messing around with to find the pixels within the circles area.
-         * What y'all could help me with.
-         *
-         * Use Midpoint Circle Algorithm to return pixels. All we have to do is be able to detect pixels
-         * within the circle. Once we've broken through on that, then converting pixels to color is simple.
-         */
-
-        private Point CalculatePoint(float originX, float originY)
-        {
-            double angle = random.nextDouble() * Math.PI * 2;
-            double radius = random.nextDouble() * getRadius();
-            double x = originX + radius * Math.cos(angle);
-            double y = originY + radius * Math.sin(angle);
-            return new Point((int)x,(int)y);
-        }
-
-        public void cRGB(Canvas canvas) {
-            ArrayList<Integer> indices = new ArrayList<>();
-            int height = 2 * (int)getRadius();
-            int width = height;
-
-            for (int x = 0; x < width; x++)
-            {
-                for (int y = 0; y < height; y++)
-                {
-                    //M1 & M2 will represent where the circles midpoint is. TO-DO.
-                    double dx = x - m1;
-                    double dy = y - m2;
-                    double distanceSquared = dx * dx + dy * dy;
-
-                    if (distanceSquared <= Math.pow(getRadius(), 2))
-                    {
-                        indices.add(x + y * width);
-                    }
-                }
-            }
-        }
-
-
-        /**
-         *
          * Touch event for the entire screen; where the code goes to adjust circle size, etc.
          */
         @Override
@@ -161,40 +178,45 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
             float x = event.getX();
             float y = event.getY();
 
-            System.out.println((int) radius);
-            System.out.println(">>" + event.getAction());
-            System.out.println("X: " + x + " Y: " + y);
-//            System.out.println(imageView.getBottom());
+            rectShape.set((int) x - getBounds(), (int) y - getBounds(), getBounds() + (int) x, getBounds() + (int) y);
 
-            while (!seekbar.isPressed()) {
+            if (y <Disp.getHeight()-200) {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
-                        //touch_start(x, y);
                         clear_canvas();
-                        System.out.println("1");
 
-                        mCanvas.drawCircle(x, y, getRadius(), mPaint);
+                        mCanvas.drawRect(rectShape, mPaint);
 
-                        lastX = event.getX();
-                        lastY = event.getY();
+                        secondBitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
 
-//                    System.out.println(CalculatePoint(x, y));
+                         test = Bitmap.createBitmap(secondBitmap, (int) x-300, (int) y-500, rectShape.width(), rectShape.height());
+
+
+                        int red = 0;
+                        int blue = 0;
+                        int green = 0;
+                        int pixelCount = 0;
+
+                        for (int yy = 0; yy < test.getHeight(); ++yy) {
+                            for (int xx = 0; xx < test.getWidth(); ++xx) {
+                                int pixel = test.getPixel(xx, yy);
+
+                                red += Color.red(pixel);
+                                blue += Color.blue(pixel);
+                                green += Color.green(pixel);
+                                ++pixelCount;
+
+                            }
+                        }
+
+                        red0 = (red / pixelCount);
+                        blue0 = (blue / pixelCount);
+                        green0 = (green / pixelCount);
+
+
 
                         invalidate();
                         break;
-                    //return false;
-////                case MotionEvent.ACTION_MOVE:
-////                    //touch_move(x, y);
-////                    System.out.println("2");
-////                    invalidate();
-////                    break;
-////                    //return true;
-//                    case MotionEvent.ACTION_UP:
-//                        //touch_up();
-//                        System.out.println("3");
-//                        //invalidate();
-//                        break;
-                    //return true;
 
                 }
                 return false;
@@ -203,113 +225,17 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
             return false;
         }
 
-        private float setRadius(int radius) {
-            return this.radius = radius;
+        private void clear_canvas() {
+            mCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
         }
 
-        private float getRadius() {
-            return radius;
+        private int setBounds(int bound) {
+            return this.bound = bound;
+        }
+
+        private int getBounds() {
+            return bound;
         }
 
     }
 }
-
-
-
-
-
-/*
- * Ignore everything below this line. Just previous code for free-from drawing, which we changed
- * to just have a circle. No longer relevant, but storing code here just in case in the meantime.
- */
-
-
-//
-//                    tPath.addCircle(mStartPointsX.get(0).x, mStartPointsY.get(0).y, 2, Direction.CCW);
-
-
-//                    if (new Point(mStartPointsX.get(0).x, mStartPointsY.get(0).y) ==
-//                           new Point(mEndPointsX.get(mEndPointsX.size() - 1).x, mEndPointsY.get(mEndPointsY.size() - 1).y)) {
-//
-//                        //Return RGB value here of contents within circle.
-//                        //TO-DO: MAKE INTO A FUNCTION FOR CLEANER CODE.
-//                        for (int xx = 0; x < mCanvas.getWidth(); x++)
-//                        {
-//                            for (int yy = 0; y < mCanvas.getHeight(); y++)
-//                            {
-//                                double radius = new Point(mStartPointsX.get(0).x, mStartPointsY.get(0).y).describeContents() /
-//                                        ((new Point(mEndPointsX.get(mEndPointsX.size() / 2).x, mEndPointsY.get(mEndPointsY.size() / 2).y)).describeContents());
-//                                double dx = xx - radius;
-//                                double dy = yy - radius;
-//                                double distanceSquared = dx * dx + dy * dy;
-//                                double radiusSquared = radius * radius;
-//
-//                                if (distanceSquared <= radiusSquared)
-//                                {
-//                                    circleRGBValues.add((int) (x + y * mCanvas.getWidth()));
-//                                }
-//                            }
-//                        }
-//
-//                        //For testing purposes.
-//                        System.out.println("RGB VALUES: " + circleRGBValues);
-//                        System.out.println("Full: " + mStartPointsX.get(0) + ", " + mStartPointsY + " X: " + (int) x + " Y: " + (int) y);
-//
-//                    } else {
-//
-//                        //Go to the startingPoints and then return RGB value here of contents within circle.
-//                        mPath.moveTo(mEndPointsX.get(mEndPointsX.size() - 1).x, mEndPointsY.get(mEndPointsY.size() - 1).y);
-//                        mPath.lineTo(mStartPointsX.get(0).x, mStartPointsY.get(0).y);
-//
-//                        //Return RGB value here of contents within circle.
-////                        if (new Point(mStartPointsX.get(0).x, mStartPointsY.get(0).y) ==
-////                                new Point(mEndPointsX.get(mEndPointsX.size() - 1).x, mEndPointsY.get(mEndPointsY.size() - 1).y)) {
-////
-////                            //TO-DO: MAKE INTO A FUNCTION FOR CLEANER CODE.
-////
-////                        }
-//
-//                        //For testing purposes.
-//                        System.out.println("--------------------");
-//                        System.out.println("RGB VALUES: " + circleRGBValues);
-//                        System.out.println("Null (STARTING POINTS): X: " + mStartPointsX.get(0) + ", Y: " + mStartPointsY.get(0));
-//                        System.out.println("Null (END POINTS): X: " + mEndPointsX.get(mEndPointsX.size() - 1) + ", Y: " + mEndPointsY.get(mEndPointsX.size() - 1));
-//
-//                    }
-
-
-                    //TO-DO: FIX ERROR WHICH CRASHES APP IF USER ONLY CLICKS THE SCREEN, AND DOESN'T DRAW A PATH.
-//                    if (new Point(mStartPointsX.get(0).x, mStartPointsY.get(0).y) ==
-//                            new Point(mEndPointsX.get(mEndPointsX.size() - 1).x, mEndPointsY.get(mEndPointsY.size() - 1).y) && mStartPointsX.size() < 0) {
-//                        System.out.println("Draw more than one point");
-//                        break;
-//                    }
-
-
-//
-//    private void touch_start(float x, float y) {
-//        mPath.reset();
-//        mPath.moveTo(x, y);
-//        mX = x;
-//        mY = y;
-//    }
-//
-//    private void touch_move(float x, float y) {
-//        float dx = Math.abs(x - mX);
-//        float dy = Math.abs(y - mY);
-//        if (dx >= TOUCH_TOLERANCE || dy >= TOUCH_TOLERANCE) {
-//            mPath.quadTo(mX, mY, (x + mX) / 2, (y + mY) / 2);
-//            mX = x;
-//            mY = y;
-//        }
-//
-//    }
-//
-//    private void touch_up() {
-//
-//        mPath.lineTo(mX, mY);
-//
-//        mCanvas.drawPath(mPath, mPaint);
-//
-//        mPath.reset();
-//    }
